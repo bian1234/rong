@@ -8,6 +8,7 @@ import com.byk.rong.system.mapper.write.SystemUserWriteMapper;
 import com.byk.rong.system.service.SystemUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -29,6 +30,12 @@ public class SystemUserServiceImpl  implements SystemUserService {
 
     @Autowired
     private MD5Util md5Util;
+
+//    @Transactional(readOnly=true)
+    @Override
+    public SystemUser findByUsername(String userName) {
+        return systemUserReadMapper.selectByUserName(userName);
+    }
 
     @Override
     public int insertSelective(SystemUser systemUser) {

@@ -22,6 +22,8 @@ public interface SystemUserService  extends BaseService<SystemUser> {
     @Override
     SystemUser selectById(String id);
 
+    SystemUser findByUsername(String userName);
+
     @Override
     List<SystemUser> selectByParams(SystemUser systemUser);
 

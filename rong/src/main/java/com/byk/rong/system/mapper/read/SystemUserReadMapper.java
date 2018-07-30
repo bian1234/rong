@@ -14,4 +14,6 @@ public interface SystemUserReadMapper   extends BaseReadMapper<SystemUser>{
 
     @Override
     List<SystemUser> selectByParams(SystemUser systemUser);
+
+    SystemUser selectByUserName(String userName);
 }
