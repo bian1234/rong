@@ -17,7 +17,7 @@
 // * @Date: 2018/5/31 11:57
 // * @todo: 这是权限控制的配置类  ----------->暂时理解为拦截器的作用，和springMVC的dispatcher作用一样。
 // * Shiro几个核心的类，第一就是ShiroFilterFactory,第二就是SecurityManager，springboot采用@Bean注入的方式，且看以下代码
-// *
+// *  暂时先注释，因为静态资源被shrio拦截了，页面不爽。
 // */
 //@Configuration
 //public class ShiroConfiguration {

@@ -24,14 +24,16 @@ public class SystemUserController extends BaseController{
     private SystemUserService systemUserService;
 
 
+
+
     /**
      *@Author:      ykbian
      *@date_time:   2018/7/27 16:20
      *@Description:  注册账户
      *@param:
     */
-    @PostMapping("/regist")
-    public Map regist(SystemUser systemUser){
+    @PostMapping("/register")
+    public Map register(SystemUser systemUser){
         if (systemUserService.insertSelective(systemUser) > 0){
             return insertSuccseeResponse();
         }else {
