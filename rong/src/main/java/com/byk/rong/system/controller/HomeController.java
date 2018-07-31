@@ -3,7 +3,6 @@ package com.byk.rong.system.controller;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -11,30 +10,24 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 /**
- * @Author: ykbian
- * @Date: 2018/7/30 10:26
- * @Todo:   页面跳转控制
+ * @Author: bianyakun
+ * @Date: 2018/5/31 11:23
+ * @Todo:
  */
 
 @Controller
 public class HomeController {
 
-    @RequestMapping({"/","/index"})
+    @RequestMapping(value = {"/","/index"},method = RequestMethod.GET)
     public String index(){
         return "index";
     }
 
-    @RequestMapping(value="/login",method= RequestMethod.GET)
-    public String login(){
-        return "login";
-    }
-
-
-    @PostMapping("/toRegister")
-    public String toRegister(){
-        return "page-register";
-    }
-
+//    @RequestMapping(value="/login",method= RequestMethod.GET)
+//    public String login(){
+//        return "login";
+//    }
+//
 //    @RequestMapping(value = "/login", method = RequestMethod.POST)
 //    public String login(HttpServletRequest request, Map<String, Object> map) {
 //        // 登录失败从request中获取shiro处理的异常信息
