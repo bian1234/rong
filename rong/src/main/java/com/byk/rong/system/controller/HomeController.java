@@ -23,6 +23,12 @@ public class HomeController {
         return "index";
     }
 
+
+    @RequestMapping(value = {"/main"})
+    public String main(){
+        return "main";
+    }
+
 //    @RequestMapping(value="/login",method= RequestMethod.GET)
 //    public String login(){
 //        return "login";
