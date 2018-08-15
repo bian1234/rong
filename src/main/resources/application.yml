@@ -1,0 +1,24 @@
+spring:
+  port: 8888
+
+  datasource:
+    systemRead:
+      url: jdbc:mysql://123.206.78.174:3306/rong_system?characterEncoding=utf-8
+      username: root
+      password: 1234
+      driver-class-name: com.mysql.jdbc.Driver
+    systemWrite:
+      url: jdbc:mysql://123.206.78.174:3306/rong_system?characterEncoding=utf-8
+      username: root
+      password: 1234
+      driver-class-name: com.mysql.jdbc.Driver
+
+  thymeleaf:
+     cache: false
+     mode: LEGACYHTML5
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: mapping/rong/**/**/*Mapper.xml
+  typeAliasesPackage: com.byk.**.**.entity
