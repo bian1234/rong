@@ -8,7 +8,7 @@
     <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>Login Page 2 | Creative - Bootstrap 3 Responsive Admin Template</title>
+    <title>Rong | 用户登录</title>
 
     <!-- Bootstrap CSS -->    
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -33,28 +33,79 @@
 
     <div class="container">
 
-      <form class="login-form" action="index.html">        
+      <form class="login-form" id="signupForm">
         <div class="login-wrap">
             <p class="login-img"><i class="icon_lock_alt"></i></p>
             <div class="input-group">
               <span class="input-group-addon"><i class="icon_profile"></i></span>
-              <input type="text" class="form-control" placeholder="Username" autofocus>
+              <input type="text" id="username" name="username" class="form-control" placeholder="用户名/邮箱/手机号码" autofocus>
             </div>
             <div class="input-group">
                 <span class="input-group-addon"><i class="icon_key_alt"></i></span>
-                <input type="password" class="form-control" placeholder="Password">
+                <input type="password" id="password" name="password" class="form-control" placeholder="密码">
             </div>
             <label class="checkbox">
-                <input type="checkbox" value="remember-me"> Remember me
-                <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
+                <input type="checkbox" value="remember-me"> 记住我
+                <span class="pull-right"> <a href="#"> 忘记密码?</a></span>
             </label>
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
-            <button class="btn btn-info btn-lg btn-block" type="submit">Signup</button>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">登录</button>
+            <button class="btn btn-info btn-lg btn-block" type="submit">注册</button>
         </div>
       </form>
 
     </div>
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#login").on('click',function(){$("#signupForm").submit();});
+        validateRule();
+    });
 
+    $.validator.setDefaults({
+        submitHandler: function () {
+            login();
+        }
+    });
+
+    function login() {
+        $.ajax({
+            type: "POST",
+            url: ctx+"login",
+            data: $('#signupForm').serialize(),
+            success: function (r) {
+                if (r.code == 20000) {
+                    var index = layer.load(1, {
+                        shade: [0.1,'#fff'] //0.1透明度的白色背景
+                    });
+                    parent.location.href = '/index';
+                } else {
+                    layer.msg(r.msg);
+                }
+            },
+        });
+    }
+
+    function validateRule() {
+        var icon = "<i class='fa fa-times-circle'></i> ";
+        $("#signupForm").validate({
+            rules: {
+                username: {
+                    required: true
+                },
+                password: {
+                    required: true
+                }
+            },
+            messages: {
+                username: {
+                    required: icon + "请输入您的用户名",
+                },
+                password: {
+                    required: icon + "请输入您的密码",
+                }
+            }
+        })
+    }
+</script>
   </body>
 </html>
