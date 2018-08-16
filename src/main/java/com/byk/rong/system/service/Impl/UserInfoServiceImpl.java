@@ -31,7 +31,7 @@ public class UserInfoServiceImpl implements UserService {
     public int save(SysUser sysUser) {
         String password = sysUser.getPassword();
         String salt = SaltUtil.createSalt();
-        String newPassword = MD5Utils.encryption(password,salt);
+        String newPassword = MD5Utils.encryption(sysUser.getUsername(),password,salt);
         sysUser.setPassword(newPassword);
         sysUser.setSalt(salt);
         return sysUserWriteMapper.insertSelective(sysUser);

@@ -1,7 +1,5 @@
 spring:
-  port: 8888
-
-  datasource:
+  datasource:   #读写分离配置数据源
     systemRead:
       url: jdbc:mysql://123.206.78.174:3306/rong_system?characterEncoding=utf-8
       username: root
@@ -22,3 +20,5 @@ mybatis:
     map-underscore-to-camel-case: true
   mapper-locations: mapping/rong/**/**/*Mapper.xml
   typeAliasesPackage: com.byk.**.**.entity
+server:
+  port: 8888

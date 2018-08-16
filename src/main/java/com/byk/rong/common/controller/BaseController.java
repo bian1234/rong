@@ -12,6 +12,12 @@ public class BaseController {
 
     public  Map<String,Object> resultMap ;
 
+    /**
+     *@Author:      ykbian
+     *@date_time:   2018/8/16 11:38
+     *@Description: 从请求头里面获取token信息，前提是把token信息存在请求头里面==========这个项目用不到。
+     *@param:
+    */
     protected String getToken() {
         HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
         String token = request.getHeader("token");
