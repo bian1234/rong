@@ -1,11 +1,9 @@
 package com.byk.rong.system.shiro;
 
 
-import com.byk.rong.common.util.ShiroUtils;
 import com.byk.rong.system.entity.SysMenu;
 import com.byk.rong.system.entity.SysRole;
 import com.byk.rong.system.entity.SysUser;
-import com.byk.rong.system.service.MenuService;
 import com.byk.rong.system.service.UserService;
 
 import org.apache.shiro.authc.*;
@@ -13,10 +11,8 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.apache.shiro.util.ByteSource;
 
 import javax.annotation.Resource;
-import java.util.Set;
 
 /**
  * @Author: bianyakun
@@ -42,12 +38,12 @@ public class MyShiroRealm extends AuthorizingRealm {
         SysUser userInfo = userService.findByUsername(username);
         // 账号不存在
         if (userInfo == null) {
-            throw new UnknownAccountException("账号或密码不正确");
+            throw new UnknownAccountException("账号不正确");
         }
 
         // 密码错误
         if (!password.equals(userInfo.getPassword())) {
-            throw new IncorrectCredentialsException("账号或密码不正确");
+            throw new IncorrectCredentialsException("密码不正确");
         }
         // 参数分别为 用户信息，密码，盐值，真实名称
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(userInfo, password, getName());
