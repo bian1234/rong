@@ -33,34 +33,26 @@ public class HomeController extends BaseController{
         return "index";
     }
 
-
     /**
-     * 这个方法是跳转到登录页面
+     * 跳转登录界面
      */
-    @GetMapping("/login")
-    String login() {
+    @RequestMapping(value="/login",method= RequestMethod.GET)
+    public String login(){
         return "login";
     }
 
     @PostMapping("/login")
     //@ResponseBody
     public String ajaxLogin(String username, String password) {
-        //根据用户名查询到盐值信息==================这要求用户名必须是唯一的。
-
-            String  salt = userService.findByUsername(username).getSalt();
-            //在MD5工具类里面，根据三个参数重新生成密码====这个规则是自己设定的，需要修改的话可以去MD5Utils。
-            String password5 = MD5Utils.encryption(username,password,salt);
-
-        //把用户名和密码存进token信息里面。========token信息会在MyShiroRealm类里面进行处理
-        UsernamePasswordToken token = new UsernamePasswordToken(username, password5);
-        System.out.println("/////"+token);
+        String salt = userService.findByUsername(username).getSalt();
+        password = MD5Utils.encrypt(username, password,salt);
+        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+        token.setRememberMe(true);
         Subject subject = SecurityUtils.getSubject();
         try {
             subject.login(token);
-            System.out.println("=======================登录成功========================");
             return "index";
-        } catch (Exception e) {
-            System.out.println("=======================登录失败========================");
+        } catch (AuthenticationException e) {
             e.printStackTrace();
             return "login";
         }

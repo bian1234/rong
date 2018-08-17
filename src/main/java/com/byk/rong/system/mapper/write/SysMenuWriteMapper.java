@@ -1,17 +1,21 @@
 package com.byk.rong.system.mapper.write;
 
 import com.byk.rong.system.entity.SysMenu;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Map;
+
+@Repository
 public interface SysMenuWriteMapper {
-    int deleteByPrimaryKey(String menuId);
 
-    int insert(SysMenu record);
+    int save(SysMenu menu);
 
-    int insertSelective(SysMenu record);
+    int update(SysMenu menu);
 
-    SysMenu selectByPrimaryKey(String menuId);
+    int remove(String menuId);
 
-    int updateByPrimaryKeySelective(SysMenu record);
+    int batchRemove(Long[] menuIds);
 
-    int updateByPrimaryKey(SysMenu record);
+
 }

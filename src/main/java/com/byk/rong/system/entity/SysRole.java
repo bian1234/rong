@@ -1,6 +1,7 @@
 package com.byk.rong.system.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class SysRole {
     private String roleId;
@@ -16,6 +17,16 @@ public class SysRole {
     private Date gmtCreate;
 
     private Date gmtModified;
+
+    private List<SysMenu> menuIds;
+
+    public List<SysMenu> getMenuIds() {
+        return menuIds;
+    }
+
+    public void setMenuIds(List<SysMenu> menuIds) {
+        this.menuIds = menuIds;
+    }
 
     public String getRoleId() {
         return roleId;

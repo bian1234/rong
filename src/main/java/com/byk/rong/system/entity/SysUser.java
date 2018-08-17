@@ -1,6 +1,7 @@
 package com.byk.rong.system.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class SysUser {
     private String id;
@@ -42,6 +43,16 @@ public class SysUser {
     private String city;
 
     private String district;
+    //角色
+    private List<SysRole> roleIds;
+
+    public List<SysRole> getRoleIds() {
+        return roleIds;
+    }
+
+    public void setRoleIds(List<SysRole> roleIds) {
+        this.roleIds = roleIds;
+    }
 
     public String getId() {
         return id;

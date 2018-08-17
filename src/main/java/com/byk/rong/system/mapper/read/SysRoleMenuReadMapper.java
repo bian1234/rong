@@ -1,17 +1,22 @@
 package com.byk.rong.system.mapper.read;
 
 import com.byk.rong.system.entity.SysRoleMenu;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Map;
+
+@Repository
 public interface SysRoleMenuReadMapper {
-    int deleteByPrimaryKey(String id);
 
-    int insert(SysRoleMenu record);
+    SysRoleMenu get(String id);
 
-    int insertSelective(SysRoleMenu record);
+    List<SysRoleMenu> list(Map<String,Object> map);
 
-    SysRoleMenu selectByPrimaryKey(String id);
+    int count(Map<String,Object> map);
 
-    int updateByPrimaryKeySelective(SysRoleMenu record);
 
-    int updateByPrimaryKey(SysRoleMenu record);
+    List<String> listMenuIdByRoleId(String roleId);
+
+
 }

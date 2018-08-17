@@ -40,30 +40,30 @@ public class ShiroConfiguration {
         // 拦截器   因为要拦截不止一个请求，所以是map
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
         // 配置退出过滤器,其中的具体代码Shiro已经替我们实现了
-//        filterChainDefinitionMap.put("/logout", "logout");
-//        // <!-- 过滤链定义，从上向下顺序执行，一般将 /**放在最为下边 -->:这是一个坑呢，一不小心代码就不好使了;
-//        // <!-- authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问-->
-//        filterChainDefinitionMap.put("/**", "authc");
-//        // 如果不设置默认会自动寻找Web工程根目录下的"/login.jsp"页面
-//        filterChainDefinitionMap.put("/css/**", "anon");
-//        filterChainDefinitionMap.put("/js/**", "anon");
-//        filterChainDefinitionMap.put("/fonts/**", "anon");
-//        filterChainDefinitionMap.put("/img/**", "anon");
-//        filterChainDefinitionMap.put("/docs/**", "anon");
-//        filterChainDefinitionMap.put("/druid/**", "anon");
-//        filterChainDefinitionMap.put("/upload/**", "anon");
-//        filterChainDefinitionMap.put("/files/**", "anon");
-//        filterChainDefinitionMap.put("/logout", "logout");
-//        filterChainDefinitionMap.put("/", "anon");
-//        filterChainDefinitionMap.put("/blog", "anon");
-//        filterChainDefinitionMap.put("/blog/open/**", "anon");
-//        filterChainDefinitionMap.put("/**", "authc");
-//
-//        shiroFilterFactoryBean.setLoginUrl("/login");
-//        // 登录成功后要跳转的链接
-//        shiroFilterFactoryBean.setSuccessUrl("/index");
-//        // 未授权界面;------------>未登录的话去403界面
-//        shiroFilterFactoryBean.setUnauthorizedUrl("/403");
+        filterChainDefinitionMap.put("/logout", "logout");
+        // <!-- 过滤链定义，从上向下顺序执行，一般将 /**放在最为下边 -->:这是一个坑呢，一不小心代码就不好使了;
+        // <!-- authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问-->
+        filterChainDefinitionMap.put("/**", "authc");
+        // 如果不设置默认会自动寻找Web工程根目录下的"/login.jsp"页面
+        filterChainDefinitionMap.put("/css/**", "anon");
+        filterChainDefinitionMap.put("/js/**", "anon");
+        filterChainDefinitionMap.put("/fonts/**", "anon");
+        filterChainDefinitionMap.put("/img/**", "anon");
+        filterChainDefinitionMap.put("/docs/**", "anon");
+        filterChainDefinitionMap.put("/druid/**", "anon");
+        filterChainDefinitionMap.put("/upload/**", "anon");
+        filterChainDefinitionMap.put("/files/**", "anon");
+        filterChainDefinitionMap.put("/logout", "logout");
+        filterChainDefinitionMap.put("/", "anon");
+        filterChainDefinitionMap.put("/blog", "anon");
+        filterChainDefinitionMap.put("/blog/open/**", "anon");
+        filterChainDefinitionMap.put("/**", "authc");
+
+        shiroFilterFactoryBean.setLoginUrl("/login");
+        // 登录成功后要跳转的链接
+        shiroFilterFactoryBean.setSuccessUrl("/index");
+        // 未授权界面;------------>未登录的话去403界面
+        shiroFilterFactoryBean.setUnauthorizedUrl("/403");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
 
@@ -88,15 +88,15 @@ public class ShiroConfiguration {
      *
      * @return
      */
-    @Bean
-    public HashedCredentialsMatcher hashedCredentialsMatcher() {
-        HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
-        //散列算法:这里使用MD5算法;
-        hashedCredentialsMatcher.setHashAlgorithmName("md5");
-        //散列的次数，比如散列两次，相当于 md5(md5(""));
-        hashedCredentialsMatcher.setHashIterations(2);
-        return hashedCredentialsMatcher;
-    }
+//    @Bean
+//    public HashedCredentialsMatcher hashedCredentialsMatcher() {
+//        HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
+//        //散列算法:这里使用MD5算法;
+//        hashedCredentialsMatcher.setHashAlgorithmName("md5");
+//        //散列的次数，比如散列两次，相当于 md5(md5(""));
+//        hashedCredentialsMatcher.setHashIterations(2);
+//        return hashedCredentialsMatcher;
+//    }
 
 
     /**
@@ -106,7 +106,7 @@ public class ShiroConfiguration {
     public MyShiroRealm myShiroRealm() {
         MyShiroRealm myShiroRealm = new MyShiroRealm();
         //将设置的加密方法设置为匹配证书（字面意思），符合这个规则的就通过
-        myShiroRealm.setCredentialsMatcher(hashedCredentialsMatcher());
+       // myShiroRealm.setCredentialsMatcher(hashedCredentialsMatcher());
         return myShiroRealm;
     }
 
