@@ -27,4 +27,6 @@ public interface UserService  extends BaseService<User> {
 
     @Override
     int deleteById(String id);
+
+    User findByUsername(String userName);
 }

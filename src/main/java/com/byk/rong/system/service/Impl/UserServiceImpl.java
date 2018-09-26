@@ -46,4 +46,9 @@ public class UserServiceImpl  implements UserService {
     public int deleteById(String id) {
         return 0;
     }
+
+    @Override
+    public User findByUsername(String userName) {
+        return userReadMapper.findByUsername(userName);
+    }
 }

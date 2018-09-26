@@ -2,14 +2,19 @@ package com.byk.rong.system.shiro;
 
 
 import com.byk.rong.system.entity.User;
+import com.byk.rong.system.entity.UserRole;
+import com.byk.rong.system.service.RoleService;
+import com.byk.rong.system.service.UserRoleService;
 import com.byk.rong.system.service.UserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @Author: bianyakun
@@ -19,8 +24,16 @@ import javax.annotation.Resource;
 
 public class MyShiroRealm extends AuthorizingRealm {
 
-    @Resource
+    @Autowired
     private UserService userService;
+
+
+
+    @Autowired
+    private RoleService roleService;
+    @Autowired
+    private UserRoleService userRoleService;
+
 
     /**
      * 认证信息(身份验证) Authentication 是用来验证用户身份   通过用户名在数据库中查找用户信息并返回
@@ -30,8 +43,8 @@ public class MyShiroRealm extends AuthorizingRealm {
         // 获取用户的输入帐号    从token鉴定类中获取当事人的信息，字面意思
         String username = (String) token.getPrincipal();
         String password = new String((char[]) token.getCredentials());
-        // 通过username从数据库中查找 User对象，如果找到，没找到.
         // 实际项目中，这里可以根据实际情况做缓存，如果不做，Shiro自己也是有时间间隔机制，2分钟内不会重复执行该方法
+        //数据库内用户的用户名必须是唯一的
         User userInfo = userService.findByUsername(username);
         // 账号不存在
         if (userInfo == null) {
@@ -43,7 +56,10 @@ public class MyShiroRealm extends AuthorizingRealm {
             throw new IncorrectCredentialsException("密码不正确");
         }
         // 参数分别为 用户信息，密码，盐值，真实名称
-        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(userInfo, password, getName());
+        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
+                username, //用户名
+                userInfo.getPassword(), //密码
+                getName());
         return authenticationInfo;
     }
 
@@ -59,8 +75,11 @@ public class MyShiroRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         //获取当前登录用户信息
         User userInfo = (User) principals.getPrimaryPrincipal();
+        UserRole userRole01 = new UserRole();
+        userRole01.setUserId(userInfo.getId());
+        List<UserRole> userRoles = userRoleService.selectByParams(userRole01);
         //根据用户信息，获取其角色信息列表并遍历
-        for(SysRole role:userInfo.getRoleIds()){
+        for(SysRole role:userRoles.getRoleIds()){
             //给用户赋予角色信息
             authorizationInfo.addRole(role.getRoleId());
             //根据角色信息获取权限

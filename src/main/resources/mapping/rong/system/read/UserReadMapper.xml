@@ -90,4 +90,13 @@
       limit #{offset}, #{limit}
     </if>
   </select>
+
+
+    <select id="findByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from user
+        where user_name = #{userName,jdbcType=VARCHAR}  AND  del_flag = '0'
+    </select>
+
 </mapper>

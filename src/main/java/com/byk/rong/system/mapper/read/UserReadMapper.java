@@ -14,4 +14,7 @@ public interface UserReadMapper   extends BaseReadMapper<User>{
 
     @Override
     List<User> selectByParams(User user);
+
+    User findByUsername(String userName);
+
 }
