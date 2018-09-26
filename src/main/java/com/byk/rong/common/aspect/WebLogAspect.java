@@ -11,7 +11,12 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
-
+/**
+ *@Author:      ykbian
+ *@date_time:   2018/9/26 14:16
+ *@Description:  日志输出控制
+ *@param:
+*/
 @Aspect
 @Component
 public class WebLogAspect {

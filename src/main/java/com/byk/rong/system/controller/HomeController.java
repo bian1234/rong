@@ -1,74 +1,43 @@
 package com.byk.rong.system.controller;
 
 import com.byk.rong.common.controller.BaseController;
-import com.byk.rong.common.util.MD5Utils;
-import com.byk.rong.system.entity.SysUser;
+import com.byk.rong.system.entity.User;
 import com.byk.rong.system.service.UserService;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.IncorrectCredentialsException;
-import org.apache.shiro.authc.UnknownAccountException;
-import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.crypto.hash.Md5Hash;
-import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
+import java.util.List;
 
 /**
  * @Author: ykbian
- * @Date: 2018/8/15 13:01
- * @Todo:   页面跳转控制
+ * @Date: 2018/9/26 15:55
+ * @Todo:
  */
 @Controller
-public class HomeController extends BaseController{
+public class HomeController   extends BaseController{
+
 
     @Autowired
     private UserService userService;
-
-    @RequestMapping({"/","/index"})
+    @RequestMapping(value = {"/","","index"})
     public String index(){
+        logger.info("有人访问主页");
         return "index";
     }
 
     /**
-     * 跳转登录界面
+     * 简单测试数据访问
      */
-    @RequestMapping(value="/login",method= RequestMethod.GET)
-    public String login(){
-        return "login";
-    }
-
-
-    @RequestMapping("/register")
-    public String toRegister(){
-        System.out.println("==========跳转注册界面=========");
-        return "register";
-    }
-
-    @PostMapping("/login")
-    //@ResponseBody
-    public String ajaxLogin(String username, String password, Model model) {
-        SysUser sysUser  = userService.findByUsername(username);
-        if (sysUser == null){
-            model.addAttribute("msg", "* 用户名或者密码错误");
-            return "login";
-        }
-        String salt = sysUser.getSalt();
-        password = MD5Utils.encrypt(username, password,salt);
-        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
-        Subject subject = SecurityUtils.getSubject();
-        try {
-            subject.login(token);
-            return "index";
-        } catch (AuthenticationException e) {
-            model.addAttribute("msg", "* 用户名或者密码错误");
-            return "login";
-        }
+    @ResponseBody
+    @GetMapping("list")
+    public void getUser(){
+        User user0 = new User();
+        user0.setId("f8f0062041cb47508a2ff2d33fc94fe5");
+        List<User> users = userService.selectByParams(user0);
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        System.out.println("++++++++++++"+users.get(0));
     }
 }

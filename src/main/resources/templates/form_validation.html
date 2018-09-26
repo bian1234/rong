@@ -1,531 +1,2299 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
-    <meta name="author" content="GeeksLabs">
-    <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-    <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>Rong | 表单校验</title>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 
-    <!-- Bootstrap CSS -->    
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- bootstrap theme -->
-    <link href="css/bootstrap-theme.css" rel="stylesheet">
-    <!--external css-->
-    <!-- font icon -->
-    <link href="css/elegant-icons-style.css" rel="stylesheet" />
-    <link href="css/font-awesome.min.css" rel="stylesheet" />
-    <!-- Custom styles -->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/style-responsive.css" rel="stylesheet" />
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.min.js"></script>
-      <script src="js/lte-ie7.js"></script>
-    <![endif]-->
-  </head>
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 
-  <body>
-  <!-- container section start -->
-  <section id="container" class="">
-      <!--header start-->
-      <header class="header dark-bg">
-            <div class="toggle-nav">
-                <div class="icon-reorder tooltips" data-original-title="Toggle Navigation" data-placement="bottom"></div>
-            </div>
+<!-- BEGIN HEAD -->
 
-            <!--logo start-->
-            <a href="index.html" class="logo">Nice <span class="lite">Admin</span></a>
-            <!--logo end-->
+<head>
 
-            <div class="nav search-row" id="top_menu">
-                <!--  search form start -->
-                <ul class="nav top-menu">                    
-                    <li>
-                        <form class="navbar-form">
-                            <input class="form-control" placeholder="Search" type="text">
-                        </form>
-                    </li>                    
-                </ul>
-                <!--  search form end -->                
-            </div>
+	<meta charset="utf-8" />
 
-            <div class="top-nav notification-row">                
-                <!-- notificatoin dropdown start-->
-                <ul class="nav pull-right top-menu">
-                    
-                    <!-- task notificatoin start -->
-                    <li id="task_notificatoin_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <i class="icon-task-l"></i>
-                            <span class="badge bg-important">5</span>
-                        </a>
-                        <ul class="dropdown-menu extended tasks-bar">
-                            <div class="notify-arrow notify-arrow-blue"></div>
-                            <li>
-                                <p class="blue">You have 5 pending tasks</p>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="task-info">
-                                        <div class="desc">Design PSD </div>
-                                        <div class="percent">90%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
-                                            <span class="sr-only">90% Complete (success)</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="task-info">
-                                        <div class="desc">
-                                            Project 1
-                                        </div>
-                                        <div class="percent">30%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%">
-                                            <span class="sr-only">30% Complete (warning)</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="task-info">
-                                        <div class="desc">Digital Marketing</div>
-                                        <div class="percent">80%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                            <span class="sr-only">80% Complete</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="task-info">
-                                        <div class="desc">Logo Designing</div>
-                                        <div class="percent">78%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" style="width: 78%">
-                                            <span class="sr-only">78% Complete (danger)</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="task-info">
-                                        <div class="desc">Mobile App</div>
-                                        <div class="percent">50%</div>
-                                    </div>
-                                    <div class="progress progress-striped active">
-                                        <div class="progress-bar"  role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%">
-                                            <span class="sr-only">50% Complete</span>
-                                        </div>
-                                    </div>
+	<title>Metronic | Form Stuff - Form Validation</title>
 
-                                </a>
-                            </li>
-                            <li class="external">
-                                <a href="#">See All Tasks</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- task notificatoin end -->
-                    <!-- inbox notificatoin start-->
-                    <li id="mail_notificatoin_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <i class="icon-envelope-l"></i>
-                            <span class="badge bg-important">5</span>
-                        </a>
-                        <ul class="dropdown-menu extended inbox">
-                            <div class="notify-arrow notify-arrow-blue"></div>
-                            <li>
-                                <p class="blue">You have 5 new messages</p>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="photo"><img alt="avatar" src="./img/avatar-mini.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Greg  Martin</span>
-                                    <span class="time">1 min</span>
-                                    </span>
-                                    <span class="message">
-                                        I really like this admin panel.
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="photo"><img alt="avatar" src="./img/avatar-mini2.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Bob   Mckenzie</span>
-                                    <span class="time">5 mins</span>
-                                    </span>
-                                    <span class="message">
-                                     Hi, What is next project plan?
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="photo"><img alt="avatar" src="./img/avatar-mini3.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Phillip   Park</span>
-                                    <span class="time">2 hrs</span>
-                                    </span>
-                                    <span class="message">
-                                        I am like to buy this Admin Template.
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="photo"><img alt="avatar" src="./img/avatar-mini4.jpg"></span>
-                                    <span class="subject">
-                                    <span class="from">Ray   Munoz</span>
-                                    <span class="time">1 day</span>
-                                    </span>
-                                    <span class="message">
-                                        Icon fonts are great.
-                                    </span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">See all messages</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- inbox notificatoin end -->
-                    <!-- alert notification start-->
-                    <li id="alert_notificatoin_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-                            <i class="icon-bell-l"></i>
-                            <span class="badge bg-important">7</span>
-                        </a>
-                        <ul class="dropdown-menu extended notification">
-                            <div class="notify-arrow notify-arrow-blue"></div>
-                            <li>
-                                <p class="blue">You have 4 new notifications</p>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="label label-primary"><i class="icon_profile"></i></span> 
-                                    Friend Request
-                                    <span class="small italic pull-right">5 mins</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="label label-warning"><i class="icon_pin"></i></span>  
-                                    John location.
-                                    <span class="small italic pull-right">50 mins</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="label label-danger"><i class="icon_book_alt"></i></span> 
-                                    Project 3 Completed.
-                                    <span class="small italic pull-right">1 hr</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="label label-success"><i class="icon_like"></i></span> 
-                                    Mick appreciated your work.
-                                    <span class="small italic pull-right"> Today</span>
-                                </a>
-                            </li>                            
-                            <li>
-                                <a href="#">See all notifications</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- alert notification end-->
-                    <!-- user login dropdown start-->
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="profile-ava">
-                                <img alt="" src="img/avatar1_small.jpg">
-                            </span>
-                            <span class="username">Jenifer Smith</span>
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu extended logout">
-                            <div class="log-arrow-up"></div>
-                            <li class="eborder-top">
-                                <a href="#"><i class="icon_profile"></i> My Profile</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="icon_clock_alt"></i> Timeline</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="icon_chat_alt"></i> Chats</a>
-                            </li>
-                            <li>
-                                <a href="login.html"><i class="icon_key_alt"></i> Log Out</a>
-                            </li>
-                            <li>
-                                <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
-                            </li>
-                            <li>
-                                <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- user login dropdown end -->
-                </ul>
-                <!-- notificatoin dropdown end-->
-            </div>
-      </header>      
-      <!--header end-->
+	<meta content="" name="description" />
 
-      <!--sidebar start-->
-      <aside>
-          <div id="sidebar"  class="nav-collapse ">
-              <!-- sidebar menu start-->
-              <ul class="sidebar-menu">                
-                  <li class="active">
-                      <a class="" href="index.html">
-                          <i class="icon_house_alt"></i>
-                          <span>Dashboard</span>
-                      </a>
-                  </li>
-				  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_document_alt"></i>
-                          <span>Forms</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="form_component.html">Form Elements</a></li>                          
-                          <li><a class="" href="form_validation.html">Form Validation</a></li>
-                      </ul>
-                  </li>       
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_desktop"></i>
-                          <span>UI Fitures</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="general.html">Components</a></li>
-                          <li><a class="" href="buttons.html">Buttons</a></li>
-                          <li><a class="" href="grids.html">Grids</a></li>
-                      </ul>
-                  </li>
-                  <li>
-                      <a class="" href="widgets.html">
-                          <i class="icon_genius"></i>
-                          <span>Widgets</span>
-                      </a>
-                  </li>
-                  <li>                     
-                      <a class="" href="chart-chartjs.html">
-                          <i class="icon_piechart"></i>
-                          <span>Charts</span>
-                          
-                      </a>
-                                         
-                  </li>
-                             
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_table"></i>
-                          <span>Tables</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">
-                          <li><a class="" href="basic_table.html">Basic Table</a></li>
-                      </ul>
-                  </li>
-                  
-                  <li class="sub-menu">
-                      <a href="javascript:;" class="">
-                          <i class="icon_documents_alt"></i>
-                          <span>Pages</span>
-                          <span class="menu-arrow arrow_carrot-right"></span>
-                      </a>
-                      <ul class="sub">                          
-                          <li><a class="" href="profile.html">Profile</a></li>
-                          <li><a class="" href="login.html"><span>Login Page</span></a></li>
-                          <li><a class="" href="blank.html">Blank Page</a></li>
-                          <li><a class="" href="404.html">404 Error</a></li>
-                      </ul>
-                  </li>
-                  
-              </ul>
-              <!-- sidebar menu end-->
-          </div>
-      </aside>
-      <!--sidebar end-->
+	<meta content="" name="author" />
 
-      <!--main content start-->
-      <section id="main-content">
-          <section class="wrapper">
-		  <div class="row">
-				<div class="col-lg-12">
-					<h3 class="page-header"><i class="fa fa-files-o"></i> Form Validation</h3>
-					<ol class="breadcrumb">
-						<li><i class="fa fa-home"></i><a href="index.html">Home</a></li>
-						<li><i class="icon_document_alt"></i>Forms</li>
-						<li><i class="fa fa-files-o"></i>Form Validation</li>
-					</ol>
-				</div>
+	<!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+	<link href="media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+	<link href="media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+
+	<link href="media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+	<link href="media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+
+	<link href="media/css/style.css" rel="stylesheet" type="text/css"/>
+
+	<link href="media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+
+	<link href="media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+
+	<link href="media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+
+	<!-- END GLOBAL MANDATORY STYLES -->
+
+	<!-- BEGIN PAGE LEVEL STYLES -->
+
+	<link rel="stylesheet" type="text/css" href="media/css/select2_metro.css" />
+
+	<link rel="stylesheet" type="text/css" href="media/css/chosen.css" />
+
+	<!-- END PAGE LEVEL STYLES -->
+
+	<link rel="shortcut icon" href="media/image/favicon.ico" />
+
+</head>
+
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+
+<body class="page-header-fixed">
+
+	<!-- BEGIN HEADER -->
+
+	<div class="header navbar navbar-inverse navbar-fixed-top">
+
+		<!-- BEGIN TOP NAVIGATION BAR -->
+
+		<div class="navbar-inner">
+
+			<div class="container-fluid">
+
+				<!-- BEGIN LOGO -->
+
+				<a class="brand" href="index.html">
+
+				<img src="media/image/logo.png" alt="logo" />
+
+				</a>
+
+				<!-- END LOGO -->
+
+				<!-- BEGIN RESPONSIVE MENU TOGGLER -->
+
+				<a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+
+				<img src="media/image/menu-toggler.png" alt="" />
+
+				</a>          
+
+				<!-- END RESPONSIVE MENU TOGGLER -->            
+
+				<!-- BEGIN TOP NAVIGATION MENU -->              
+
+				<ul class="nav pull-right">
+
+					<!-- BEGIN NOTIFICATION DROPDOWN -->   
+
+					<li class="dropdown" id="header_notification_bar">
+
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+						<i class="icon-warning-sign"></i>
+
+						<span class="badge">6</span>
+
+						</a>
+
+						<ul class="dropdown-menu extended notification">
+
+							<li>
+
+								<p>You have 14 new notifications</p>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="label label-success"><i class="icon-plus"></i></span>
+
+								New user registered. 
+
+								<span class="time">Just now</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="label label-important"><i class="icon-bolt"></i></span>
+
+								Server #12 overloaded. 
+
+								<span class="time">15 mins</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="label label-warning"><i class="icon-bell"></i></span>
+
+								Server #2 not respoding.
+
+								<span class="time">22 mins</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="label label-info"><i class="icon-bullhorn"></i></span>
+
+								Application error.
+
+								<span class="time">40 mins</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="label label-important"><i class="icon-bolt"></i></span>
+
+								Database overloaded 68%. 
+
+								<span class="time">2 hrs</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="label label-important"><i class="icon-bolt"></i></span>
+
+								2 user IP blocked.
+
+								<span class="time">5 hrs</span>
+
+								</a>
+
+							</li>
+
+							<li class="external">
+
+								<a href="#">See all notifications <i class="m-icon-swapright"></i></a>
+
+							</li>
+
+						</ul>
+
+					</li>
+
+					<!-- END NOTIFICATION DROPDOWN -->
+
+					<!-- BEGIN INBOX DROPDOWN -->
+
+					<li class="dropdown" id="header_inbox_bar">
+
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+						<i class="icon-envelope"></i>
+
+						<span class="badge">5</span>
+
+						</a>
+
+						<ul class="dropdown-menu extended inbox">
+
+							<li>
+
+								<p>You have 12 new messages</p>
+
+							</li>
+
+							<li>
+
+								<a href="inbox.html?a=view">
+
+								<span class="photo"><img src="media/image/avatar2.jpg" alt="" /></span>
+
+								<span class="subject">
+
+								<span class="from">Lisa Wong</span>
+
+								<span class="time">Just Now</span>
+
+								</span>
+
+								<span class="message">
+
+								Vivamus sed auctor nibh congue nibh. auctor nibh
+
+								auctor nibh...
+
+								</span>  
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="inbox.html?a=view">
+
+								<span class="photo"><img src="media/image/avatar3.jpg" alt="" /></span>
+
+								<span class="subject">
+
+								<span class="from">Richard Doe</span>
+
+								<span class="time">16 mins</span>
+
+								</span>
+
+								<span class="message">
+
+								Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh
+
+								auctor nibh...
+
+								</span>  
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="inbox.html?a=view">
+
+								<span class="photo"><img src="media/image/avatar1.jpg" alt="" /></span>
+
+								<span class="subject">
+
+								<span class="from">Bob Nilson</span>
+
+								<span class="time">2 hrs</span>
+
+								</span>
+
+								<span class="message">
+
+								Vivamus sed nibh auctor nibh congue nibh. auctor nibh
+
+								auctor nibh...
+
+								</span>  
+
+								</a>
+
+							</li>
+
+							<li class="external">
+
+								<a href="inbox.html">See all messages <i class="m-icon-swapright"></i></a>
+
+							</li>
+
+						</ul>
+
+					</li>
+
+					<!-- END INBOX DROPDOWN -->
+
+					<!-- BEGIN TODO DROPDOWN -->
+
+					<li class="dropdown" id="header_task_bar">
+
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+						<i class="icon-tasks"></i>
+
+						<span class="badge">5</span>
+
+						</a>
+
+						<ul class="dropdown-menu extended tasks">
+
+							<li>
+
+								<p>You have 12 pending tasks</p>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="task">
+
+								<span class="desc">New release v1.2</span>
+
+								<span class="percent">30%</span>
+
+								</span>
+
+								<span class="progress progress-success ">
+
+								<span style="width: 30%;" class="bar"></span>
+
+								</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="task">
+
+								<span class="desc">Application deployment</span>
+
+								<span class="percent">65%</span>
+
+								</span>
+
+								<span class="progress progress-danger progress-striped active">
+
+								<span style="width: 65%;" class="bar"></span>
+
+								</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="task">
+
+								<span class="desc">Mobile app release</span>
+
+								<span class="percent">98%</span>
+
+								</span>
+
+								<span class="progress progress-success">
+
+								<span style="width: 98%;" class="bar"></span>
+
+								</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="task">
+
+								<span class="desc">Database migration</span>
+
+								<span class="percent">10%</span>
+
+								</span>
+
+								<span class="progress progress-warning progress-striped">
+
+								<span style="width: 10%;" class="bar"></span>
+
+								</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="task">
+
+								<span class="desc">Web server upgrade</span>
+
+								<span class="percent">58%</span>
+
+								</span>
+
+								<span class="progress progress-info">
+
+								<span style="width: 58%;" class="bar"></span>
+
+								</span>
+
+								</a>
+
+							</li>
+
+							<li>
+
+								<a href="#">
+
+								<span class="task">
+
+								<span class="desc">Mobile development</span>
+
+								<span class="percent">85%</span>
+
+								</span>
+
+								<span class="progress progress-success">
+
+								<span style="width: 85%;" class="bar"></span>
+
+								</span>
+
+								</a>
+
+							</li>
+
+							<li class="external">
+
+								<a href="#">See all tasks <i class="m-icon-swapright"></i></a>
+
+							</li>
+
+						</ul>
+
+					</li>
+
+					<!-- END TODO DROPDOWN -->
+
+					<!-- BEGIN USER LOGIN DROPDOWN -->
+
+					<li class="dropdown user">
+
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
+						<img alt="" src="media/image/avatar1_small.jpg" />
+
+						<span class="username">Bob Nilson</span>
+
+						<i class="icon-angle-down"></i>
+
+						</a>
+
+						<ul class="dropdown-menu">
+
+							<li><a href="extra_profile.html"><i class="icon-user"></i> My Profile</a></li>
+
+							<li><a href="page_calendar.html"><i class="icon-calendar"></i> My Calendar</a></li>
+
+							<li><a href="inbox.html"><i class="icon-envelope"></i> My Inbox(3)</a></li>
+
+							<li><a href="#"><i class="icon-tasks"></i> My Tasks</a></li>
+
+							<li class="divider"></li>
+
+							<li><a href="extra_lock.html"><i class="icon-lock"></i> Lock Screen</a></li>
+
+							<li><a href="login.html"><i class="icon-key"></i> Log Out</a></li>
+
+						</ul>
+
+					</li>
+
+					<!-- END USER LOGIN DROPDOWN -->
+
+				</ul>
+
+				<!-- END TOP NAVIGATION MENU --> 
+
 			</div>
-              <!-- Form validations -->              
-              <div class="row">
-                  <div class="col-lg-12">
-                      <section class="panel">
-                          <header class="panel-heading">
-                              Form validations
-                          </header>
-                          <div class="panel-body">
-                              <div class="form">
-                                  <form class="form-validate form-horizontal" id="feedback_form" method="get" action="">
-                                      <div class="form-group ">
-                                          <label for="cname" class="control-label col-lg-2">Full Name <span class="required">*</span></label>
-                                          <div class="col-lg-10">
-                                              <input class="form-control" id="cname" name="fullname" minlength="5" type="text" required />
-                                          </div>
-                                      </div>
-                                      <div class="form-group ">
-                                          <label for="cemail" class="control-label col-lg-2">E-Mail <span class="required">*</span></label>
-                                          <div class="col-lg-10">
-                                              <input class="form-control " id="cemail" type="email" name="email" required />
-                                          </div>
-                                      </div>
-                                      <div class="form-group ">
-                                          <label for="curl" class="control-label col-lg-2">Website</label>
-                                          <div class="col-lg-10">
-                                              <input class="form-control " id="curl" type="url" name="url" />
-                                          </div>
-                                      </div>
-                                      <div class="form-group ">
-                                          <label for="cname" class="control-label col-lg-2">Subject <span class="required">*</span></label>
-                                          <div class="col-lg-10">
-                                              <input class="form-control" id="subject" name="subject" minlength="5" type="text" required />
-                                          </div>
-                                      </div>                                      
-                                      <div class="form-group ">
-                                          <label for="ccomment" class="control-label col-lg-2">Feedback</label>
-                                          <div class="col-lg-10">
-                                              <textarea class="form-control " id="ccomment" name="comment" required></textarea>
-                                          </div>
-                                      </div>
-                                      <div class="form-group">
-                                          <div class="col-lg-offset-2 col-lg-10">
-                                              <button class="btn btn-primary" type="submit">Save</button>
-                                              <button class="btn btn-default" type="button">Cancel</button>
-                                          </div>
-                                      </div>
-                                  </form>
-                              </div>
 
-                          </div>
-                      </section>
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-lg-12">
-                      <section class="panel">
-                          <header class="panel-heading">
-                             Advanced Form validations
-                          </header>
-                          <div class="panel-body">
-                              <div class="form">
-                                  <form class="form-validate form-horizontal " id="register_form" method="get" action="">
-                                      <div class="form-group ">
-                                          <label for="fullname" class="control-label col-lg-2">Full name <span class="required">*</span></label>
-                                          <div class="col-lg-10">
-                                              <input class=" form-control" id="fullname" name="fullname" type="text" />
-                                          </div>
-                                      </div>
-                                      <div class="form-group ">
-                                          <label for="address" class="control-label col-lg-2">Address <span class="required">*</span></label>
-                                          <div class="col-lg-10">
-                                              <input class=" form-control" id="address" name="address" type="text" />
-                                          </div>
-                                      </div>
-                                      <div class="form-group ">
-                                          <label for="username" class="control-label col-lg-2">Username <span class="required">*</span></label>
-                                          <div class="col-lg-10">
-                                              <input class="form-control " id="username" name="username" type="text" />
-                                          </div>
-                                      </div>
-                                      <div class="form-group ">
-                                          <label for="password" class="control-label col-lg-2">Password <span class="required">*</span></label>
-                                          <div class="col-lg-10">
-                                              <input class="form-control " id="password" name="password" type="password" />
-                                          </div>
-                                      </div>
-                                      <div class="form-group ">
-                                          <label for="confirm_password" class="control-label col-lg-2">Confirm Password <span class="required">*</span></label>
-                                          <div class="col-lg-10">
-                                              <input class="form-control " id="confirm_password" name="confirm_password" type="password" />
-                                          </div>
-                                      </div>
-                                      <div class="form-group ">
-                                          <label for="email" class="control-label col-lg-2">Email <span class="required">*</span></label>
-                                          <div class="col-lg-10">
-                                              <input class="form-control " id="email" name="email" type="email" />
-                                          </div>
-                                      </div>
-                                      <div class="form-group ">
-                                          <label for="agree" class="control-label col-lg-2 col-sm-3">Agree to Our Policy <span class="required">*</span></label>
-                                          <div class="col-lg-10 col-sm-9">
-                                              <input  type="checkbox" style="width: 20px" class="checkbox form-control" id="agree" name="agree" />
-                                          </div>
-                                      </div>
-                                      <div class="form-group">
-                                          <div class="col-lg-offset-2 col-lg-10">
-                                              <button class="btn btn-primary" type="submit">Save</button>
-                                              <button class="btn btn-default" type="button">Cancel</button>
-                                          </div>
-                                      </div>
-                                  </form>
-                              </div>
-                          </div>
-                      </section>
-                  </div>
-              </div>
-              <!-- page end-->
-          </section>
-      </section>
-      <!--main content end-->
-  </section>
-  <!-- container section end -->
+		</div>
 
-    <!-- javascripts -->
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <!-- nice scroll -->
-    <script src="js/jquery.scrollTo.min.js"></script>
-    <script src="js/jquery.nicescroll.js" type="text/javascript"></script>
-    <!-- jquery validate js -->
-    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+		<!-- END TOP NAVIGATION BAR -->
 
-    <!-- custom form validation script for this page-->
-    <script src="js/form-validation-script.js"></script>
-    <!--custome script for all page-->
-    <script src="js/scripts.js"></script>    
+	</div>
 
+	<!-- END HEADER -->
 
-  </body>
+	<!-- BEGIN CONTAINER -->
+
+	<div class="page-container row-fluid">
+
+		<!-- BEGIN SIDEBAR -->
+
+		<div class="page-sidebar nav-collapse collapse">
+
+			<!-- BEGIN SIDEBAR MENU -->        
+
+			<ul class="page-sidebar-menu">
+
+				<li>
+
+					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+
+					<div class="sidebar-toggler hidden-phone"></div>
+
+					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+
+				</li>
+
+				<li>
+
+					<!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+
+					<form class="sidebar-search">
+
+						<div class="input-box">
+
+							<a href="javascript:;" class="remove"></a>
+
+							<input type="text" placeholder="Search..." />
+
+							<input type="button" class="submit" value=" " />
+
+						</div>
+
+					</form>
+
+					<!-- END RESPONSIVE QUICK SEARCH FORM -->
+
+				</li>
+
+				<li class="start ">
+
+					<a href="index.html">
+
+					<i class="icon-home"></i> 
+
+					<span class="title">Dashboard</span>
+
+					</a>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-cogs"></i> 
+
+					<span class="title">Layouts</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="layout_horizontal_sidebar_menu.html">
+
+							Horzontal & Sidebar Menu</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_horizontal_menu1.html">
+
+							Horzontal Menu 1</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_horizontal_menu2.html">
+
+							Horzontal Menu 2</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_promo.html">
+
+							Promo Page</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_email.html">
+
+							Email Templates</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_ajax.html">
+
+							Content Loading via Ajax</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_sidebar_closed.html">
+
+							Sidebar Closed Page</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_blank_page.html">
+
+							Blank Page</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_boxed_page.html">
+
+							Boxed Page</a>
+
+						</li>
+
+						<li >
+
+							<a href="layout_boxed_not_responsive.html">
+
+							Non-Responsive Boxed Layout</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-bookmark-empty"></i> 
+
+					<span class="title">UI Features</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="ui_general.html">
+
+							General</a>
+
+						</li>
+
+						<li >
+
+							<a href="ui_buttons.html">
+
+							Buttons</a>
+
+						</li>
+
+						<li >
+
+							<a href="ui_modals.html">
+
+							Enhanced Modals</a>
+
+						</li>
+
+						<li >
+
+							<a href="ui_tabs_accordions.html">
+
+							Tabs & Accordions</a>
+
+						</li>
+
+						<li >
+
+							<a href="ui_jqueryui.html">
+
+							jQuery UI Components</a>
+
+						</li>
+
+						<li >
+
+							<a href="ui_sliders.html">
+
+							Sliders</a>
+
+						</li>
+
+						<li >
+
+							<a href="ui_tiles.html">
+
+							Tiles</a>
+
+						</li>
+
+						<li >
+
+							<a href="ui_typography.html">
+
+							Typography</a>
+
+						</li>
+
+						<li >
+
+							<a href="ui_tree.html">
+
+							Tree View</a>
+
+						</li>
+
+						<li >
+
+							<a href="ui_nestable.html">
+
+							Nestable List</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="active ">
+
+					<a href="javascript:;">
+
+					<i class="icon-table"></i> 
+
+					<span class="title">Form Stuff</span>
+
+					<span class="selected"></span>
+
+					<span class="arrow open"></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="form_layout.html">
+
+							Form Layouts</a>
+
+						</li>
+
+						<li >
+
+							<a href="form_samples.html">
+
+							Advance Form Samples</a>
+
+						</li>
+
+						<li >
+
+							<a href="form_component.html">
+
+							Form Components</a>
+
+						</li>
+
+						<li >
+
+							<a href="form_wizard.html">
+
+							Form Wizard</a>
+
+						</li>
+
+						<li class="active">
+
+							<a href="form_validation.html">
+
+							Form Validation</a>
+
+						</li>
+
+						<li >
+
+							<a href="form_fileupload.html">
+
+							Multiple File Upload</a>
+
+						</li>
+
+						<li >
+
+							<a href="form_dropzone.html">
+
+							Dropzone File Upload</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-briefcase"></i> 
+
+					<span class="title">Pages</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="page_timeline.html">
+
+							<i class="icon-time"></i>
+
+							Timeline</a>
+
+						</li>
+
+						<li >
+
+							<a href="page_coming_soon.html">
+
+							<i class="icon-cogs"></i>
+
+							Coming Soon</a>
+
+						</li>
+
+						<li >
+
+							<a href="page_blog.html">
+
+							<i class="icon-comments"></i>
+
+							Blog</a>
+
+						</li>
+
+						<li >
+
+							<a href="page_blog_item.html">
+
+							<i class="icon-font"></i>
+
+							Blog Post</a>
+
+						</li>
+
+						<li >
+
+							<a href="page_news.html">
+
+							<i class="icon-coffee"></i>
+
+							News</a>
+
+						</li>
+
+						<li >
+
+							<a href="page_news_item.html">
+
+							<i class="icon-bell"></i>
+
+							News View</a>
+
+						</li>
+
+						<li >
+
+							<a href="page_about.html">
+
+							<i class="icon-group"></i>
+
+							About Us</a>
+
+						</li>
+
+						<li >
+
+							<a href="page_contact.html">
+
+							<i class="icon-envelope-alt"></i>
+
+							Contact Us</a>
+
+						</li>
+
+						<li >
+
+							<a href="page_calendar.html">
+
+							<i class="icon-calendar"></i>
+
+							Calendar</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-gift"></i> 
+
+					<span class="title">Extra</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="extra_profile.html">
+
+							User Profile</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_lock.html">
+
+							Lock Screen</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_faq.html">
+
+							FAQ</a>
+
+						</li>
+
+						<li >
+
+							<a href="inbox.html">
+
+							Inbox</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_search.html">
+
+							Search Results</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_invoice.html">
+
+							Invoice</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_pricing_table.html">
+
+							Pricing Tables</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_image_manager.html">
+
+							Image Manager</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_404_option1.html">
+
+							404 Page Option 1</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_404_option2.html">
+
+							404 Page Option 2</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_404_option3.html">
+
+							404 Page Option 3</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_500_option1.html">
+
+							500 Page Option 1</a>
+
+						</li>
+
+						<li >
+
+							<a href="extra_500_option2.html">
+
+							500 Page Option 2</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li>
+
+					<a class="active" href="javascript:;">
+
+					<i class="icon-sitemap"></i> 
+
+					<span class="title">3 Level Menu</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li>
+
+							<a href="javascript:;">
+
+							Item 1
+
+							<span class="arrow"></span>
+
+							</a>
+
+							<ul class="sub-menu">
+
+								<li><a href="#">Sample Link 1</a></li>
+
+								<li><a href="#">Sample Link 2</a></li>
+
+								<li><a href="#">Sample Link 3</a></li>
+
+							</ul>
+
+						</li>
+
+						<li>
+
+							<a href="javascript:;">
+
+							Item 1
+
+							<span class="arrow"></span>
+
+							</a>
+
+							<ul class="sub-menu">
+
+								<li><a href="#">Sample Link 1</a></li>
+
+								<li><a href="#">Sample Link 1</a></li>
+
+								<li><a href="#">Sample Link 1</a></li>
+
+							</ul>
+
+						</li>
+
+						<li>
+
+							<a href="#">
+
+							Item 3
+
+							</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li>
+
+					<a href="javascript:;">
+
+					<i class="icon-folder-open"></i> 
+
+					<span class="title">4 Level Menu</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li>
+
+							<a href="javascript:;">
+
+							<i class="icon-cogs"></i> 
+
+							Item 1
+
+							<span class="arrow"></span>
+
+							</a>
+
+							<ul class="sub-menu">
+
+								<li>
+
+									<a href="javascript:;">
+
+									<i class="icon-user"></i>
+
+									Sample Link 1
+
+									<span class="arrow"></span>
+
+									</a>
+
+									<ul class="sub-menu">
+
+										<li><a href="#"><i class="icon-remove"></i> Sample Link 1</a></li>
+
+										<li><a href="#"><i class="icon-pencil"></i> Sample Link 1</a></li>
+
+										<li><a href="#"><i class="icon-edit"></i> Sample Link 1</a></li>
+
+									</ul>
+
+								</li>
+
+								<li><a href="#"><i class="icon-user"></i>  Sample Link 1</a></li>
+
+								<li><a href="#"><i class="icon-external-link"></i>  Sample Link 2</a></li>
+
+								<li><a href="#"><i class="icon-bell"></i>  Sample Link 3</a></li>
+
+							</ul>
+
+						</li>
+
+						<li>
+
+							<a href="javascript:;">
+
+							<i class="icon-globe"></i> 
+
+							Item 2
+
+							<span class="arrow"></span>
+
+							</a>
+
+							<ul class="sub-menu">
+
+								<li><a href="#"><i class="icon-user"></i>  Sample Link 1</a></li>
+
+								<li><a href="#"><i class="icon-external-link"></i>  Sample Link 1</a></li>
+
+								<li><a href="#"><i class="icon-bell"></i>  Sample Link 1</a></li>
+
+							</ul>
+
+						</li>
+
+						<li>
+
+							<a href="#">
+
+							<i class="icon-folder-open"></i>
+
+							Item 3
+
+							</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-user"></i> 
+
+					<span class="title">Login Options</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="login.html">
+
+							Login Form 1</a>
+
+						</li>
+
+						<li >
+
+							<a href="login_soft.html">
+
+							Login Form 2</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-th"></i> 
+
+					<span class="title">Data Tables</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="table_basic.html">
+
+							Basic Tables</a>
+
+						</li>
+
+						<li >
+
+							<a href="table_responsive.html">
+
+							Responsive Tables</a>
+
+						</li>
+
+						<li >
+
+							<a href="table_managed.html">
+
+							Managed Tables</a>
+
+						</li>
+
+						<li >
+
+							<a href="table_editable.html">
+
+							Editable Tables</a>
+
+						</li>
+
+						<li >
+
+							<a href="table_advanced.html">
+
+							Advanced Tables</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-file-text"></i> 
+
+					<span class="title">Portlets</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="portlet_general.html">
+
+							General Portlets</a>
+
+						</li>
+
+						<li >
+
+							<a href="portlet_draggable.html">
+
+							Draggable Portlets</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="">
+
+					<a href="javascript:;">
+
+					<i class="icon-map-marker"></i> 
+
+					<span class="title">Maps</span>
+
+					<span class="arrow "></span>
+
+					</a>
+
+					<ul class="sub-menu">
+
+						<li >
+
+							<a href="maps_google.html">
+
+							Google Maps</a>
+
+						</li>
+
+						<li >
+
+							<a href="maps_vector.html">
+
+							Vector Maps</a>
+
+						</li>
+
+					</ul>
+
+				</li>
+
+				<li class="last ">
+
+					<a href="charts.html">
+
+					<i class="icon-bar-chart"></i> 
+
+					<span class="title">Visual Charts</span>
+
+					</a>
+
+				</li>
+
+			</ul>
+
+			<!-- END SIDEBAR MENU -->
+
+		</div>
+
+		<!-- END SIDEBAR -->
+
+		<!-- BEGIN PAGE -->  
+
+		<div class="page-content">
+
+			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+
+			<div id="portlet-config" class="modal hide">
+
+				<div class="modal-header">
+
+					<button data-dismiss="modal" class="close" type="button"></button>
+
+					<h3>portlet Settings</h3>
+
+				</div>
+
+				<div class="modal-body">
+
+					<p>Here will be a configuration form</p>
+
+				</div>
+
+			</div>
+
+			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+
+			<!-- BEGIN PAGE CONTAINER-->
+
+			<div class="container-fluid">
+
+				<!-- BEGIN PAGE HEADER-->   
+
+				<div class="row-fluid">
+
+					<div class="span12">
+
+						<!-- BEGIN STYLE CUSTOMIZER -->
+
+						<div class="color-panel hidden-phone">
+
+							<div class="color-mode-icons icon-color"></div>
+
+							<div class="color-mode-icons icon-color-close"></div>
+
+							<div class="color-mode">
+
+								<p>THEME COLOR</p>
+
+								<ul class="inline">
+
+									<li class="color-black current color-default" data-style="default"></li>
+
+									<li class="color-blue" data-style="blue"></li>
+
+									<li class="color-brown" data-style="brown"></li>
+
+									<li class="color-purple" data-style="purple"></li>
+
+									<li class="color-grey" data-style="grey"></li>
+
+									<li class="color-white color-light" data-style="light"></li>
+
+								</ul>
+
+								<label>
+
+									<span>Layout</span>
+
+									<select class="layout-option m-wrap small">
+
+										<option value="fluid" selected>Fluid</option>
+
+										<option value="boxed">Boxed</option>
+
+									</select>
+
+								</label>
+
+								<label>
+
+									<span>Header</span>
+
+									<select class="header-option m-wrap small">
+
+										<option value="fixed" selected>Fixed</option>
+
+										<option value="default">Default</option>
+
+									</select>
+
+								</label>
+
+								<label>
+
+									<span>Sidebar</span>
+
+									<select class="sidebar-option m-wrap small">
+
+										<option value="fixed">Fixed</option>
+
+										<option value="default" selected>Default</option>
+
+									</select>
+
+								</label>
+
+								<label>
+
+									<span>Footer</span>
+
+									<select class="footer-option m-wrap small">
+
+										<option value="fixed">Fixed</option>
+
+										<option value="default" selected>Default</option>
+
+									</select>
+
+								</label>
+
+							</div>
+
+						</div>
+
+						<!-- END BEGIN STYLE CUSTOMIZER -->     
+
+						<h3 class="page-title">
+
+							Form Validation
+
+							 <small>form validation states</small>
+
+						</h3>
+
+						<ul class="breadcrumb">
+
+							<li>
+
+								<i class="icon-home"></i>
+
+								<a href="index.html">Home</a> 
+
+								<span class="icon-angle-right"></span>
+
+							</li>
+
+							<li>
+
+								<a href="#">Form Stuff</a>
+
+								<span class="icon-angle-right"></span>
+
+							</li>
+
+							<li><a href="#">Form Validation</a></li>
+
+						</ul>
+
+					</div>
+
+				</div>
+
+				<!-- END PAGE HEADER-->
+
+				<!-- BEGIN PAGE CONTENT-->
+
+				<div class="row-fluid">
+
+					<div class="span12">
+
+						<!-- BEGIN VALIDATION STATES-->
+
+						<div class="portlet box blue">
+
+							<div class="portlet-title">
+
+								<div class="caption"><i class="icon-reorder"></i>Validation States</div>
+
+								<div class="tools">
+
+									<a href="javascript:;" class="collapse"></a>
+
+									<a href="#portlet-config" data-toggle="modal" class="config"></a>
+
+									<a href="javascript:;" class="reload"></a>
+
+									<a href="javascript:;" class="remove"></a>
+
+								</div>
+
+							</div>
+
+							<div class="portlet-body form">
+
+								<h3 class="block">Basic validation states</h3>
+
+								<!-- BEGIN FORM-->
+
+								<form action="#" class="form-horizontal">
+
+									<div class="control-group warning">
+
+										<label class="control-label" for="inputWarning">Input with warning</label>
+
+										<div class="controls">
+
+											<input type="text" class="span6 m-wrap" id="inputWarning" />
+
+											<span class="help-inline">Something may have gone wrong</span>
+
+										</div>
+
+									</div>
+
+									<div class="control-group error">
+
+										<label class="control-label" for="inputError">Input with error</label>
+
+										<div class="controls">
+
+											<input type="text" class="span6 m-wrap" id="inputError" />
+
+											<span class="help-inline">Please correct the error</span>
+
+										</div>
+
+									</div>
+
+									<div class="control-group success">
+
+										<label class="control-label" for="inputSuccess">Input with success</label>
+
+										<div class="controls">
+
+											<input type="text" class="span6 m-wrap" id="inputSuccess" />
+
+											<span class="help-inline ok"></span>
+
+										</div>
+
+									</div>
+
+									<div class="control-group warning">
+
+										<label class="control-label">Input with warning</label>
+
+										<div class="controls input-icon">
+
+											<input type="text" class="span6 m-wrap" />                                 
+
+											<span class="input-warning tooltips" data-original-title="please write a valid email">
+
+											<i class="icon-warning-sign"></i>
+
+											</span>
+
+										</div>
+
+									</div>
+
+									<div class="control-group error">
+
+										<label class="control-label">Input with error</label>
+
+										<div class="controls input-icon">
+
+											<input type="text" class="span6 m-wrap" />
+
+											<span class="input-error tooltips" data-original-title="please write a valid email">
+
+											<i class="icon-exclamation-sign"></i>
+
+											</span>
+
+										</div>
+
+									</div>
+
+									<div class="control-group success">
+
+										<label class="control-label">Input with success</label>
+
+										<div class="controls input-icon">
+
+											<input type="text" class="span6 m-wrap" />
+
+											<span class="input-success tooltips" data-original-title="Success input!">
+
+											<i class="icon-ok"></i>
+
+											</span>
+
+										</div>
+
+									</div>
+
+									<div class="form-actions">
+
+										<button type="submit" class="btn blue">Save</button>
+
+										<button type="button" class="btn">Cancel</button>
+
+									</div>
+
+								</form>
+
+								<!-- END FORM-->
+
+							</div>
+
+						</div>
+
+						<!-- END VALIDATION STATES-->
+
+					</div>
+
+				</div>
+
+				<div class="row-fluid">
+
+					<div class="span12">
+
+						<!-- BEGIN VALIDATION STATES-->
+
+						<div class="portlet box purple">
+
+							<div class="portlet-title">
+
+								<div class="caption"><i class="icon-reorder"></i>Basic Validation</div>
+
+								<div class="tools">
+
+									<a href="javascript:;" class="collapse"></a>
+
+									<a href="#portlet-config" data-toggle="modal" class="config"></a>
+
+									<a href="javascript:;" class="reload"></a>
+
+									<a href="javascript:;" class="remove"></a>
+
+								</div>
+
+							</div>
+
+							<div class="portlet-body form">
+
+								<!-- BEGIN FORM-->
+
+								<form action="#" id="form_sample_1" class="form-horizontal">
+
+									<div class="alert alert-error hide">
+
+										<button class="close" data-dismiss="alert"></button>
+
+										You have some form errors. Please check below.
+
+									</div>
+
+									<div class="alert alert-success hide">
+
+										<button class="close" data-dismiss="alert"></button>
+
+										Your form validation is successful!
+
+									</div>
+
+									<div class="control-group">
+
+										<label class="control-label">Name<span class="required">*</span></label>
+
+										<div class="controls">
+
+											<input type="text" name="name" data-required="1" class="span6 m-wrap"/>
+
+										</div>
+
+									</div>
+
+									<div class="control-group">
+
+										<label class="control-label">Email<span class="required">*</span></label>
+
+										<div class="controls">
+
+											<input name="email" type="text" class="span6 m-wrap"/>
+
+										</div>
+
+									</div>
+
+									<div class="control-group">
+
+										<label class="control-label">URL<span class="required">*</span></label>
+
+										<div class="controls">
+
+											<input name="url" type="text" class="span6 m-wrap"/>
+
+											<span class="help-block">e.g: http://www.demo.com or http://demo.com</span>
+
+										</div>
+
+									</div>
+
+									<div class="control-group">
+
+										<label class="control-label">Number<span class="required">*</span></label>
+
+										<div class="controls">
+
+											<input name="number" type="text" class="span6 m-wrap"/>
+
+										</div>
+
+									</div>
+
+									<div class="control-group">
+
+										<label class="control-label">Digits<span class="required">*</span></label>
+
+										<div class="controls">
+
+											<input name="digits" type="text" class="span6 m-wrap"/>
+
+										</div>
+
+									</div>
+
+									<div class="control-group">
+
+										<label class="control-label">Credit Card<span class="required">*</span></label>
+
+										<div class="controls">
+
+											<input name="creditcard" type="text" class="span6 m-wrap"/>
+
+											<span class="help-block">e.g: 5500 0000 0000 0004</span>
+
+										</div>
+
+									</div>
+
+									<div class="control-group">
+
+										<label class="control-label">Occupation&nbsp;&nbsp;</label>
+
+										<div class="controls">
+
+											<input name="occupation" type="text" class="span6 m-wrap"/>
+
+											<span class="help-block">optional field</span>
+
+										</div>
+
+									</div>
+
+									<div class="control-group">
+
+										<label class="control-label">Category<span class="required">*</span></label>
+
+										<div class="controls">
+
+											<select class="span6 m-wrap" name="category">
+
+												<option value="">Select...</option>
+
+												<option value="Category 1">Category 1</option>
+
+												<option value="Category 2">Category 2</option>
+
+												<option value="Category 3">Category 5</option>
+
+												<option value="Category 4">Category 4</option>
+
+											</select>
+
+										</div>
+
+									</div>
+
+									<div class="form-actions">
+
+										<button type="submit" class="btn purple">Validate</button>
+
+										<button type="button" class="btn">Cancel</button>
+
+									</div>
+
+								</form>
+
+								<!-- END FORM-->
+
+							</div>
+
+						</div>
+
+						<!-- END VALIDATION STATES-->
+
+					</div>
+
+				</div>
+
+				<div class="row-fluid">
+
+					<div class="span12">
+
+						<!-- BEGIN VALIDATION STATES-->
+
+						<div class="portlet box green">
+
+							<div class="portlet-title">
+
+								<div class="caption"><i class="icon-reorder"></i>Advance Validation</div>
+
+								<div class="tools">
+
+									<a href="javascript:;" class="collapse"></a>
+
+									<a href="#portlet-config" data-toggle="modal" class="config"></a>
+
+									<a href="javascript:;" class="reload"></a>
+
+									<a href="javascript:;" class="remove"></a>
+
+								</div>
+
+							</div>
+
+							<div class="portlet-body form">
+
+								<!-- BEGIN FORM-->
+
+								<h3>Advance validation of custom radio buttons, checkboxes and chosen dropdowns</h3>
+
+								<form action="#" id="form_sample_2" class="form-horizontal">
+
+									<div class="alert alert-error hide">
+
+										<button class="close" data-dismiss="alert"></button>
+
+										You have some form errors. Please check below.
+
+									</div>
+
+									<div class="alert alert-success hide">
+
+										<button class="close" data-dismiss="alert"></button>
+
+										Your form validation is successful!
+
+									</div>
+
+									<div class="control-group">
+
+										<label class="control-label">Name<span class="required">*</span></label>
+
+										<div class="controls">
+
+											<input type="text" name="name" data-required="1" class="span6 m-wrap"/>
+
+										</div>
+
+									</div>
+
+									<div class="control-group">
+
+										<label class="control-label">Email<span class="required">*</span></label>
+
+										<div class="controls">
+
+											<input name="email" type="text" class="span6 m-wrap"/>
+
+										</div>
+
+									</div>
+
+									<div class="control-group">
+
+										<label class="control-label">Occupation&nbsp;&nbsp;</label>
+
+										<div class="controls">
+
+											<input name="occupation" type="text" class="span6 m-wrap"/>
+
+										</div>
+
+									</div>
+
+									<div class="control-group">
+
+										<label class="control-label">Category<span class="required">*</span></label>
+
+										<div class="controls">
+
+											<select class="span6 m-wrap" name="category">
+
+												<option value="">Select...</option>
+
+												<option value="Category 1">Category 1</option>
+
+												<option value="Category 2">Category 2</option>
+
+												<option value="Category 3">Category 5</option>
+
+												<option value="Category 4">Category 4</option>
+
+											</select>
+
+										</div>
+
+									</div>
+
+									<div class="control-group">
+
+										<label class="control-label">Chosen Dropdown<span class="required">*</span></label>
+
+										<div class="controls chzn-controls">
+
+											<select id="form_2_chosen" class="span6 chosen" data-with-diselect="1" name="options1" data-placeholder="Choose an Option" tabindex="1">
+
+												<option value=""></option>
+
+												<option value="Option 1">Option 1</option>
+
+												<option value="Option 2">Option 2</option>
+
+												<option value="Option 3">Option 3</option>
+
+												<option value="Option 4">Option 4</option>
+
+											</select>
+
+										</div>
+
+									</div>
+
+									<div class="control-group">
+
+										<label class="control-label">Select2 Dropdown<span class="required">*</span></label>
+
+										<div class="controls select2-wrapper">
+
+											<select id="form_2_select2" class="span6" name="options2">
+
+												<option value=""></option>
+
+												<option value="Option 1">Option 1</option>
+
+												<option value="Option 2">Option 2</option>
+
+												<option value="Option 3">Option 3</option>
+
+												<option value="Option 4">Option 4</option>
+
+											</select>
+
+										</div>
+
+									</div>
+
+									<div class="control-group">
+
+										<label class="control-label">Membership<span class="required">*</span></label>
+
+										<div class="controls">
+
+											<label class="radio line">
+
+											<input type="radio" name="membership" value="1" />
+
+											Fee
+
+											</label>
+
+											<label class="radio line">
+
+											<input type="radio" name="membership" value="2" />
+
+											Professional
+
+											</label> 
+
+											<div id="form_2_membership_error"></div>
+
+										</div>
+
+									</div>
+
+									<div class="control-group">
+
+										<label class="control-label">Services<span class="required">*</span></label>
+
+										<div class="controls">
+
+											<label class="checkbox line">
+
+											<input type="checkbox" value="1" name="service"/> Service 1
+
+											</label>
+
+											<label class="checkbox line">
+
+											<input type="checkbox" value="2" name="service"/> Service 2
+
+											</label>
+
+											<label class="checkbox line">
+
+											<input type="checkbox" value="3" name="service"/> Service 3
+
+											</label>
+
+											<span class="help-block">(select at least two)</span>
+
+											<div id="form_2_service_error"></div>
+
+										</div>
+
+									</div>
+
+									<div class="form-actions">
+
+										<button type="submit" class="btn green">Validate</button>
+
+										<button type="button" class="btn">Cancel</button>
+
+									</div>
+
+								</form>
+
+								<!-- END FORM-->
+
+							</div>
+
+						</div>
+
+						<!-- END VALIDATION STATES-->
+
+					</div>
+
+				</div>
+
+				<!-- END PAGE CONTENT-->         
+
+			</div>
+
+			<!-- END PAGE CONTAINER-->
+
+		</div>
+
+		<!-- END PAGE -->  
+
+	</div>
+
+	<!-- END CONTAINER -->
+
+	<!-- BEGIN FOOTER -->
+
+	<div class="footer">
+
+		<div class="footer-inner">
+
+			2013 &copy; Metronic by keenthemes.Collect from <a href="http://www.cssmoban.com/" title="网站模板" target="_blank">网站模板</a> - More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a>
+
+		</div>
+
+		<div class="footer-tools">
+
+			<span class="go-top">
+
+			<i class="icon-angle-up"></i>
+
+			</span>
+
+		</div>
+
+	</div>
+
+	<!-- END FOOTER -->
+
+	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+
+	<!-- BEGIN CORE PLUGINS -->
+
+	<script src="media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+
+	<script src="media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+
+	<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+
+	<script src="media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
+
+	<script src="media/js/bootstrap.min.js" type="text/javascript"></script>
+
+	<!--[if lt IE 9]>
+
+	<script src="media/js/excanvas.min.js"></script>
+
+	<script src="media/js/respond.min.js"></script>  
+
+	<![endif]-->   
+
+	<script src="media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+
+	<script src="media/js/jquery.blockui.min.js" type="text/javascript"></script>  
+
+	<script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
+
+	<script src="media/js/jquery.uniform.min.js" type="text/javascript" ></script>
+
+	<!-- END CORE PLUGINS -->
+
+	<!-- BEGIN PAGE LEVEL PLUGINS -->
+
+	<script type="text/javascript" src="media/js/jquery.validate.min.js"></script>
+
+	<script type="text/javascript" src="media/js/additional-methods.min.js"></script>
+
+	<script type="text/javascript" src="media/js/select2.min.js"></script>
+
+	<script type="text/javascript" src="media/js/chosen.jquery.min.js"></script>
+
+	<!-- END PAGE LEVEL PLUGINS -->
+
+	<!-- BEGIN PAGE LEVEL STYLES -->
+
+	<script src="media/js/app.js"></script>
+
+	<script src="media/js/form-validation.js"></script> 
+
+	<!-- END PAGE LEVEL STYLES -->    
+
+	<script>
+
+		jQuery(document).ready(function() {   
+
+		   // initiate layout and plugins
+
+		   App.init();
+
+		   FormValidation.init();
+
+		});
+
+	</script>
+
+	<!-- END JAVASCRIPTS -->   
+
+</body>
+
+<!-- END BODY -->
+
 </html>

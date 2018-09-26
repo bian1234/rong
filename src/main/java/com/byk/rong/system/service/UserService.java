@@ -1,17 +1,30 @@
 package com.byk.rong.system.service;
 
 import com.byk.rong.common.service.BaseService;
-import com.byk.rong.system.entity.SysUser;
+import com.byk.rong.system.entity.User;
+
+import java.util.List;
 
 /**
- * @Author: bianyakun
- * @Date: 2018/5/31 14:06
+ * @Author: ykbian
+ * @Date: 2018/9/26 16:18
  * @Todo:
  */
 
-public interface UserService extends BaseService<SysUser>{
+public interface UserService  extends BaseService<User> {
 
-    public SysUser findByUsername(String username);
+    @Override
+    int insertSelective(User user);
 
-    public int save(SysUser sysUser);
+    @Override
+    int updateSelective(User user);
+
+    @Override
+    User selectById(String id);
+
+    @Override
+    List<User> selectByParams(User user);
+
+    @Override
+    int deleteById(String id);
 }

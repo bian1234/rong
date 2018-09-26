@@ -1,6 +1,8 @@
 package com.byk.rong.common.controller;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -11,6 +13,11 @@ import java.util.Map;
 public class BaseController {
 
     public  Map<String,Object> resultMap ;
+
+    /**
+     * 日志对象
+     */
+    protected Logger logger = LoggerFactory.getLogger(getClass());
 
     /**
      *@Author:      ykbian

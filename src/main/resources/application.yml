@@ -13,7 +13,7 @@ spring:
 
   thymeleaf:
      cache: false
-     mode: LEGACYHTML5
+     mode: LEGACYHTML5   #去掉HTML标签校验
 
 mybatis:
   configuration:
@@ -22,3 +22,8 @@ mybatis:
   typeAliasesPackage: com.byk.**.**.entity
 server:
   port: 8888
+
+#logging.level.com.dy.springboot.server.mapper=debug
+logging:
+  level:
+    com.byk.rong.system.mapper.*: debug
