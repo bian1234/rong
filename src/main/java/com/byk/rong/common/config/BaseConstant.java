@@ -9,9 +9,10 @@ package com.byk.rong.common.config;
 public class BaseConstant {
 
     /**
-     *  医生认证失败
+     *  系统默认的分页信息
      */
-    public static String AUTHENTICATION_FAILED = "AUTHENTICATION_FAILED" ;
+    public static int PAGE_NO = 0 ;
+    public static int PAGE_SIZE = 99999999;
 
     /**
      *  医生认证成功

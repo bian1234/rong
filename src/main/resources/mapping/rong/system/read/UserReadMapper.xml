@@ -86,8 +86,8 @@
       and del_flag = '0'
     </where>
     order by create_time desc
-    <!--<if test="offset != null and limit != null">-->
-      <!--limit #{offset}, #{limit}-->
-    <!--</if>-->
+    <if test="offset != null and limit != null">
+      limit #{offset}, #{limit}
+    </if>
   </select>
 </mapper>

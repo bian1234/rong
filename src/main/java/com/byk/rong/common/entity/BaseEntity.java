@@ -1,5 +1,7 @@
 package com.byk.rong.common.entity;
 
+import com.byk.rong.common.config.BaseConstant;
+
 import java.io.Serializable;
 
 /**
@@ -12,23 +14,37 @@ public class BaseEntity  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private int offset;   //起始页
+    private Integer offset;   //起始页
     // 每页条数
-    private int limit;    // 每页数据
+    private Integer limit;    // 每页数据
 
-    public int getOffset() {
+    public Integer getOffset() {
         return offset;
     }
 
-    public void setOffset(int offset) {
+    public void setOffset(Integer offset) {
         this.offset = offset;
     }
 
-    public int getLimit() {
+    public Integer getLimit() {
         return limit;
     }
 
-    public void setLimit(int limit) {
+    public void setLimit(Integer limit) {
         this.limit = limit;
+    }
+
+    public BaseEntity(Integer offset, Integer limit) {
+        if (offset == null){
+            offset = BaseConstant.PAGE_NO;
+        }
+        if (limit == null){
+            limit = BaseConstant.PAGE_SIZE;
+        }
+        this.offset = offset;
+        this.limit = limit;
+    }
+
+    public BaseEntity() {
     }
 }

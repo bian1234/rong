@@ -37,7 +37,6 @@ public class HomeController   extends BaseController{
         User user0 = new User();
         user0.setId("f8f0062041cb47508a2ff2d33fc94fe5");
         List<User> users = userService.selectByParams(user0);
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         System.out.println("++++++++++++"+users.get(0));
     }
 }
