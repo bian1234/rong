@@ -35,7 +35,7 @@
 	<!-- BEGIN LOGIN -->
 	<div class="content">
 		<!-- BEGIN LOGIN FORM -->
-		<form class="form-vertical login-form" action="/login" method="post">
+		<form class="form-vertical login-form" id="signupForm" >
 			<h3 class="form-title">用户登录</h3>
 			<div class="alert alert-error hide">
 				<button class="close" data-dismiss="alert"></button>
@@ -46,7 +46,7 @@
 				<div class="controls">
 					<div class="input-icon left">
 						<i class="icon-user"></i>
-						<input class="m-wrap placeholder-no-fix" type="text" placeholder="用户名" name="userName"/>
+						<input id="userName" class="m-wrap placeholder-no-fix" type="text" placeholder="用户名" name="userName"/>
 					</div>
 				</div>
 			</div>
@@ -55,7 +55,7 @@
 				<div class="controls">
 					<div class="input-icon left">
 						<i class="icon-lock"></i>
-						<input class="m-wrap placeholder-no-fix" type="password" placeholder="密码" name="password"/>
+						<input id="password" class="m-wrap placeholder-no-fix" type="password" placeholder="密码" name="password"/>
 					</div>
 				</div>
 			</div>
@@ -63,19 +63,18 @@
 				<label class="checkbox">
 				<input type="checkbox" name="remember" value="1"/> 记住我
 				</label>
-				<button type="submit" class="btn blue pull-right">
+				<button  class="btn blue pull-right" onclick="login();">
 				登录 <i class="m-icon-swapright m-icon-white"></i>
 				</button>
 			</div>
 			<div class="forget-password">
 				<h4>忘记密码？</h4>
 				<p>
-					不要担心，&nbsp;<a href="javascript:;" class="" id="forget-password">点击这里</a>&nbsp;找回密码
+					不要担心,&nbsp;<a href="javascript:;" class="" id="forget-password">点击这里</a>&nbsp;找回密码
 				</p>
 			</div>
 			<div class="create-account">
-				<p>
-					还没有账号?&nbsp;
+				<p>还没有账号?&nbsp;
 					<a href="javascript:;" id="register-btn" class="">注册账号</a>
 				</p>
 			</div>
@@ -198,6 +197,35 @@
 		  App.init();
 		  Login.init();
 		});
+
+        function login() {
+            var userName = $("#userName").val();
+            var password = $("#password").val();
+            $.ajax({
+                type: "POST",
+                url: "/login",
+                data: {
+                    "userName": userName,
+                    "password": password,
+//                    "rememberMe": rememberMe
+                }
+//                ,
+//                success: function (r) {
+//                    alert("正在登陆！！！！！！")
+//                    alert(r);
+//                    alert(r.get("code"));
+//                    alert(r.code);
+//                    if (r.get("code") == 2000) {
+////                        var index = layer.load(1, {
+////                            shade: [0.1,'#fff'] //0.1透明度的白色背景
+////                        });
+//						alert("登陆成功");
+//                        parent.location.href = '/index';
+//
+//                    }
+//                }
+            });
+        }
 	</script>
 	<!-- END JAVASCRIPTS -->
 </body>

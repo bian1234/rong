@@ -41,6 +41,10 @@ public class HomeController   extends BaseController{
         return "index";
     }
 
+    @GetMapping("/login")
+    String login() {
+        return "login";
+    }
 
    /**
     *@Author:      ykbian
@@ -48,7 +52,7 @@ public class HomeController   extends BaseController{
     *@Description: 用户登录
     *@param:
    */
-    @RequestMapping("login")
+    @PostMapping("login")
     //@ResponseBody
     public String login(String userName,String password) {
         System.out.println("================================");
@@ -60,7 +64,8 @@ public class HomeController   extends BaseController{
         //进行验证，这里可以捕获异常，然后返回对应信息
         try {
             subject.login(usernamePasswordToken);
-            System.out.println("登陆成功");
+            System.out.println("登录成功~~~~~");
+            // 只是登录，因此不需要返回具体的数据，只需要告诉前端登录成功即可
             return "index";
         }catch (UnknownAccountException e){
             System.out.println("账号错误");
@@ -69,7 +74,6 @@ public class HomeController   extends BaseController{
         }catch (Exception e){
             e.printStackTrace();
         }
-
         return "login";
     }
 
@@ -80,9 +84,10 @@ public class HomeController   extends BaseController{
      *@param:
      */
     @PostMapping("logout")
-    public void logout(){
+    public String logout(){
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
+        return "redirect:/login";
     }
 
     /**

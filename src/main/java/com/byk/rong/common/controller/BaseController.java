@@ -50,7 +50,7 @@ public class BaseController {
      */
     public Map querySuccessResponse(Object result){
         resultMap = new LinkedHashMap<>();
-        resultMap.put("code","2000");
+        resultMap.put("code",2000);
         resultMap.put("msg","SUCCESS");
         resultMap.put("result",result);
         return resultMap;
