@@ -35,7 +35,7 @@
 	<!-- BEGIN LOGIN -->
 	<div class="content">
 		<!-- BEGIN LOGIN FORM -->
-		<form class="form-vertical login-form" id="signupForm" >
+		<form class="form-vertical login-form" id="signupForm" action="tologin" method="get">
 			<h3 class="form-title">用户登录</h3>
 			<div class="alert alert-error hide">
 				<button class="close" data-dismiss="alert"></button>
@@ -66,6 +66,7 @@
 				<button  class="btn blue pull-right" onclick="login();">
 				登录 <i class="m-icon-swapright m-icon-white"></i>
 				</button>
+
 			</div>
 			<div class="forget-password">
 				<h4>忘记密码？</h4>
@@ -199,31 +200,27 @@
 		});
 
         function login() {
-            var userName = $("#userName").val();
-            var password = $("#password").val();
+            var userName = $("input[name='userName']").val().trim();
+            var password = $("input[name='password']").val().trim();
+            // var validateCode = $("input[name='validateCode']").val();
+            // var rememberMe = $("input[name='rememberme']").is(':checked');
             $.ajax({
                 type: "POST",
-                url: "/login",
+                url: "login",
                 data: {
                     "userName": userName,
-                    "password": password,
-//                    "rememberMe": rememberMe
+                    "password": password
+                    // "validateCode" : validateCode,
+                    // "rememberMe": rememberMe
+                },
+                success: function(r) {
+                    alert("hhhhhhhhhhhhh");
+                    if (r.code == 0) {
+                        parent.location.href = 'index';
+                    } else {
+                        layer.msg("请检查用户名和密码");
+                    }
                 }
-//                ,
-//                success: function (r) {
-//                    alert("正在登陆！！！！！！")
-//                    alert(r);
-//                    alert(r.get("code"));
-//                    alert(r.code);
-//                    if (r.get("code") == 2000) {
-////                        var index = layer.load(1, {
-////                            shade: [0.1,'#fff'] //0.1透明度的白色背景
-////                        });
-//						alert("登陆成功");
-//                        parent.location.href = '/index';
-//
-//                    }
-//                }
             });
         }
 	</script>

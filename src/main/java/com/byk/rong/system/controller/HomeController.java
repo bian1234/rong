@@ -41,8 +41,17 @@ public class HomeController   extends BaseController{
         return "index";
     }
 
+
+  /**
+   * @Author：ykbian
+   * @Description:  shiro拦截之后发出的请求走的这个方法
+   * @Date:  2018/9/27 22:47
+   * @Param:
+   * @return:
+   */
     @GetMapping("/login")
-    String login() {
+    public String login() {
+        logger.info("Get 方法的login");
         return "login";
     }
 
@@ -52,9 +61,9 @@ public class HomeController   extends BaseController{
     *@Description: 用户登录
     *@param:
    */
-    @PostMapping("login")
+    @PostMapping("/login")
     //@ResponseBody
-    public String login(String userName,String password) {
+    public Map login(String userName,String password) {
         System.out.println("================================");
         System.out.println(userName);
         System.out.println(password);
@@ -66,7 +75,7 @@ public class HomeController   extends BaseController{
             subject.login(usernamePasswordToken);
             System.out.println("登录成功~~~~~");
             // 只是登录，因此不需要返回具体的数据，只需要告诉前端登录成功即可
-            return "index";
+            return querySuccessResponse(null);
         }catch (UnknownAccountException e){
             System.out.println("账号错误");
         }catch (IncorrectCredentialsException e){
@@ -74,7 +83,7 @@ public class HomeController   extends BaseController{
         }catch (Exception e){
             e.printStackTrace();
         }
-        return "login";
+        return queryEmptyResponse();
     }
 
     /**
@@ -120,6 +129,7 @@ public class HomeController   extends BaseController{
         if (userService.insertSelective(user) > 0){
             return insertSuccseeResponse();
         }
+
         return insertFailedResponse();
     }
 }
