@@ -34,7 +34,7 @@ public class UserServiceImpl  implements UserService {
 
     @Override
     public User selectById(String id) {
-        return null;
+        return userReadMapper.selectById(id);
     }
 
     @Override

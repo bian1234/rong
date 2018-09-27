@@ -19,7 +19,7 @@ public class SaltUtil {
         Random random=new Random();
         StringBuffer sb=new StringBuffer();
         //只需要循环32次即可
-        for(int i=0; i<32; ++i){
+        for(int i=0; i<30; ++i){
             //产生0-61的数字
             int number=random.nextInt(62);
             //将产生的数字通过length次承载到sb中

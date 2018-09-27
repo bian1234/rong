@@ -1,17 +1,17 @@
 package com.byk.rong.system.mapper.read;
 
+import com.byk.rong.common.mapper.read.BaseReadMapper;
 import com.byk.rong.system.entity.RoleMenu;
+import org.springframework.stereotype.Repository;
 
-public interface RoleMenuReadMapper {
-    int deleteByPrimaryKey(String id);
+import java.util.List;
 
-    int insert(RoleMenu record);
+@Repository
+public interface RoleMenuReadMapper extends BaseReadMapper<RoleMenu>{
 
-    int insertSelective(RoleMenu record);
+    @Override
+    RoleMenu selectById(String id);
 
-    RoleMenu selectByPrimaryKey(String id);
-
-    int updateByPrimaryKeySelective(RoleMenu record);
-
-    int updateByPrimaryKey(RoleMenu record);
+    @Override
+    List<RoleMenu> selectByParams(RoleMenu roleMenu);
 }

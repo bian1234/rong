@@ -14,13 +14,16 @@ public class BaseConstant {
     public static int PAGE_NO = 0 ;
     public static int PAGE_SIZE = 99999999;
 
-    /**
-     *  医生认证成功
-     */
-    public static String AUTHENTICATION_SUCCESS  = "AUTHENTICATION_SUCCESS";
+   /**
+    *  默认不删除
+    */
+   public static String DEL_FLAG_USER = "0";
+   public static String DEL_FLAG_DISUSER = "1";
 
-    /**
-     *  医生待认证
-     */
-    public static String AUTHENTICATION_PROGRESS = "AUTHENTICATION_PROGRESS";
+   /**
+    *  用户状态默认启用
+    */
+   public static String USER_NORMALITY = "0";
+    public static String USER_DISABLE = "1";
+
 }

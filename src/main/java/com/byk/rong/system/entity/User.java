@@ -27,7 +27,7 @@ public class User extends BaseEntity{
 
     private String pictrue;
 
-    private String status;
+    private String status;  //启用还是禁用
 
     private String cityId;
 

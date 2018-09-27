@@ -1,17 +1,17 @@
 package com.byk.rong.system.shiro;
 
 
-import com.byk.rong.system.entity.User;
-import com.byk.rong.system.entity.UserRole;
-import com.byk.rong.system.service.RoleService;
-import com.byk.rong.system.service.UserRoleService;
-import com.byk.rong.system.service.UserService;
+import com.byk.rong.common.config.BaseConstant;
+import com.byk.rong.system.entity.*;
+import com.byk.rong.system.service.*;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -26,39 +26,40 @@ public class MyShiroRealm extends AuthorizingRealm {
 
     @Autowired
     private UserService userService;
-
-
-
     @Autowired
     private RoleService roleService;
     @Autowired
     private UserRoleService userRoleService;
-
+    @Autowired
+    private RoleMenuService roleMenuService;
+    @Autowired
+    private MenuService menuService;
 
     /**
      * 认证信息(身份验证) Authentication 是用来验证用户身份   通过用户名在数据库中查找用户信息并返回
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-        // 获取用户的输入帐号    从token鉴定类中获取当事人的信息，字面意思
+        // 获取token中的用户名和密码
         String username = (String) token.getPrincipal();
-        String password = new String((char[]) token.getCredentials());
         // 实际项目中，这里可以根据实际情况做缓存，如果不做，Shiro自己也是有时间间隔机制，2分钟内不会重复执行该方法
         //数据库内用户的用户名必须是唯一的
         User userInfo = userService.findByUsername(username);
         // 账号不存在
         if (userInfo == null) {
-            throw new UnknownAccountException("账号不正确");
+            throw new UnknownAccountException("账号不正确~~~~~~~~~~");
         }
-
-        // 密码错误
-        if (!password.equals(userInfo.getPassword())) {
-            throw new IncorrectCredentialsException("密码不正确");
+        // 账号锁定
+        if (userInfo.getStatus() == BaseConstant.USER_DISABLE) {
+            throw new LockedAccountException("账号已被锁定,请联系管理员");
         }
+        //将用户名做盐值
+        ByteSource salt = ByteSource.Util.bytes(userInfo.getSalt());
         // 参数分别为 用户信息，密码，盐值，真实名称
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
                 username, //用户名
                 userInfo.getPassword(), //密码
+                salt,
                 getName());
         return authenticationInfo;
     }
@@ -72,20 +73,30 @@ public class MyShiroRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+        // 从shiro中获取用户信息
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-        //获取当前登录用户信息
-        User userInfo = (User) principals.getPrimaryPrincipal();
-        UserRole userRole01 = new UserRole();
-        userRole01.setUserId(userInfo.getId());
-        List<UserRole> userRoles = userRoleService.selectByParams(userRole01);
-        //根据用户信息，获取其角色信息列表并遍历
-        for(SysRole role:userRoles.getRoleIds()){
-            //给用户赋予角色信息
-            authorizationInfo.addRole(role.getRoleId());
-            //根据角色信息获取权限
-            for(SysMenu p:role.getMenuIds()){
-                //增加权限信息
-                authorizationInfo.addStringPermission(p.getMenuId());
+        User user  = (User)principals.getPrimaryPrincipal();
+        // 根据用户信息获取角色信息
+        UserRole userRole = new UserRole();
+                // 角色和用户关系表
+        List<UserRole> userRoles = userRoleService.selectByParams(userRole);
+        if (!userRoles.isEmpty()){
+            //遍历出角色信息
+            for (UserRole userRole1:userRoles) {
+                Role role = roleService.selectById(userRole1.getRoleId());
+                // 将角色信息赋给shrio=========赋的是角色名不是id
+                authorizationInfo.addRole(role.getRoleName());
+                // 根据角色id查询权限信息
+                RoleMenu roleMenu = new RoleMenu();
+                roleMenu.setRoleId(role.getId());
+                List<RoleMenu> roleMenus = roleMenuService.selectByParams(roleMenu);
+                if (!roleMenus.isEmpty()){
+                    for (RoleMenu roleMenu1:roleMenus) {
+                       Menu menu =  menuService.selectById(roleMenu1.getMenuId());
+                       // 将权限名称赋给当前用户
+                        authorizationInfo.addStringPermission(menu.getPerms());
+                    }
+                }
             }
         }
         return authorizationInfo;
@@ -93,19 +104,5 @@ public class MyShiroRealm extends AuthorizingRealm {
 
 
 
-    /**
-     *@Author:      ykbian
-     *@date_time:   2018/8/17 11:06
-     *@Description:  这个也是获取权限信息======暂时理解不来
-     *@param:
-    */
-//    @Override
-//    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection arg0) {
-//        String userId = ShiroUtils.getUserId();
-//        MenuService menuService = ApplicationContextRegister.getBean(MenuService.class);
-//        Set<String> perms = menuService.listPerms(userId);
-//        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-//        info.setStringjuesms);
-//        return info;
-//    }
+
 }

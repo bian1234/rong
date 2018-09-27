@@ -1,17 +1,18 @@
 package com.byk.rong.system.mapper.write;
 
+import com.byk.rong.common.mapper.write.BaseWriteMapper;
 import com.byk.rong.system.entity.Role;
+import org.springframework.stereotype.Repository;
 
-public interface RoleWriteMapper {
-    int deleteByPrimaryKey(String id);
+@Repository
+public interface RoleWriteMapper extends BaseWriteMapper<Role>{
 
-    int insert(Role record);
+    @Override
+    int insertSelective(Role role);
 
-    int insertSelective(Role record);
+    @Override
+    int updateSelective(Role role);
 
-    Role selectByPrimaryKey(String id);
-
-    int updateByPrimaryKeySelective(Role record);
-
-    int updateByPrimaryKey(Role record);
+    @Override
+    int deleteById(String id);
 }

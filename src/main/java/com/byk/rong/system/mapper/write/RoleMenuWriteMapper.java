@@ -1,17 +1,18 @@
 package com.byk.rong.system.mapper.write;
 
+import com.byk.rong.common.mapper.write.BaseWriteMapper;
 import com.byk.rong.system.entity.RoleMenu;
+import org.springframework.stereotype.Repository;
 
-public interface RoleMenuWriteMapper {
-    int deleteByPrimaryKey(String id);
+@Repository
+public interface RoleMenuWriteMapper extends BaseWriteMapper<RoleMenu>{
 
-    int insert(RoleMenu record);
+    @Override
+    int insertSelective(RoleMenu roleMenu);
 
-    int insertSelective(RoleMenu record);
+    @Override
+    int updateSelective(RoleMenu roleMenu);
 
-    RoleMenu selectByPrimaryKey(String id);
-
-    int updateByPrimaryKeySelective(RoleMenu record);
-
-    int updateByPrimaryKey(RoleMenu record);
+    @Override
+    int deleteById(String id);
 }

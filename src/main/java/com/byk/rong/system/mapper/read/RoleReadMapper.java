@@ -1,17 +1,17 @@
 package com.byk.rong.system.mapper.read;
 
+import com.byk.rong.common.mapper.read.BaseReadMapper;
 import com.byk.rong.system.entity.Role;
+import org.springframework.stereotype.Repository;
 
-public interface RoleReadMapper {
-    int deleteByPrimaryKey(String id);
+import java.util.List;
 
-    int insert(Role record);
+@Repository
+public interface RoleReadMapper extends BaseReadMapper<Role>{
 
-    int insertSelective(Role record);
+    @Override
+    Role selectById(String id);
 
-    Role selectByPrimaryKey(String id);
-
-    int updateByPrimaryKeySelective(Role record);
-
-    int updateByPrimaryKey(Role record);
+    @Override
+    List<Role> selectByParams(Role role);
 }

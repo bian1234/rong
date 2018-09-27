@@ -1,17 +1,18 @@
 package com.byk.rong.system.mapper.write;
 
+import com.byk.rong.common.mapper.write.BaseWriteMapper;
 import com.byk.rong.system.entity.Menu;
+import org.springframework.stereotype.Repository;
 
-public interface MenuWriteMapper {
-    int deleteByPrimaryKey(String id);
+@Repository
+public interface MenuWriteMapper extends BaseWriteMapper<Menu>{
 
-    int insert(Menu record);
+    @Override
+    int insertSelective(Menu menu);
 
-    int insertSelective(Menu record);
+    @Override
+    int updateSelective(Menu menu);
 
-    Menu selectByPrimaryKey(String id);
-
-    int updateByPrimaryKeySelective(Menu record);
-
-    int updateByPrimaryKey(Menu record);
+    @Override
+    int deleteById(String id);
 }

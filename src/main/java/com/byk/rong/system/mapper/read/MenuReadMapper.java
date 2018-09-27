@@ -1,17 +1,17 @@
 package com.byk.rong.system.mapper.read;
 
+import com.byk.rong.common.mapper.read.BaseReadMapper;
 import com.byk.rong.system.entity.Menu;
+import org.springframework.stereotype.Repository;
 
-public interface MenuReadMapper {
-    int deleteByPrimaryKey(String id);
+import java.util.List;
 
-    int insert(Menu record);
+@Repository
+public interface MenuReadMapper extends BaseReadMapper<Menu>{
 
-    int insertSelective(Menu record);
+    @Override
+    Menu selectById(String id);
 
-    Menu selectByPrimaryKey(String id);
-
-    int updateByPrimaryKeySelective(Menu record);
-
-    int updateByPrimaryKey(Menu record);
+    @Override
+    List<Menu> selectByParams(Menu menu);
 }

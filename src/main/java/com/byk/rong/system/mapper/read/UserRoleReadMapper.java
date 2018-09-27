@@ -1,17 +1,17 @@
 package com.byk.rong.system.mapper.read;
 
+import com.byk.rong.common.mapper.read.BaseReadMapper;
 import com.byk.rong.system.entity.UserRole;
+import org.springframework.stereotype.Repository;
 
-public interface UserRoleReadMapper {
-    int deleteByPrimaryKey(String id);
+import java.util.List;
 
-    int insert(UserRole record);
+@Repository
+public interface UserRoleReadMapper extends BaseReadMapper<UserRole>{
 
-    int insertSelective(UserRole record);
+    @Override
+    UserRole selectById(String id);
 
-    UserRole selectByPrimaryKey(String id);
-
-    int updateByPrimaryKeySelective(UserRole record);
-
-    int updateByPrimaryKey(UserRole record);
+    @Override
+    List<UserRole> selectByParams(UserRole userRole);
 }
