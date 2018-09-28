@@ -24,6 +24,8 @@ server:
   port: 8888
 
 #logging.level.com.dy.springboot.server.mapper=debug
+# 这里必须先配置root日志级别，也就是系统的，然后再单独的配置mapper日志级别
 logging:
   level:
+    root: info
     com.byk.rong.system.mapper.*: debug

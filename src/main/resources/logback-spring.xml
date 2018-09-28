@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration  scan="true" scanPeriod="60 seconds" debug="false">
+    <contextName>logback</contextName>
+    <!--输出到控制台-->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%black(%d{HH:mm:ss}) %red([%thread]) %green(%-5level) %highlight(%logger{36}) - %boldMagenta(%msg%n)</pattern>
+        </encoder>
+    </appender>
+
+    <!--按天生成日志到文件-->
+    <appender name="logFile"  class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <Prudent>true</Prudent>
+        <!--如果只是想要 Info 级别的日志，只是过滤 info 还是会输出 Error 日志，因为 Error 的级别高，-->
+        <!--所以我们使用下面的策略，可以避免输出 Error 的日志-->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <!--过滤 Error-->
+            <level>ERROR</level>
+            <!--匹配到就禁止-->
+            <onMatch>DENY</onMatch>
+            <!--没有匹配到就允许-->
+            <onMismatch>ACCEPT</onMismatch>
+        </filter>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--生成日志文件的路径-->
+            <FileNamePattern>
+                log/%d{yyyy-MM-dd}/%d{yyyy-MM-dd}.log
+            </FileNamePattern>
+            <!--只保留最近90天的日志-->
+            <maxHistory>90</maxHistory>
+            <!--用来指定日志文件的上限大小，那么到了这个值，就会删除旧的日志-->
+            <totalSizeCap>1GB</totalSizeCap>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss} %contextName [%thread] %-5level %logger{36} -%msg%n
+            </Pattern>
+        </layout>
+        <!--<filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+        <!--<level>ERROR</level>-->
+        <!--</filter>-->
+    </appender>
+
+    <logger name="com.byk" additivity="false">
+        <appender-ref ref="console"/>
+        <!--<appender-ref ref="logFile" />-->
+    </logger>
+    <root level="error">
+        <appender-ref ref="console"/>
+        <!--<appender-ref ref="logFile" />-->
+    </root>
+
+</configuration>
