@@ -1,8 +1,10 @@
 package com.byk.rong.system.entity;
 
+import com.byk.rong.common.entity.BaseEntity;
+
 import java.util.Date;
 
-public class Menu {
+public class Menu extends BaseEntity{
     private String id;
 
     private String parentId;
@@ -151,5 +153,27 @@ public class Menu {
 
     public void setDelFlag(String delFlag) {
         this.delFlag = delFlag == null ? null : delFlag.trim();
+    }
+
+
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "id='" + id + '\'' +
+                ", parentId='" + parentId + '\'' +
+                ", name='" + name + '\'' +
+                ", url='" + url + '\'' +
+                ", perms='" + perms + '\'' +
+                ", type=" + type +
+                ", icon='" + icon + '\'' +
+                ", orderNum=" + orderNum +
+                ", createUser='" + createUser + '\'' +
+                ", createTime=" + createTime +
+                ", updateUser='" + updateUser + '\'' +
+                ", updateTime=" + updateTime +
+                ", deleteUser='" + deleteUser + '\'' +
+                ", deleteTime=" + deleteTime +
+                ", delFlag='" + delFlag + '\'' +
+                '}';
     }
 }

@@ -35,7 +35,7 @@
 	<!-- BEGIN LOGIN -->
 	<div class="content">
 		<!-- BEGIN LOGIN FORM -->
-		<form class="form-vertical login-form" id="signupForm" action="tologin" method="get">
+		<form class="form-vertical login-form" id="signupForm"  >
 			<h3 class="form-title">用户登录</h3>
 			<div class="alert alert-error hide">
 				<button class="close" data-dismiss="alert"></button>
@@ -46,7 +46,7 @@
 				<div class="controls">
 					<div class="input-icon left">
 						<i class="icon-user"></i>
-						<input id="userName" class="m-wrap placeholder-no-fix" type="text" placeholder="用户名" name="userName"/>
+						<input id="userName" class="m-wrap placeholder-no-fix" type="text" placeholder="用户名" name="userName" value="admin"/>
 					</div>
 				</div>
 			</div>
@@ -55,7 +55,7 @@
 				<div class="controls">
 					<div class="input-icon left">
 						<i class="icon-lock"></i>
-						<input id="password" class="m-wrap placeholder-no-fix" type="password" placeholder="密码" name="password"/>
+						<input id="password" class="m-wrap placeholder-no-fix" type="password" placeholder="密码" name="password" value="bian123"/>
 					</div>
 				</div>
 			</div>
@@ -63,7 +63,7 @@
 				<label class="checkbox">
 				<input type="checkbox" name="remember" value="1"/> 记住我
 				</label>
-				<button  class="btn blue pull-right" onclick="login();">
+				<button  class="btn blue pull-right" onclick="login()">
 				登录 <i class="m-icon-swapright m-icon-white"></i>
 				</button>
 
@@ -192,6 +192,8 @@
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
 	<script src="media/js/app.js" type="text/javascript"></script>
 	<script src="media/js/login-soft.js" type="text/javascript"></script>
+	<script src="media/layer/layer.js" type="text/javascript"></script>
+
 	<!-- END PAGE LEVEL SCRIPTS -->
 	<script>
 		jQuery(document).ready(function() {
@@ -205,7 +207,7 @@
             // var validateCode = $("input[name='validateCode']").val();
             // var rememberMe = $("input[name='rememberme']").is(':checked');
             $.ajax({
-                type: "POST",
+                type: "post",
                 url: "login",
                 data: {
                     "userName": userName,
@@ -213,9 +215,11 @@
                     // "validateCode" : validateCode,
                     // "rememberMe": rememberMe
                 },
-                success: function(r) {
-                    alert("hhhhhhhhhhhhh");
-                    if (r.code == 0) {
+				//async:false,//取消异步请求
+                success: function(resultMap) {
+                    alert("不走这里吗");
+                    if (resultMap.code == 2000) {
+                        layer.msg("登陆成功");
                         parent.location.href = 'index';
                     } else {
                         layer.msg("请检查用户名和密码");

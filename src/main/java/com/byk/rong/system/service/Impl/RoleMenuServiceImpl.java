@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: ykbian
@@ -47,5 +48,10 @@ public class RoleMenuServiceImpl  implements RoleMenuService {
     @Override
     public int deleteById(String id) {
         return 0;
+    }
+
+    @Override
+    public List<RoleMenu> list(Map<String, Object> params) {
+        return null;
     }
 }

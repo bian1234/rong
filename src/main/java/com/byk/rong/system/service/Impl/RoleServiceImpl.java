@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: ykbian
@@ -24,17 +25,17 @@ public class RoleServiceImpl  implements RoleService {
     private RoleWriteMapper roleWriteMapper;
     @Override
     public int insertSelective(Role role) {
-        return 0;
+        return roleWriteMapper.insertSelective(role);
     }
 
     @Override
     public int updateSelective(Role role) {
-        return 0;
+        return roleWriteMapper.updateSelective(role);
     }
 
     @Override
     public Role selectById(String id) {
-        return null;
+        return roleReadMapper.selectById(id);
     }
 
     @Override
@@ -45,5 +46,10 @@ public class RoleServiceImpl  implements RoleService {
     @Override
     public int deleteById(String id) {
         return 0;
+    }
+
+    @Override
+    public List<Role> list(Map<String, Object> params) {
+        return roleReadMapper.list(params);
     }
 }

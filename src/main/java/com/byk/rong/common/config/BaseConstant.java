@@ -24,6 +24,12 @@ public class BaseConstant {
     *  用户状态默认启用
     */
    public static String USER_NORMALITY = "0";
-    public static String USER_DISABLE = "1";
+   public static String USER_DISABLE = "1";
+
+
+   /**
+    *  顶级菜单的父id
+    */
+    public static String TOP_MENU_PARIENT_ID = "0";
 
 }

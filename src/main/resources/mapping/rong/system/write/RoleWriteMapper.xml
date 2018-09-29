@@ -33,6 +33,9 @@
       #{deleteTime,jdbcType=TIMESTAMP}, #{delFlag,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.byk.rong.system.entity.Role">
+    <selectKey keyProperty="id" resultType="string" order="BEFORE">
+      select replace(uuid(), '-', '') as id from dual
+    </selectKey>
     insert into role
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -105,7 +108,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.byk.rong.system.entity.Role">
+  <update id="updateSelective" parameterType="com.byk.rong.system.entity.Role">
     update role
     <set>
       <if test="roleName != null">

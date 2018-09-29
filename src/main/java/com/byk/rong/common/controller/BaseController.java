@@ -1,8 +1,12 @@
 package com.byk.rong.common.controller;
 
 
+import com.byk.rong.common.util.SaltUtil;
+import com.byk.rong.common.util.ShiroUtils;
+import com.byk.rong.system.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -12,6 +16,8 @@ import java.util.Map;
 
 public class BaseController {
 
+    @Autowired
+    private UserService userService;
     public  Map<String,Object> resultMap ;
 
     /**
@@ -25,10 +31,13 @@ public class BaseController {
      *@Description: 从请求头里面获取token信息，前提是把token信息存在请求头里面==========这个项目用不到。
      *@param:
     */
-    protected String getToken() {
-        HttpServletRequest request = ((ServletRequestAttributes) (RequestContextHolder.currentRequestAttributes())).getRequest();
-        String token = request.getHeader("token");
-        return token;
+    protected String getUserId() {
+       String userName = ShiroUtils.getUserName();
+       /**
+        *   这里先设置一个假的登录对象；
+        */
+//        return userService.findByUsername(userName).getId();
+        return "16dff4d7c39111e8bf1d52540033f252";
     }
 
     /**

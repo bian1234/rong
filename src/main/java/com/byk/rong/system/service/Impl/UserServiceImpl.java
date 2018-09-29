@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: ykbian
@@ -50,5 +51,10 @@ public class UserServiceImpl  implements UserService {
     @Override
     public User findByUsername(String userName) {
         return userReadMapper.findByUsername(userName);
+    }
+
+    @Override
+    public List<User> list(Map<String, Object> params) {
+        return null;
     }
 }

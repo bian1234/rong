@@ -40,17 +40,17 @@ public class ShiroConfiguration {
          *   filterChainDefinitionMap.put("/static/**", "anon")的形式，会被shrio拦截，
          *   浏览器访问时打开f12会发现路径中并没有“/static/
          */
-        filterChainDefinitionMap.put("/media/**", "anon");
-        filterChainDefinitionMap.put("/register", "anon");
-        filterChainDefinitionMap.put("/logout", "logout");
-        //<!-- 过滤链定义，从上向下顺序执行，一般将/**放在最为下边 -->
-        filterChainDefinitionMap.put("/**", "authc");
-        // 如果不设置默认会自动寻找Web工程根目录下的"/login.jsp"页面
-        shiroFilterFactoryBean.setLoginUrl("/login");
-        // 登录成功后要跳转的链接
-        shiroFilterFactoryBean.setSuccessUrl("/index");
-        //未授权界面;
-        shiroFilterFactoryBean.setUnauthorizedUrl("/403");
+//        filterChainDefinitionMap.put("/media/**", "anon");
+//        filterChainDefinitionMap.put("/register", "anon");
+//        filterChainDefinitionMap.put("/logout", "logout");
+//        //<!-- 过滤链定义，从上向下顺序执行，一般将/**放在最为下边 -->
+//        filterChainDefinitionMap.put("/**", "authc");
+//        // 如果不设置默认会自动寻找Web工程根目录下的"/login.jsp"页面
+//        shiroFilterFactoryBean.setLoginUrl("/login");
+//        // 登录成功后要跳转的链接
+//        shiroFilterFactoryBean.setSuccessUrl("/index");
+//        //未授权界面;
+//        shiroFilterFactoryBean.setUnauthorizedUrl("/403");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
 

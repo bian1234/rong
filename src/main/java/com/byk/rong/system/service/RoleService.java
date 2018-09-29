@@ -2,35 +2,32 @@ package com.byk.rong.system.service;
 
 import com.byk.rong.common.service.BaseService;
 import com.byk.rong.system.entity.Role;
+import com.byk.rong.system.mapper.read.RoleReadMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
-@Service
+
 public interface RoleService  extends BaseService<Role> {
 
-    @Override
-    default int insertSelective(Role role) {
-        return 0;
-    }
 
     @Override
-    default int updateSelective(Role role) {
-        return 0;
-    }
+    int insertSelective(Role role);
 
     @Override
-    default Role selectById(String id) {
-        return null;
-    }
+    int updateSelective(Role role);
 
     @Override
-    default List<Role> selectByParams(Role role) {
-        return null;
-    }
+    Role selectById(String id);
 
     @Override
-    default int deleteById(String id) {
-        return 0;
-    }
+    List<Role> selectByParams(Role role);
+
+    @Override
+    int deleteById(String id);
+
+    @Override
+    List<Role> list(Map<String, Object> params);
 }

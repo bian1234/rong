@@ -39,6 +39,9 @@
       #{deleteTime,jdbcType=TIMESTAMP}, #{delFlag,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.byk.rong.system.entity.Menu">
+    <selectKey keyProperty="id" resultType="string" order="BEFORE">
+      select replace(uuid(), '-', '') as id from dual
+    </selectKey>
     insert into menu
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -135,7 +138,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.byk.rong.system.entity.Menu">
+  <update id="updateSelective" parameterType="com.byk.rong.system.entity.Menu">
     update menu
     <set>
       <if test="parentId != null">

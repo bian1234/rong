@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: ykbian
@@ -45,5 +46,10 @@ public class UserRoleServiceImpl  implements UserRoleService {
     @Override
     public int deleteById(String id) {
         return 0;
+    }
+
+    @Override
+    public List<UserRole> list(Map<String, Object> params) {
+        return null;
     }
 }

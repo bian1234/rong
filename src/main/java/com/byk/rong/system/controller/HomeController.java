@@ -15,10 +15,7 @@ import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
@@ -35,9 +32,10 @@ public class HomeController   extends BaseController{
 
     @Autowired
     private UserService userService;
-    @RequestMapping(value = {"/","","index"})
+    @RequestMapping(value = {"/","","index","index.html"})
+    //@ResponseBody
     public String index(){
-        logger.info("有人访问主页");
+        logger.info("跳转主页面");
         return "index";
     }
 
@@ -62,11 +60,9 @@ public class HomeController   extends BaseController{
     *@param:
    */
     @PostMapping("/login")
-    //@ResponseBody
+    @ResponseBody
     public Map login(String userName,String password) {
-        System.out.println("================================");
-        System.out.println(userName);
-        System.out.println(password);
+        logger.info("用户"+userName+"登录");
         //添加用户认证信息
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(userName,password);
@@ -96,6 +92,7 @@ public class HomeController   extends BaseController{
     public String logout(){
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
+        System.out.println("用户退出");
         return "redirect:/login";
     }
 
