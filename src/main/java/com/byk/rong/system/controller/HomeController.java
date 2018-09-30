@@ -1,8 +1,11 @@
 package com.byk.rong.system.controller;
 
+import com.alibaba.fastjson.serializer.ASMSerializerFactory;
 import com.byk.rong.common.config.BaseConstant;
 import com.byk.rong.common.controller.BaseController;
 import com.byk.rong.common.util.SaltUtil;
+import com.byk.rong.common.util.Tree;
+import com.byk.rong.system.entity.Menu;
 import com.byk.rong.system.entity.User;
 import com.byk.rong.system.service.UserService;
 import org.apache.ibatis.annotations.Param;
@@ -15,8 +18,10 @@ import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -34,8 +39,33 @@ public class HomeController   extends BaseController{
     private UserService userService;
     @RequestMapping(value = {"/","","index","index.html"})
     //@ResponseBody
-    public String index(){
+    public String index(Model model){
         logger.info("跳转主页面");
+        // 当前登录的个人信息
+        String userId = getUserId();
+        User user = userService.selectById(userId);
+
+        model.addAttribute("user",user);
+        // 根据其权限获得 菜单信息
+        /**
+         *   这里假数据
+         */
+            List<Menu> menus = new ArrayList<>();
+            Menu menu = new Menu();
+            menu.setName("测试一");
+        Menu menu1 = new Menu();
+        menu1.setName("测试二");
+        Menu menu2 = new Menu();
+        menu2.setName("测试三");
+        Menu menu3 = new Menu();
+        menu3.setName("测试四");
+            menus.add(menu);
+            menus.add(menu1);
+            menus.add(menu2);
+            menus.add(menu3);
+        System.out.println("............"+menus);
+            model.addAttribute("menu",menus);
+        System.out.println("==============="+model);
         return "index";
     }
 
@@ -49,7 +79,6 @@ public class HomeController   extends BaseController{
    */
     @GetMapping("/login")
     public String login() {
-        logger.info("Get 方法的login");
         return "login";
     }
 

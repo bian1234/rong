@@ -37,7 +37,7 @@ public class BaseController {
         *   这里先设置一个假的登录对象；
         */
 //        return userService.findByUsername(userName).getId();
-        return "16dff4d7c39111e8bf1d52540033f252";
+        return "1b78e5ecc3c511e8bf1d52540033f252";
     }
 
     /**

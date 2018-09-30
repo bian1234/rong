@@ -6,7 +6,10 @@
 <!--[if !IE]><!-->
 <html lang="en" class="no-js"> <!--<![endif]-->
 <!-- BEGIN HEAD -->
-<head>
+ <!--引进th标签-->
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head >
     <meta charset="utf-8"/>
     <title>Metronic | Admin Dashboard Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -147,9 +150,9 @@
                         </li>
                         <li>
                             <a href="inbox.html?a=view">
-                                <span class="photo"><img src="./media/image/avatar1.jpg" alt=""/></span>
+                                <span class="photo"><img th:src="${user.pictrue}" alt=""/></span>
                                 <span class="subject">
-								<span class="from">Bob Nilson</span>
+								<span class="from" th:text="${user.userName}">Bob Nilson </span>
 								<span class="time">2 hrs</span>
 								</span>
                                 <span class="message">
@@ -293,6 +296,13 @@
                     </div>
                 </form>
                 <!-- END RESPONSIVE QUICK SEARCH FORM -->
+            </li>
+            <li class="start active " th:each="cmenu : ${menu}">
+                <a href="index.html">
+                    <i class="icon-home"></i>
+                    <span class="title" th:text="${cmenu.name}"></span>
+                    <span class="selected"></span>
+                </a>
             </li>
             <li class="start active ">
                 <a href="index.html">
