@@ -33,8 +33,10 @@ public interface MenuService  extends BaseService<Menu> {
     /**
      *  带分页查询菜单列表
      */
+    @Override
     List<Menu> list(Map<String, Object> params);
 
+    List<Tree<Menu>> listMenuTree(String id);
 
     Tree<Menu> getTree();
 

@@ -7,6 +7,7 @@ import com.byk.rong.common.util.SaltUtil;
 import com.byk.rong.common.util.Tree;
 import com.byk.rong.system.entity.Menu;
 import com.byk.rong.system.entity.User;
+import com.byk.rong.system.service.MenuService;
 import com.byk.rong.system.service.UserService;
 import org.apache.ibatis.annotations.Param;
 import org.apache.shiro.SecurityUtils;
@@ -37,6 +38,8 @@ public class HomeController   extends BaseController{
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private MenuService menuService;
     @RequestMapping(value = {"/","","index","index.html"})
     //@ResponseBody
     public String index(Model model){
@@ -44,28 +47,15 @@ public class HomeController   extends BaseController{
         // 当前登录的个人信息
         String userId = getUserId();
         User user = userService.selectById(userId);
-
         model.addAttribute("user",user);
         // 根据其权限获得 菜单信息
         /**
          *   这里假数据
          */
-            List<Menu> menus = new ArrayList<>();
-            Menu menu = new Menu();
-            menu.setName("测试一");
-        Menu menu1 = new Menu();
-        menu1.setName("测试二");
-        Menu menu2 = new Menu();
-        menu2.setName("测试三");
-        Menu menu3 = new Menu();
-        menu3.setName("测试四");
-            menus.add(menu);
-            menus.add(menu1);
-            menus.add(menu2);
-            menus.add(menu3);
-        System.out.println("............"+menus);
-            model.addAttribute("menu",menus);
-        System.out.println("==============="+model);
+        List<Tree<Menu>> menus = menuService.listMenuTree(getUserId());
+        System.out.println("++++++++++++++++++++++++++++++");
+        System.out.println(menus);
+        model.addAttribute("menus",menus);
         return "index";
     }
 

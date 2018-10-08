@@ -81,4 +81,28 @@ public class MenuServiceImpl  implements MenuService {
     public Tree<Menu> getTree(String id) {
         return null;
     }
+
+
+    @Override
+    public List<Tree<Menu>> listMenuTree(String id) {
+        // 创建返回对象
+        List<Tree<Menu>> trees = new ArrayList<Tree<Menu>>();
+        // 根据userid查询到对应的菜单列表
+        // 这里用到了关联查询   简单的话可以修改成三个单表查询，分别注入userReadMapper,roleReadMapper和menuReadMapper
+        List<Menu> menus = menuReadMapper.listMenuByUserId(id);
+        for (Menu menu : menus) {
+            Tree<Menu> tree = new Tree<Menu>();
+            tree.setId(menu.getId());
+            tree.setParentId(menu.getParentId());
+            tree.setText(menu.getName());
+            Map<String, Object> attributes = new HashMap<>(16);
+            attributes.put("url", menu.getUrl());
+            attributes.put("icon", menu.getIcon());
+            tree.setAttributes(attributes);
+            trees.add(tree);
+        }
+        // 默认顶级菜单为的id为０，根据数据库实际情况调整
+        List<Tree<Menu>> list = BuildTree.buildList(trees, "0");
+        return list;
+    }
 }
