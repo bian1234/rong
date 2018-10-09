@@ -40,8 +40,24 @@ public class HomeController   extends BaseController{
     private UserService userService;
     @Autowired
     private MenuService menuService;
+
+    @RequestMapping(value = {"main"})
+    public String main(){
+        return "main";
+    }
+
+
+   /**
+    *@Author:      ykbian
+    *@date_time:   2018/10/9 11:49
+    *@Description: 锁屏
+    *@param:
+   */
+    @RequestMapping(value = {"rongLock"})
+    public String rongLock(){
+        return "rong_lock";
+    }
     @RequestMapping(value = {"/","","index","index.html"})
-    //@ResponseBody
     public String index(Model model){
         logger.info("跳转主页面");
         // 当前登录的个人信息
@@ -49,12 +65,7 @@ public class HomeController   extends BaseController{
         User user = userService.selectById(userId);
         model.addAttribute("user",user);
         // 根据其权限获得 菜单信息
-        /**
-         *   这里假数据
-         */
         List<Tree<Menu>> menus = menuService.listMenuTree(getUserId());
-        System.out.println("++++++++++++++++++++++++++++++");
-        System.out.println(menus);
         model.addAttribute("menus",menus);
         return "index";
     }
@@ -88,7 +99,6 @@ public class HomeController   extends BaseController{
         //进行验证，这里可以捕获异常，然后返回对应信息
         try {
             subject.login(usernamePasswordToken);
-            System.out.println("登录成功~~~~~");
             // 只是登录，因此不需要返回具体的数据，只需要告诉前端登录成功即可
             return querySuccessResponse(null);
         }catch (UnknownAccountException e){
@@ -107,7 +117,7 @@ public class HomeController   extends BaseController{
      *@Description: 用户退出
      *@param:
      */
-    @PostMapping("logout")
+    @GetMapping("logout")
     public String logout(){
         Subject subject = SecurityUtils.getSubject();
         subject.logout();

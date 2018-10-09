@@ -6,6 +6,7 @@ import com.byk.rong.common.util.Tree;
 import com.byk.rong.system.entity.Menu;
 import com.byk.rong.system.entity.Role;
 import com.byk.rong.system.service.MenuService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +26,7 @@ public class MenuController  extends BaseController {
 
     @Autowired
     private MenuService menuService;
+
 
 
     /**
@@ -129,10 +131,11 @@ public class MenuController  extends BaseController {
      *@Description:  批量查询所有的菜单信息=======简单的列表查询，
      *@param:
      */
-    @GetMapping("menuList")
+    @GetMapping("list")
     @ResponseBody
-    public Map menuList(@RequestParam Map<String, Object> map){
+    public Map list(@RequestParam Map<String, Object> map){
         List<Menu> menus = menuService.list(map);
+        System.out.println("=========查询菜单列表信息："+menus);
         if (menus.isEmpty()){
             return queryEmptyResponse();
         }return querySuccessResponse(menus);
@@ -141,8 +144,21 @@ public class MenuController  extends BaseController {
 
     /**
      *@Author:      ykbian
+     *@date_time:   2018/10/9 13:05
+     *@Description: 跳转系统菜单页面
+     *@param:
+    */
+    @GetMapping("")
+    public  String  listAllMenu() {
+       return "system/menu/menu";
+    }
+
+
+
+    /**
+     *@Author:      ykbian
      *@date_time:   2018/9/29 13:06
-     *@Description:  查询所有的菜单信息=========树形结构
+     *@Description:  查询所有的菜单信息=========左侧栏树形结构展示
      *@param:
     */
     @GetMapping("/tree")
@@ -155,6 +171,12 @@ public class MenuController  extends BaseController {
         return querySuccessResponse(tree);
     }
 
+    /**
+     *@Author:      ykbian
+     *@date_time:   2018/10/9 14:32
+     *@Description:  根据userId查询响应的菜单信息=========左侧栏树形结构展示
+     *@param:
+    */
     @GetMapping("/tree/{roleId}")
     @ResponseBody
     Tree<Menu> tree(@PathVariable("roleId") String roleId) {
