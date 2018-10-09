@@ -1,5 +1,6 @@
 package com.byk.rong.system.controller;
 
+import com.byk.rong.common.annotation.Log;
 import com.byk.rong.common.config.BaseConstant;
 import com.byk.rong.common.controller.BaseController;
 import com.byk.rong.common.util.Tree;
@@ -9,6 +10,7 @@ import com.byk.rong.system.service.MenuService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -153,7 +155,45 @@ public class MenuController  extends BaseController {
        return "system/menu/menu";
     }
 
+    /**
+     *@Author:      ykbian
+     *@date_time:   2018/10/9 15:43
+     *@Description: 跳转增加页面:查询到父菜单的信息，进行操作
+     *@param:
+    */
+    @GetMapping("add/{pId}")
+    public  String  add(Model model, @PathVariable("pId") String pId) {
+        //父节点
+        model.addAttribute("pId", pId);
+        // 查找父菜单的名称
+        if (BaseConstant.TOP_MENU_PARIENT_ID.equals(pId)) {
+            model.addAttribute("pName", "根目录");
+        } else {
+            model.addAttribute("pName", menuService.selectById(pId).getName());
+        }
+        return "system/menu/add";
+    }
 
+
+    /**
+     *@Author:      ykbian
+     *@date_time:   2018/10/9 15:43
+     *@Description:  跳转编辑界面
+     *@param:
+    */
+    @GetMapping("edit/{id}")
+    public  String  edit(Model model, @PathVariable("id") String id) {
+        Menu menu = menuService.selectById(id);
+        String pId = menu.getParentId();
+        model.addAttribute("pId", pId);
+        if (BaseConstant.TOP_MENU_PARIENT_ID.equals(pId)) {
+            model.addAttribute("pName", "根目录");
+        } else {
+            model.addAttribute("pName", menuService.selectById(pId).getName());
+        }
+        model.addAttribute("menu", menu);
+        return "system/menu/edit";
+    }
 
     /**
      *@Author:      ykbian
