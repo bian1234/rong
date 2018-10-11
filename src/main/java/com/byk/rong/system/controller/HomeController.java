@@ -57,6 +57,8 @@ public class HomeController   extends BaseController{
     public String rongLock(){
         return "rong_lock";
     }
+
+
     @RequestMapping(value = {"/","","index","index.html"})
     public String index(Model model){
         logger.info("跳转主页面");
@@ -80,7 +82,7 @@ public class HomeController   extends BaseController{
    */
     @GetMapping("/login")
     public String login() {
-        return "login";
+        return "/system/login2.html";
     }
 
    /**
