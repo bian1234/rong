@@ -62,30 +62,19 @@
     <!-- side -->
     <div class="layui-side my-side">
         <div class="layui-side-scroll">
-            <!-- 左侧主菜单添加选项卡监听 -->
             <ul class="layui-nav layui-nav-tree" lay-filter="side-main">
-
-                <li class="layui-nav-item">
-                    <a href="javascript:;"><i class="layui-icon">&#xe628;</i>扩展</a>
+                <li class="layui-nav-item  layui-nav-itemed" th:each="menu : ${menus}">
+                    <i class="layui-icon" th:class="${menu.attributes.icon}"></i>
+                    <a href="javascript:;"><i class="layui-icon" th:text="${menu.text}">&#xe620;</i></a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" href-url="demo/login.html"><i class="layui-icon">&#xe621;</i>登录页</a>
-                        </dd>
-
-                    </dl>
+                        <dd th:each="cmenu : ${menu.children}">
+                            <a href="javascript:;" th:text="${cmenu.text}" th:href="${cmenu.attributes.url}" ></a></dd>
+                        </dl>
                 </li>
-                <li th:each="menu : ${menus}">
-                    <a href="#">
-                        <i class="fa fa fa-bar-chart-o" th:class="${menu.attributes.icon}"></i>
-                        <span class="nav-label" th:text="${menu.text}">基础信息</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="nav nav-second-level">
-                        <li th:each="cmenu : ${menu.children}">
-                            <a class="J_menuItem" href="graph_echarts.html" th:text="${cmenu.text}" th:href="${cmenu.attributes.url}">系统管理</a>
-                        </li>
-                    </ul>
-                </li>
+                <!--友情链接-->
+                <li class="layui-nav-item"><a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=ad6ba602ae228be2222ddb804086e0cfa42da3d74e34b383b665c2bec1adfc6e"><i class="layui-icon">&#xe61e;</i>鸣谢</a></li>
             </ul>
+
 
         </div>
     </div>
@@ -144,10 +133,10 @@
             , vipNav = layui.vip_nav
             , $ = layui.jquery;
 
-        // 顶部左侧菜单生成 [请求地址,过滤ID,是否展开,携带参数]
-        vipNav.top_left('./json/nav_top_left.json', 'side-top-left', false);
-        // 主体菜单生成 [请求地址,过滤ID,是否展开,携带参数]
-        vipNav.main('./json/nav_main.json', 'side-main', true);
+        // // 顶部左侧菜单生成 [请求地址,过滤ID,是否展开,携带参数]
+        // vipNav.top_left('./json/nav_top_left.json', 'side-top-left', false);
+        // // 主体菜单生成 [请求地址,过滤ID,是否展开,携带参数]
+        // vipNav.main('./json/nav_main.json', 'side-main', true);
 
         // you code ...
 
