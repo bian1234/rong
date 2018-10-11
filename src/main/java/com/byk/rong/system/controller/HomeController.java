@@ -53,9 +53,9 @@ public class HomeController   extends BaseController{
     *@Description: 锁屏
     *@param:
    */
-    @RequestMapping(value = {"rongLock"})
+    @RequestMapping(value = {"lock"})
     public String rongLock(){
-        return "rong_lock";
+        return "system/lock";
     }
 
 
