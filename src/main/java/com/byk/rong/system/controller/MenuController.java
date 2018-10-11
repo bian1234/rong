@@ -131,16 +131,17 @@ public class MenuController  extends BaseController {
      *@Author:      ykbian
      *@date_time:   2018/9/28 11:11
      *@Description:  批量查询所有的菜单信息=======简单的列表查询，
+     *               这个方法的返回值是List<Menu>而不是Map，因为前端使用了bootstrapTreeTable技术。List数据结构更好操作。
      *@param:
      */
     @GetMapping("list")
     @ResponseBody
-    public Map list(@RequestParam Map<String, Object> map){
+    public List<Menu> list(@RequestParam Map<String, Object> map){
         List<Menu> menus = menuService.list(map);
-        System.out.println("=========查询菜单列表信息："+menus);
         if (menus.isEmpty()){
-            return queryEmptyResponse();
-        }return querySuccessResponse(menus);
+            return null;
+        }
+        return menus;
     }
 
 
@@ -163,6 +164,9 @@ public class MenuController  extends BaseController {
     */
     @GetMapping("add/{pId}")
     public  String  add(Model model, @PathVariable("pId") String pId) {
+        System.out.println("+++++++++++++++++++++++++++++++++++++");
+        System.out.println("+++++++++++++++++++++++++++++++++++++");
+
         //父节点
         model.addAttribute("pId", pId);
         // 查找父菜单的名称
@@ -186,6 +190,7 @@ public class MenuController  extends BaseController {
         Menu menu = menuService.selectById(id);
         String pId = menu.getParentId();
         model.addAttribute("pId", pId);
+        // 如果pid是“0”的话，则为一级菜单，其父菜单为"根目录"
         if (BaseConstant.TOP_MENU_PARIENT_ID.equals(pId)) {
             model.addAttribute("pName", "根目录");
         } else {
@@ -219,8 +224,8 @@ public class MenuController  extends BaseController {
     */
     @GetMapping("/tree/{roleId}")
     @ResponseBody
-    Tree<Menu> tree(@PathVariable("roleId") String roleId) {
-        Tree<Menu> tree = menuService.getTree(roleId);
+    Tree<Menu> tree(@PathVariable("userId") String userId) {
+        Tree<Menu> tree = menuService.getTree(userId);
         return tree;
     }
 }
