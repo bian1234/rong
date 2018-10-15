@@ -127,37 +127,37 @@ public class HomeController   extends BaseController{
         return "redirect:/login";
     }
 
-    /**
-     *@Author:      ykbian
-     *@date_time:   2018/9/27 10:38
-     *@Description:  用户信息注册
-     *@param:
-     */
-    @PostMapping("register")
-    @ResponseBody
-    public Map register(User user){
-        // 将用户名作为盐值不安全，采用自定义的工具类
-        String saltStr = SaltUtil.createSalt();
-        ByteSource salt = ByteSource.Util.bytes(saltStr);
-        /**
-         * MD5加密：
-         * 使用SimpleHash类对原始密码进行加密。
-         * 第一个参数代表使用MD5方式加密
-         * 第二个参数为原始密码
-         * 第三个参数为盐值，即用户名
-         * 第四个参数为加密次数
-         * 最后用toHex()方法将加密后的密码转成String
-         * */
-        String newPs = new SimpleHash("MD5", user.getPassword(), salt, 1024).toHex();
-        user.setSalt(saltStr);
-        user.setPassword(newPs);
-        user.setCreateTime(new Date());
-        user.setDelFlag(BaseConstant.DEL_FLAG_USER);
-        user.setStatus(BaseConstant.USER_NORMALITY);
-        if (userService.insertSelective(user) > 0){
-            return insertSuccseeResponse();
-        }
-
-        return insertFailedResponse();
-    }
+//    /**
+//     *@Author:      ykbian
+//     *@date_time:   2018/9/27 10:38
+//     *@Description:  用户信息注册
+//     *@param:
+//     */
+//    @PostMapping("register")
+//    @ResponseBody
+//    public Map register(User user){
+//        // 将用户名作为盐值不安全，采用自定义的工具类
+//        String saltStr = SaltUtil.createSalt();
+//        ByteSource salt = ByteSource.Util.bytes(saltStr);
+//        /**
+//         * MD5加密：
+//         * 使用SimpleHash类对原始密码进行加密。
+//         * 第一个参数代表使用MD5方式加密
+//         * 第二个参数为原始密码
+//         * 第三个参数为盐值，即用户名
+//         * 第四个参数为加密次数
+//         * 最后用toHex()方法将加密后的密码转成String
+//         * */
+//        String newPs = new SimpleHash("MD5", user.getPassword(), salt, 1024).toHex();
+//        user.setSalt(saltStr);
+//        user.setPassword(newPs);
+//        user.setCreateTime(new Date());
+//        user.setDelFlag(BaseConstant.DEL_FLAG_USER);
+//        user.setStatus(BaseConstant.USER_NORMALITY);
+//        if (userService.insertSelective(user) > 0){
+//            return insertSuccseeResponse();
+//        }
+//
+//        return insertFailedResponse();
+//    }
 }

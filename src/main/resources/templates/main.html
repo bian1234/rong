@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../frame/layui/css/layui.css">
+    <!--<link rel="stylesheet" href="../frame/static/css/style.css">-->
+    <link rel="icon" href="../frame/static/image/code.png">
+</head>
+<body>
+
+        <div class="layui-colla-item">
+            <h1 class="layui-colla-title">了解Rong</h1>
+            <div class="layui-colla-content layui-show">
+                <ul class="layui-timeline max-auto">
+                    <li class="layui-timeline-item">
+                        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                        <div class="layui-timeline-content layui-text">
+                            <h3 class="layui-timeline-title">开发环境</h3>
+                            <ul>
+                                <li>java 1.8</li>
+                                <li>mysql5.7 + redis</li>
+                                <li>腾讯云 <a target="_blank" href="https://cloud.tencent.com/?fromSource=gwzcw.330897.330897.330897">https://cloud.tencent.com/?fromSource=gwzcw.330897.330897.330897</a></li>
+                                <li>··· ···</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="layui-timeline-item">
+                        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                        <div class="layui-timeline-content layui-text">
+                            <h3 class="layui-timeline-title">后端技术</h3>
+                            <ul>
+                                <li>SpringBoot</li>
+                                <li>Mybatis</li>
+                                <li>··· ···</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="layui-timeline-item">
+                        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                        <div class="layui-timeline-content layui-text">
+                            <h3 class="layui-timeline-title">前端技术</h3>
+                            <ul>
+                                <li>一些前端技术 模板信息等</li>
+                                <li>··· ···</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+            <h1 class="layui-colla-title">版本信息</h1>
+            <div class="layui-colla-content layui-show">
+                <ul class="layui-timeline max-auto">
+                    <li class="layui-timeline-item">
+                        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                        <div class="layui-timeline-content layui-text">
+                            <h3 class="layui-timeline-title">v1.8.0</h3>
+                            <p>
+                                更新日期:2017-08-26
+                            </p>
+                            <ul>
+                                <li>更新layui-v1.0.9为layui-v2.0.2版本</li>
+                                <li>右键增加关闭全部标签按钮</li>
+                                <li>更新欢迎页面</li>
+                                <li>更新data-table页面和tree-table页面为layui自带table组件</li>
+                                <li>
+                                    <h4>新增js功能</h4>
+                                    <ul>
+                                        <li>
+                                            <p>vip_table.js</p>
+                                            <ul>
+                                                <li>getFullHeight方法  getFullHeight();    // 返回子页面整体高度,用于table组件设置全屏高度</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>修改已知BUG</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="layui-timeline-item">
+                        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                        <div class="layui-timeline-content layui-text">
+                            <h3 class="layui-timeline-title">v1.7.0</h3>
+                            <p>更新时间:2017-05-21</p>
+                            <ul>
+                                <li>优化主题样式细节</li>
+                                <li>标签新增双击关闭当前标签功能</li>
+                                <li>标签新增右键功能</li>
+                                <li>
+                                    <h5>新增js功能。   详细可查看【frame/static/js】文件夹内的js</h5>
+                                    <ul>
+                                        <li>
+                                            <h4>vip_nav.js 【主页菜单js】</h4>
+                                            <ul>
+                                                <li>main方法       main(请求地址,过滤ID,是否展开,携带参数);</li>
+                                                <li>top_left方法   top_left(请求地址,过滤ID,是否展开,携带参数);</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <h4>vip_tab.js 【子页面操作父页面选项卡js】</h4>
+                                            <ul>
+                                                <li>add方法            add(操作对象，标签标题，url地址);</li>
+                                                <li>getThisTabId方法   getThisTabId();     // 返回当前展示页面父级窗口标签的lay-id</li>
+                                                <li>del方法            del(标签lay-id);</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <h4>vip_table.js 【表格js,该js属于整合】</h4>
+                                            <ul>
+                                                <li>deleteAll方法      deleteAll(ids,请求的url,操作成功跳转url,操作失败跳转url);</li>
+                                                <li>unixToDate方法     unixToDate(时间戳,是否只显示年月日时分,8);        // 返回正常时间</li>
+                                                <li>getIds方法         getIds(表格对象,每条数据的属性id);      // 返回需要的 ids</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>修改已知BUG。</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="layui-timeline-item">
+                        <i class="layui-icon layui-timeline-axis">&#xe63f;</i>
+                        <div class="layui-timeline-content layui-text">
+                            <div class="layui-timeline-title">开始于2017年01月06日</div>
+                        </div>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+</body>
+</html>

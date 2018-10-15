@@ -30,7 +30,7 @@ public class UserServiceImpl  implements UserService {
 
     @Override
     public int updateSelective(User user) {
-        return 0;
+        return userWriteMapper.updateSelective(user);
     }
 
     @Override
@@ -45,7 +45,7 @@ public class UserServiceImpl  implements UserService {
 
     @Override
     public int deleteById(String id) {
-        return 0;
+        return userWriteMapper.deleteById(id);
     }
 
     @Override

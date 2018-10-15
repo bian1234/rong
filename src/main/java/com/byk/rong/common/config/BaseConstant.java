@@ -32,4 +32,8 @@ public class BaseConstant {
     */
     public static String TOP_MENU_PARIENT_ID = "0";
 
+    /**
+     *  用户自行注册的创建者信息
+     */
+    public static String REGISTER_BY_ONESELF = "00000000000000000000000000000000";
 }

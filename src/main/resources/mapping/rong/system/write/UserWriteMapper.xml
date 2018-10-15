@@ -30,7 +30,7 @@
     sex, pictrue, status, city_id, hobby, remarks, create_user, create_time, update_user, 
     update_time, delete_user, delete_time, del_flag
   </sql>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+  <delete id="deleteById" parameterType="java.lang.String">
     delete from user
     where id = #{id,jdbcType=VARCHAR}
   </delete>
@@ -194,7 +194,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.byk.rong.system.entity.User">
+  <update id="updateSelective" parameterType="com.byk.rong.system.entity.User">
     update user
     <set>
       <if test="userName != null">
