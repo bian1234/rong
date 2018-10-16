@@ -5668,15 +5668,7 @@ del {
         opacity: 0;
     }
 }
-/*
- *  Usage:
- *
- *    <div class="sk-spinner sk-spinner-chasing-dots">
- *      <div class="sk-dot1"></div>
- *      <div class="sk-dot2"></div>
- *    </div>
- *
- */
+
 .sk-spinner-chasing-dots.sk-spinner {
     margin: 0 auto;
     width: 40px;
