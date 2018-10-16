@@ -10,7 +10,10 @@
     <link rel="stylesheet" href="./frame/static/css/style.css">
     <link rel="icon" href="./frame/static/image/code.png">
      <!--Bootstrap -->
-    <!--<link href="./bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">-->
+    <!--<link href="/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">-->
+    <!--<link href="/layui/css/layui.css" rel="stylesheet" media="screen">-->
+
+
 </head>
 <body>
 
@@ -53,9 +56,9 @@
                 <!--<div> <a  th:text="${user.userName}"></a> </div>-->
                 <a href="javascript:;" class="name"> <img src="./frame/static/image/code.png" alt="logo">这里是用户名</a>
                 <dl class="layui-nav-child">
-                    <dd><a  href="/lock"><i class="layui-icon">&#xe621;</i>锁屏</a></dd>
-                    <dd><a  href="/logout"><i class="layui-icon">&#x1006;</i>退出</a></dd>
-                    <dd><a  href-url="demo/map.html"><i class="layui-icon">&#xe621;</i>个人中心</a></dd>
+                    <dd><a  href="/lock"><i class="layui-icon layui-icon-password"></i>锁屏</a></dd>
+                    <dd><a  href="/logout"><i class="layui-icon layui-icon-close"></i>退出</a></dd>
+                    <dd><a  href-url="demo/map.html"><i class="layui-icon layui-icon-user"></i>个人中心</a></dd>
                 </dl>
             </li>
         </ul>

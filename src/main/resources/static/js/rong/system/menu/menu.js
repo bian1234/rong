@@ -2,6 +2,8 @@ var prefix = "/system/menu"
 $(document).ready(function () {
     load();
 });
+
+//  这里使用到了treegird 表格插件
 var load = function () {
     $('#exampleTable')
         .bootstrapTreeTable(
@@ -12,23 +14,26 @@ var load = function () {
                 type: "GET", // 请求数据的ajax类型
                 url: prefix + '/list', // 请求数据的ajax的url
                 ajaxParams: {offset:0,limit:10}, // 请求数据的ajax的data属性
-                expandColumn: '1',// 在哪一列上面显示展开按钮
+                expandColumn: '0',// 在哪一列上面显示展开按钮
                 striped: true, // 是否各行渐变色
                 bordered: true, // 是否显示边框
                 expandAll: false, // 是否全部展开
-                // toolbar : '#exampleToolbar',
+               // toolbar : '#exampleToolbar',  //顶部工具条
+                expanderExpandedClass: 'layui-icon layui-icon-down', // 展开的按钮的图标
+                expanderCollapsedClass: 'layui-icon layui-icon-right' ,// 缩起的按钮的图标
                 columns: [
-                    {
-                        title: '编号',
-                        field: 'id',
-                        visible: false,
-                        align: 'center',
-                        valign: 'center',
-                        width: '5%'
-                    },
+                    // {
+                    //     title: '编号',
+                    //     field: 'id',
+                    //     visible: true,
+                    //     align: 'center',
+                    //     valign: 'center',
+                    //     width: '5%'
+                    // },
                     {
                         title: '名称',
                         valign: 'center',
+                        visible: false,
                         field: 'name',
                         width: '20%'
                     },
@@ -39,10 +44,9 @@ var load = function () {
                         align: 'center',
                         valign: 'center',
                         width : '5%',
-                        formatter: function (item, index) {
-                            return item.icon == null ? ''
-                                : '<i class="' + item.icon
-                                + ' fa-lg"></i>';
+                        formatter: function (item, index) {           // 格式化数据
+                            // return item.icon == null ? '': '<i class="layui-icon' + item.icon +' "></i>';
+                            return item.icon == null ? '': '<i class="layui-icon'+item.icon+'"></i>';
                         }
                     },
                     {
