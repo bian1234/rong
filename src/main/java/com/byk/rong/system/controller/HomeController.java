@@ -127,6 +127,12 @@ public class HomeController   extends BaseController{
         return "redirect:/login";
     }
 
+
+    /**
+     *  第一次写 ，没经验
+     *  这个接口属于系统用户的
+     *  所以换个地方玩
+     */
 //    /**
 //     *@Author:      ykbian
 //     *@date_time:   2018/9/27 10:38
