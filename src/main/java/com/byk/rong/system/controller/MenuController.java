@@ -164,9 +164,6 @@ public class MenuController  extends BaseController {
     */
     @GetMapping("add/{pId}")
     public  String  add(Model model, @PathVariable("pId") String pId) {
-        System.out.println("+++++++++++++++++++++++++++++++++++++");
-        System.out.println("+++++++++++++++++++++++++++++++++++++");
-
         //父节点
         model.addAttribute("pId", pId);
         // 查找父菜单的名称
