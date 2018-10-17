@@ -153,6 +153,7 @@ public class MenuController  extends BaseController {
     */
     @GetMapping("")
     public  String  listAllMenu() {
+        logger.info("跳转菜单界面");
        return "system/menu/menu";
     }
 
