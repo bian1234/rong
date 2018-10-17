@@ -34,9 +34,9 @@
                     class="fa fa-envelope-o fa-2x"></i></a>
             <a href="rong/message-task.html" class="btn btn-primary" title="新任务"><b>40 </b><i
                     class="fa fa-bars fa-2x"></i></a>
-            <a href="javascript:;" class="btn btn-danger" title="全屏显示" onclick="enterFullScreen();"><i class="fa fa-exclamation-circle fa-2x"></i></a>
-            <a href="/lock" class="btn btn-primary" title="锁屏离开"><i class="fa fa-exclamation-circle fa-2x"></i></a>
-            <a href="/logout" class="btn btn-warning" title="退出登录"><i class="fa fa-exclamation-circle fa-2x"></i></a>
+            <a href="javascript:;" class="btn btn-danger" title="全屏显示" onclick="enterFullScreen();"><i class="glyphicon glyphicon-modal-window"></i></a>
+            <a href="/lock" class="btn btn-primary" title="锁屏离开"><i class="glyphicon glyphicon-lock"></i></a>
+            <a href="/logout" class="btn btn-warning" title="退出登录"><i class="glyphicon glyphicon-remove"></i></a>
         </div>
     </nav>
     <!-- /左边菜单栏开始  -->
@@ -61,7 +61,7 @@
                     <a href="#" ><i class="fa fa-desktop " th:class="${menu.attributes.icon}"></i><span th:text="${menu.text}"></span> <span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li th:each="cmenu : ${menu.children}">
-                            <a  th:src="${cmenu.attributes.url}"><i th:class="${menu.attributes.icon}"></i><span  th:text="${cmenu.text}"></span></a>
+                            <a  th:href="${cmenu.attributes.url}" target="myIframe"><i th:class="${menu.attributes.icon}"></i><span  th:text="${cmenu.text}"></span></a>
                         </li>
                     </ul>
                 </li>
@@ -71,7 +71,7 @@
     <!-- /左边菜单栏结束  -->
     <div id="page-wrapper">
         <div id="page-inner">
-            <iframe class="J_iframe" name="iframe0" width="100%" height="100%"
+            <iframe class="J_iframe" name="myIframe" width="100%" height="100%"
                     src="" th:src="@{/main}" frameborder="0" data-id="index.html" seamless></iframe>
         </div>
         <!-- /. PAGE INNER  -->
