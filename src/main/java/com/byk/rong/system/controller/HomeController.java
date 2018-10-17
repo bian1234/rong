@@ -82,7 +82,7 @@ public class HomeController   extends BaseController{
    */
     @GetMapping("/login")
     public String login() {
-        return "/system/login2.html";
+        return "/system/login";
     }
 
    /**
