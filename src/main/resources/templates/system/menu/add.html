@@ -16,69 +16,64 @@
     <link href="/font-awesome/css/font-awesome.css" rel="stylesheet"/>
     <!--<link href='http://fonts.useso.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>-->
 </head>
-<body >
+<body style="color: #CDCDCD">
 
-                <div class="widget-box" style="height: 100%;border: 0px">
-                        <form action="#" method="get" class="form-horizontal">
-                            <input class="id" name="id" type="hidden" th:value="${pId}"/>
-                            <div class="controls-row">
-                                <label class="control-label span4 m-wrap">上级菜单 :</label>
-                                <div class="controls ">
-                                    <input type="text" class="span8 m-wrap" th:value="${pName}" readonly />
-                                </div>
-                            </div>
-                            <div class="controls-row">
-                                <label class="control-label span4 m-wrap">菜单名称 :</label>
-                                <div class="controls ">
-                                    <input type="text" class="span8 m-wrap" placeholder="菜单名称"/>
-                                </div>
-                            </div>
-                            <div class="controls-row">
-                                <label class="control-label span4 m-wrap">链接 :</label>
-                                <div class="controls ">
-                                    <input type="text" class="span8 m-wrap" placeholder="比如：/system/menu/add"/>
-                                </div>
-                            </div>
-                            <div class="controls-row">
-                                <label class="control-label span4 m-wrap">权限信息 :</label>
-                                <div class="controls ">
-                                    <input type="text" class="span8 m-wrap" placeholder="比如：system:menu:add"/>
-                                </div>
-                            </div>
+<div class="widget-box" style="height: 100%;border: 0px;">
+    <form action="#" method="get" class="form-horizontal">
+        <input class="id" name="id" type="hidden" th:value="${pId}"/>
+        <div class="controls-row">
+            <label class="control-label span4 m-wrap">上级菜单 :</label>
+            <div class="controls ">
+                <input type="text" class="span8 m-wrap" th:value="${pName}" readonly/>
+            </div>
+        </div>
+        <div class="controls-row">
+            <label class="control-label span4 m-wrap">菜单名称 :</label>
+            <div class="controls ">
+                <input type="text" class="span8 m-wrap" placeholder="菜单名称"/>
+            </div>
+        </div>
+        <div class="controls-row">
+            <label class="control-label span4 m-wrap">链接 :</label>
+            <div class="controls ">
+                <input type="text" class="span8 m-wrap" placeholder="比如：/system/menu/add"/>
+            </div>
+        </div>
+        <div class="controls-row">
+            <label class="control-label span4 m-wrap">权限信息 :</label>
+            <div class="controls ">
+                <input type="text" class="span8 m-wrap" placeholder="比如：system:menu:add"/>
+            </div>
+        </div>
 
-                            <div class="controls-row">
-                                <label class="control-label span4 m-wrap">类型 :</label>
-                                <div class="controls">
-                                    <input type="radio" name="radios" value="0" />目录
-                                   <input type="radio" name="radios" value="1"/> 菜单
-                                    <input type="radio" name="radios" value="2"/> 按钮
-                                </div>
-                            </div>
-                            <div class="controls-row">
-                                <label class="control-label span4 m-wrap">排序 :</label>
-                                <div class="controls ">
-                                    <input type="text" class="span8 m-wrap" placeholder="数字形式：0排在1前"/>
-                                </div>
-                            </div>
-                            <div class="controls-row">
-                                <label class="control-label span4 m-wrap">图标 :</label>
-                                <div class="controls form-inline">
-                                    <input type="text" class="span6 m-wrap" placeholder="图标"/>
-                                    <span type="submit" class="span2 m-wrap">选择图标</span>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputPassword2" class="sr-only">Password</label>
-                                <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
-                            </div>
-                            <button type="submit" class="btn btn-default">Confirm identity</button>
-                            <div class="controls-row " >
-                                <button type="submit" class="btn btn-success span6 m-wrap">确认</button>
-                                <button type="submit" class="btn btn-danger span1 m-wrap">取消</button>
-                            </div>
-                        </form>
-                </div>
-
+        <div class="controls-row">
+            <label class="control-label span4 m-wrap">类型 :</label>
+            <div class="controls">
+                <label><input type="radio" name="type" value="0" checked/>目录</label>
+                <label><input type="radio" name="type" value="1"/> 菜单</label>
+                <label><input type="radio" name="type" value="2"/> 按钮</label>
+            </div>
+        </div>
+        <div class="controls-row">
+            <label class="control-label span4 m-wrap">排序 :</label>
+            <div class="controls ">
+                <input type="text" class="span8 m-wrap" name="orderNum" placeholder="数字形式：0排在1前"/>
+            </div>
+        </div>
+        <div class="controls-row">
+            <label class="control-label span4 m-wrap">图标 :</label>
+            <div class="controls form-inline">
+                <input type="text" class="span7 m-wrap" placeholder="图标"/>
+                <button type="button" id="ico-btn" class="btn btn-info">选择</button>
+            </div>
+        </div>
+        <div class="controls-row">
+        </div>
+        <div class="controls-row " align="center">
+            <button type="" class="btn btn-success">确认</button>
+        </div>
+    </form>
+</div>
 
 
 <!--end-Footer-part-->
@@ -96,6 +91,8 @@
 <script src="/js/wysihtml5-0.3.0.js"></script>
 <script src="/js/jquery.peity.min.js"></script>
 <script src="/js/bootstrap-wysihtml5.js"></script>
+<script src="/js/rong/system/menu/add.js"></script>
+
 <script>
     $('.textarea_editor').wysihtml5();
 </script>

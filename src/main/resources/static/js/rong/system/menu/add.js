@@ -1,12 +1,15 @@
-var prefix = "/system/menu"
+var prefix = "/system/menu";
+
+
 $(function() {
-	validateRule();
-	//打开图标列表
+    // validateRule();
+    //打开图标列表
     $("#ico-btn").click(function(){
+    	alert("打开图标页面");
         layer.open({
             type: 2,
-			title:'图标列表',
-            content: '/FontIcoList.html',
+            title:'图标列表',
+            content: '/system/menu/FontIcoList.html',
             area: ['480px', '90%'],
             success: function(layero, index){
                 //var body = layer.getChildFrame('.ico-list', index);

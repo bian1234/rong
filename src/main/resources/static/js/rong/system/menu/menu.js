@@ -71,13 +71,19 @@ var load = function () {
                         title: '地址',
                         valign: 'center',
                         width : '20%',
-                        field: 'url'
+                        field: 'url',
+                        formatter: function (item, index) {           // 格式化数据
+                            return item.url == null ? '': item.url;
+                        }
                     },
                     {
                         title: '权限标识',
                         valign: 'center',
                         width : '20%',
-                        field: 'perms'
+                        field: 'perms',
+                        formatter: function (item, index) {           // 格式化数据
+                            return item.perms == null ? '': item.perms;
+                        }
                     },
                     {
                         title: '操作',
