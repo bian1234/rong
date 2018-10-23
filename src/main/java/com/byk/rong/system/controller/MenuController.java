@@ -75,6 +75,7 @@ public class MenuController  extends BaseController {
     @ResponseBody
     @PostMapping("update")
     public Map update(Menu menu){
+        System.out.println("================"+menu);
         /**
          *  如果这里传入的菜单信息不存在，也就是根据id找不到这数据，直接返回失败。
          *  但是，如果数据已经删除，也就是不存在的话，前端获取不到这条数据的信息，也就不会传入这个数据的id，因此不用查询校验。

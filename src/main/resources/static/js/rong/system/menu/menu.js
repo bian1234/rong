@@ -45,8 +45,7 @@ var load = function () {
                         valign: 'center',
                         width : '5%',
                         formatter: function (item, index) {           // 格式化数据
-                            // return item.icon == null ? '': '<i class="layui-icon' + item.icon +' "></i>';
-                            return item.icon == null ? '': '<i class="layui-icon'+item.icon+'"></i>';
+                            return item.icon == null ? '': '<i class="icon '+item.icon+'"></i>';
                         }
                     },
                     {
@@ -73,7 +72,7 @@ var load = function () {
                         width : '20%',
                         field: 'url',
                         formatter: function (item, index) {           // 格式化数据
-                            return item.url == null ? '': item.url;
+                            return item.url == null ? '--': item.url;
                         }
                     },
                     {
@@ -82,7 +81,7 @@ var load = function () {
                         width : '20%',
                         field: 'perms',
                         formatter: function (item, index) {           // 格式化数据
-                            return item.perms == null ? '': item.perms;
+                            return item.perms == null ? '--': item.perms;
                         }
                     },
                     {
@@ -131,7 +130,6 @@ function remove(id) {
     layer.confirm('确定要删除选中的记录？', {
         btn: ['确定', '取消']
     }, function () {
-        alert("要删除的id是"+id);
         $.ajax({
             url: prefix + "/delete",
             type: "post",

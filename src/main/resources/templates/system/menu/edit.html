@@ -19,8 +19,9 @@
 <body style="color: #CDCDCD">
 
 <div class="widget-box" style="height: 100%;border: 0px;">
-    <form action="#" method="get" class="form-horizontal">
-        <input class="id" name="parentId" type="hidden" th:value="${pId}"/>
+    <form class="form-horizontal"  id="signupForm">
+        <input class="id" name="id" type="hidden" th:value="${menu.id}"/>
+        <input class="parentId" name="parentId" type="hidden" th:value="${pId}"/>
         <div class="controls-row">
             <label class="control-label span4 m-wrap">上级菜单 :</label>
             <div class="controls ">
@@ -64,13 +65,13 @@
             <label class="control-label span4 m-wrap">图标 :</label>
             <div class="controls form-inline">
                 <input type="text" class="span7 m-wrap" id="myIcon" name="icon"  th:value="${menu.icon}"  placeholder="图标"/>
-                <button type="button" id="ico-btn" class="btn btn-info">选择</button>
+                <button type="button" id="ico-btn" class="btn btn-info" onclick="choseIcon();">选择</button>
             </div>
         </div>
         <div class="controls-row">
         </div>
         <div class="controls-row " align="center">
-            <button type="" class="btn btn-success">确认</button>
+            <button type="" class="btn btn-success" onclick="update();">确认</button>
         </div>
     </form>
 </div>
@@ -78,21 +79,21 @@
 
 <!--end-Footer-part-->
 <script src="/js/jquery.min.js"></script>
-<!--<script src="/js/jquery.ui.custom.js"></script>-->
-<!--<script src="/js/bootstrap.min.js"></script>-->
-<!--<script src="/js/bootstrap-colorpicker.js"></script>-->
-<!--<script src="/js/bootstrap-datepicker.js"></script>-->
-<!--&lt;!&ndash;<script src="/js/jquery.toggle.buttons.html"></script>&ndash;&gt;-->
-<!--&lt;!&ndash;<script src="/js/masked.js"></script>&ndash;&gt;-->
-<!--<script src="/js/jquery.uniform.js"></script>-->
-<!--<script src="/js/select2.min.js"></script>-->
-<!--&lt;!&ndash;<script src="/js/matrix.js"></script>&ndash;&gt;-->
-<!--&lt;!&ndash;<script src="/js/matrix.form_common.js"></script>&ndash;&gt;-->
-<!--<script src="/js/wysihtml5-0.3.0.js"></script>-->
-<!--<script src="/js/jquery.peity.min.js"></script>-->
-<!--<script src="/js/bootstrap-wysihtml5.js"></script>-->
+<script src="/js/jquery.ui.custom.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap-colorpicker.js"></script>
+<script src="/js/bootstrap-datepicker.js"></script>
+<script src="/js/jquery.toggle.buttons.html"></script>
+<script src="/js/masked.js"></script>
+<script src="/js/jquery.uniform.js"></script>
+<script src="/js/select2.min.js"></script>
+<script src="/js/matrix.js"></script>
+<script src="/js/matrix.form_common.js"></script>
+<script src="/js/wysihtml5-0.3.0.js"></script>
+<script src="/js/jquery.peity.min.js"></script>
+<script src="/js/bootstrap-wysihtml5.js"></script>
 <script src="/myplugins/layer/layer.js"></script>
-<script type="javascript" src="/js/rong/system/menu/add.js"></script>
+<script src="/js/rong/system/menu/edit.js"></script>
 
 <script>
     $('.textarea_editor').wysihtml5();
