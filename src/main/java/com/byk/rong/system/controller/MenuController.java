@@ -188,8 +188,7 @@ public class MenuController  extends BaseController {
         Menu menu = menuService.selectById(id);
         String pId = menu.getParentId();
         model.addAttribute("pId", pId);
-        // 如果pid是“0”的话，则为一级菜单，其父菜单为"根目录"
-        if (BaseConstant.TOP_MENU_PARIENT_ID.equals(pId)) {
+        if (pId.equals(BaseConstant.TOP_MENU_PARIENT_ID)) {
             model.addAttribute("pName", "根目录");
         } else {
             model.addAttribute("pName", menuService.selectById(pId).getName());
