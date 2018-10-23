@@ -516,10 +516,22 @@ hr{ border-top-color:#dadada;}
 	border-top: 1px solid #CDCDCD;
 	border-right: 1px solid #CDCDCD;
 	clear: both;
-	margin-top: 16px;
-	margin-bottom: 16px;
+	margin-top: 0px;
+	margin-bottom: 0px;
 	position: relative;
 }
+
+.widget-box01 {
+	background: none repeat scroll 0 0 #F9F9F9;
+	border-left: 0px solid #CDCDCD;
+	border-top: 0px solid #CDCDCD;
+	border-right: 0px solid #CDCDCD;
+	clear: both;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	position: relative;
+}
+
 .widget-box.widget-calendar, .widget-box.widget-chat {
 	overflow:hidden !important;
 }
@@ -1241,6 +1253,23 @@ form {
 	-o-transition:0.3s;
 	margin-left:8px;
 }
+
+/*菜单列表中选择图标*/
+
+.btn-icon-pg01 ul {
+	margin:0px;
+	padding:0px;
+}
+.btn-icon-pg01 ul li {
+	margin:5px;
+	padding:5px;
+	list-style:none;
+	display:inline-block;
+	border:1px solid #dadada;
+	/*min-width:10px;*/
+	cursor:pointer
+}
+
 .accordion {
 	margin-top:16px;
 }

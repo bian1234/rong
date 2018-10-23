@@ -20,7 +20,7 @@
 
 <div class="widget-box" style="height: 100%;border: 0px;">
     <form action="#" method="get" class="form-horizontal">
-        <input class="id" name="id" type="hidden" th:value="${pId}"/>
+        <input class="id" name="parentId" type="hidden" th:value="${pId}"/>
         <div class="controls-row">
             <label class="control-label span4 m-wrap">上级菜单 :</label>
             <div class="controls ">
@@ -30,19 +30,19 @@
         <div class="controls-row">
             <label class="control-label span4 m-wrap">菜单名称 :</label>
             <div class="controls ">
-                <input type="text" class="span8 m-wrap" placeholder="菜单名称"/>
+                <input type="text" class="span8 m-wrap" name="name" placeholder="菜单名称"/>
             </div>
         </div>
         <div class="controls-row">
             <label class="control-label span4 m-wrap">链接 :</label>
             <div class="controls ">
-                <input type="text" class="span8 m-wrap" placeholder="比如：/system/menu/add"/>
+                <input type="text" class="span8 m-wrap" name="url" placeholder="比如：/system/menu/add"/>
             </div>
         </div>
         <div class="controls-row">
             <label class="control-label span4 m-wrap">权限信息 :</label>
             <div class="controls ">
-                <input type="text" class="span8 m-wrap" placeholder="比如：system:menu:add"/>
+                <input type="text" class="span8 m-wrap" name="perms" placeholder="比如：system:menu:add"/>
             </div>
         </div>
 
@@ -63,7 +63,7 @@
         <div class="controls-row">
             <label class="control-label span4 m-wrap">图标 :</label>
             <div class="controls form-inline">
-                <input type="text" class="span7 m-wrap" placeholder="图标"/>
+                <input type="text" class="span7 m-wrap" id="myIcon" name="icon" placeholder="图标"/>
                 <button type="button" id="ico-btn" class="btn btn-info">选择</button>
             </div>
         </div>
@@ -91,10 +91,14 @@
 <script src="/js/wysihtml5-0.3.0.js"></script>
 <script src="/js/jquery.peity.min.js"></script>
 <script src="/js/bootstrap-wysihtml5.js"></script>
+<script src="/myplugins/layer/layer.js"></script>
 <script src="/js/rong/system/menu/add.js"></script>
 
 <script>
     $('.textarea_editor').wysihtml5();
+
+
+
 </script>
 </body>
 </html>

@@ -226,4 +226,15 @@ public class MenuController  extends BaseController {
         Tree<Menu> tree = menuService.getTree(userId);
         return tree;
     }
+
+    /**
+     *@Author:      ykbian
+     *@date_time:   2018/10/22 17:06
+     *@Description: 跳转图标界面
+     *@param:
+    */
+    @GetMapping("fontIcoList")
+    public String fontIcoList(){
+        return "/system/menu/fontIcoList";
+    }
 }

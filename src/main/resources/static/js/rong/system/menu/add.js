@@ -3,13 +3,12 @@ var prefix = "/system/menu";
 
 $(function() {
     // validateRule();
-    //打开图标列表
+//打开图标列表
     $("#ico-btn").click(function(){
-    	alert("打开图标页面");
         layer.open({
             type: 2,
             title:'图标列表',
-            content: '/system/menu/FontIcoList.html',
+            content: '/system/menu/fontIcoList',
             area: ['480px', '90%'],
             success: function(layero, index){
                 //var body = layer.getChildFrame('.ico-list', index);
@@ -17,6 +16,7 @@ $(function() {
             }
         });
     });
+
 });
 $.validator.setDefaults({
 	submitHandler : function() {
