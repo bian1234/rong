@@ -1,7 +1,7 @@
 package com.byk.rong.system.shiro;
 
 
-import com.byk.rong.common.config.BaseConstant;
+import com.byk.rong.common.config.Constant;
 import com.byk.rong.system.entity.*;
 import com.byk.rong.system.service.*;
 import org.apache.shiro.authc.*;
@@ -11,9 +11,7 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -50,7 +48,7 @@ public class MyShiroRealm extends AuthorizingRealm {
             throw new UnknownAccountException("账号不正确~~~~~~~~~~");
         }
         // 账号锁定
-        if (userInfo.getStatus() == BaseConstant.USER_DISABLE) {
+        if (userInfo.getStatus() == Constant.USER_DISABLE) {
             throw new LockedAccountException("账号已被锁定,请联系管理员");
         }
         //将用户名做盐值

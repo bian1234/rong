@@ -1,13 +1,10 @@
 package com.byk.rong.system.controller;
 
-import com.byk.rong.common.annotation.Log;
-import com.byk.rong.common.config.BaseConstant;
+import com.byk.rong.common.config.Constant;
 import com.byk.rong.common.controller.BaseController;
 import com.byk.rong.common.util.Tree;
 import com.byk.rong.system.entity.Menu;
-import com.byk.rong.system.entity.Role;
 import com.byk.rong.system.service.MenuService;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,7 +39,7 @@ public class MenuController  extends BaseController {
     public Map insert(Menu menu) {
         menu.setCreateTime(new Date());
         menu.setCreateUser(getUserId());
-        menu.setDelFlag(BaseConstant.DEL_FLAG_USER);
+        menu.setDelFlag(Constant.DEL_FLAG_USER);
         if (menuService.insertSelective(menu) > 0){
             return insertSuccseeResponse();
         }return insertFailedResponse();
@@ -56,11 +53,12 @@ public class MenuController  extends BaseController {
     @PostMapping("delete")
     @ResponseBody
     public Map delete(String id) {
+        System.out.println("要删除的id是"+id);
         Menu menu = menuService.selectById(id);
         if (menu == null){
             return deleteFailedResponse();
         }
-        menu.setDelFlag(BaseConstant.DEL_FLAG_DISUSER);
+        menu.setDelFlag(Constant.DEL_FLAG_DISUSER);
         menu.setDeleteTime(new Date());
         menu.setDeleteUser(getUserId());
         if (menuService.updateSelective(menu) > 0){
@@ -79,7 +77,7 @@ public class MenuController  extends BaseController {
     public Map update(Menu menu){
         /**
          *  如果这里传入的菜单信息不存在，也就是根据id找不到这数据，直接返回失败。
-         *  但是，如果数据已经删除，也就是不存在的话，前端获取不到这条数据的信息，也就不会传入这个数据的id，因为不用查询校验。
+         *  但是，如果数据已经删除，也就是不存在的话，前端获取不到这条数据的信息，也就不会传入这个数据的id，因此不用查询校验。
          */
         if (menuService.selectById(menu.getId()) == null){
             return updateFailedResponse();
@@ -119,7 +117,7 @@ public class MenuController  extends BaseController {
     public Map deleteBatch(String[] ids) {
         for (String id:ids) {
             Menu menu = menuService.selectById(id);
-            menu.setDelFlag(BaseConstant.DEL_FLAG_DISUSER);
+            menu.setDelFlag(Constant.DEL_FLAG_DISUSER);
             menu.setDeleteTime(new Date());
             menu.setDeleteUser(getUserId());
             menuService.updateSelective(menu);
@@ -168,8 +166,8 @@ public class MenuController  extends BaseController {
         //父节点
         model.addAttribute("pId", pId);
         // 查找父菜单的名称
-        if (BaseConstant.TOP_MENU_PARIENT_ID.equals(pId)) {
-            model.addAttribute("pName", "根目录");
+        if (Constant.TOP_MENU_PARIENT_ID.equals(pId)) {
+            model.addAttribute("pName", Constant.TOP_MENU_NAME);
         } else {
             model.addAttribute("pName", menuService.selectById(pId).getName());
         }
@@ -188,8 +186,8 @@ public class MenuController  extends BaseController {
         Menu menu = menuService.selectById(id);
         String pId = menu.getParentId();
         model.addAttribute("pId", pId);
-        if (pId.equals(BaseConstant.TOP_MENU_PARIENT_ID)) {
-            model.addAttribute("pName", "根目录");
+        if (pId.equals(Constant.TOP_MENU_PARIENT_ID)) {
+            model.addAttribute("pName", Constant.TOP_MENU_NAME);
         } else {
             model.addAttribute("pName", menuService.selectById(pId).getName());
         }

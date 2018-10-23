@@ -1,6 +1,6 @@
 package com.byk.rong.system.controller;
 
-import com.byk.rong.common.config.BaseConstant;
+import com.byk.rong.common.config.Constant;
 import com.byk.rong.common.controller.BaseController;
 
 import com.byk.rong.common.util.SaltUtil;
@@ -74,8 +74,8 @@ public class UserController extends BaseController {
         user.setSalt(saltStr);
         user.setPassword(newPs);
         user.setCreateTime(new Date());
-        user.setDelFlag(BaseConstant.DEL_FLAG_USER);
-        user.setStatus(BaseConstant.USER_NORMALITY);
+        user.setDelFlag(Constant.DEL_FLAG_USER);
+        user.setStatus(Constant.USER_NORMALITY);
         if (userService.insertSelective(user) > 0) {
             return insertSuccseeResponse();
         }
@@ -108,7 +108,7 @@ public class UserController extends BaseController {
     @PostMapping("cancel")
     public Map cancel(String id) {
         User user = userService.selectById(id);
-        user.setDelFlag(BaseConstant.DEL_FLAG_DISUSER);
+        user.setDelFlag(Constant.DEL_FLAG_DISUSER);
         user.setDeleteUser(getUserId());
         user.setDeleteTime(new Date());
         if (userService.updateSelective(user) > 0) {
@@ -142,9 +142,9 @@ public class UserController extends BaseController {
         user.setSalt(saltStr);
         user.setPassword(newPs);
         user.setCreateTime(new Date());
-        user.setDelFlag(BaseConstant.DEL_FLAG_USER);
-        user.setStatus(BaseConstant.USER_NORMALITY);
-        user.setCreateUser(BaseConstant.REGISTER_BY_ONESELF);
+        user.setDelFlag(Constant.DEL_FLAG_USER);
+        user.setStatus(Constant.USER_NORMALITY);
+        user.setCreateUser(Constant.REGISTER_BY_ONESELF);
         if (userService.insertSelective(user) > 0){
             return insertSuccseeResponse();
         }

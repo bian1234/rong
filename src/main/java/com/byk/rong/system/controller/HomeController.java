@@ -1,29 +1,21 @@
 package com.byk.rong.system.controller;
 
-import com.alibaba.fastjson.serializer.ASMSerializerFactory;
-import com.byk.rong.common.config.BaseConstant;
 import com.byk.rong.common.controller.BaseController;
-import com.byk.rong.common.util.SaltUtil;
 import com.byk.rong.common.util.Tree;
 import com.byk.rong.system.entity.Menu;
 import com.byk.rong.system.entity.User;
 import com.byk.rong.system.service.MenuService;
 import com.byk.rong.system.service.UserService;
-import org.apache.ibatis.annotations.Param;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.subject.Subject;
-import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -158,8 +150,8 @@ public class HomeController   extends BaseController{
 //        user.setSalt(saltStr);
 //        user.setPassword(newPs);
 //        user.setCreateTime(new Date());
-//        user.setDelFlag(BaseConstant.DEL_FLAG_USER);
-//        user.setStatus(BaseConstant.USER_NORMALITY);
+//        user.setDelFlag(Constant.DEL_FLAG_USER);
+//        user.setStatus(Constant.USER_NORMALITY);
 //        if (userService.insertSelective(user) > 0){
 //            return insertSuccseeResponse();
 //        }

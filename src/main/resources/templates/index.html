@@ -67,13 +67,15 @@
       </ul>
     </li>
     <li class="submenu" th:each="menu : ${menus}">
-      <a href="#"><i th:class="${menu.attributes.icon}"></i> <span th:text="${menu.text}"></span><span class="icon icon-home"></span></a>
+      <a href="#"><i th:class="${menu.attributes.icon}"></i> <span th:text="${menu.text}"></span></span></a>
       <ul>
         <li th:each="cmenu : ${menu.children}">
-          <a th:href="${cmenu.attributes.url}" target="myIframe"> <i th:class="${menu.attributes.icon}"> </i><span th:text="${cmenu.text}"></span></a>
+          <a th:href="${cmenu.attributes.url}" target="myIframe"></i><span th:text="${cmenu.text}"></span></a>
         </li>
       </ul>
     </li>
+
+
     <li class="content"> <span>月宽带使用</span>
       <div class="progress progress-mini progress-danger active progress-striped">
         <div style="width: 77%;" class="bar"></div>
@@ -96,7 +98,7 @@
 <div id="content">
 <!--导航栏开始-->
   <div id="content-header">
-    <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
+    <div id="breadcrumb"> <a href="index.html" title="返回首页" class="tip-bottom"><i class="icon-home"></i> 首页</a></div>
   </div>
 <!--导航栏结束-->
 
@@ -113,7 +115,7 @@
 <!--Footer-part-->
 
 <div class="row-fluid">
-  <div id="footer" class="span12"> 2013 &copy; Matrix Admin. More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a> </div>
+  <div id="footer" class="span12"> 2019 &copy; 稚子候门</div>
 </div>
 
 <!--end-Footer-part-->

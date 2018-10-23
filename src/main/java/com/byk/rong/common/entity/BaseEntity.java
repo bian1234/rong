@@ -1,6 +1,6 @@
 package com.byk.rong.common.entity;
 
-import com.byk.rong.common.config.BaseConstant;
+import com.byk.rong.common.config.Constant;
 
 import java.io.Serializable;
 
@@ -36,10 +36,10 @@ public class BaseEntity  implements Serializable {
 
     public BaseEntity(Integer offset, Integer limit) {
         if (offset == null){
-            offset = BaseConstant.PAGE_NO;
+            offset = Constant.PAGE_NO;
         }
         if (limit == null){
-            limit = BaseConstant.PAGE_SIZE;
+            limit = Constant.PAGE_SIZE;
         }
         this.offset = offset;
         this.limit = limit;

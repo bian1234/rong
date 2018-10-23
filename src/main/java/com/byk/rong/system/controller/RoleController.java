@@ -1,8 +1,7 @@
 package com.byk.rong.system.controller;
 
-import com.byk.rong.common.config.BaseConstant;
+import com.byk.rong.common.config.Constant;
 import com.byk.rong.common.controller.BaseController;
-import com.byk.rong.system.entity.Menu;
 import com.byk.rong.system.entity.Role;
 import com.byk.rong.system.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +37,7 @@ public class RoleController  extends BaseController {
     public Map insert(Role role){
         role.setCreateTime(new Date());
         role.setCreateUser(getUserId());
-        role.setDelFlag(BaseConstant.DEL_FLAG_USER);
+        role.setDelFlag(Constant.DEL_FLAG_USER);
         if (roleService.insertSelective(role) > 0){
             return insertSuccseeResponse();
         }
@@ -59,7 +58,7 @@ public class RoleController  extends BaseController {
         if (role == null){
             return  deleteFailedResponse();
         }
-        role.setDelFlag(BaseConstant.DEL_FLAG_DISUSER);
+        role.setDelFlag(Constant.DEL_FLAG_DISUSER);
         if (roleService.updateSelective(role) < 1){
             return deleteFailedResponse();
         }
@@ -84,7 +83,7 @@ public class RoleController  extends BaseController {
             // 这里可能会引发空指针异常
             try {
                 Role role = roleService.selectById(id);
-                role.setDelFlag(BaseConstant.DEL_FLAG_DISUSER);
+                role.setDelFlag(Constant.DEL_FLAG_DISUSER);
                 roleService.updateSelective(role);
             }catch (Exception e){
                 logger.info("批量删除时，出现了空的id:"+id);

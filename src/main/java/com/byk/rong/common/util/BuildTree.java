@@ -1,5 +1,5 @@
 package com.byk.rong.common.util;
-import com.byk.rong.common.config.BaseConstant;
+import com.byk.rong.common.config.Constant;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,7 +26,7 @@ public class BuildTree {
 		for (Tree<T> children : nodes) {
 			// 如果树形结构的父id为“0”，将这个树增加到创建的树中
 			String pid = children.getParentId();
-			if (pid == null || BaseConstant.TOP_MENU_PARIENT_ID.equals(pid)) {
+			if (pid == null || Constant.TOP_MENU_PARIENT_ID.equals(pid)) {
 				topNodes.add(children);
 				continue;
 			}

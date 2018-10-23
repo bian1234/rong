@@ -131,14 +131,15 @@ function remove(id) {
     layer.confirm('确定要删除选中的记录？', {
         btn: ['确定', '取消']
     }, function () {
+        alert("要删除的id是"+id);
         $.ajax({
-            url: prefix + "/remove",
+            url: prefix + "/delete",
             type: "post",
             data: {
                 'id': id
             },
             success: function (data) {
-                if (data.code == 0) {
+                if (data.code == 2000) {
                     layer.msg("删除成功");
                     reLoad();
                 } else {

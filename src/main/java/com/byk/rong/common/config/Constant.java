@@ -6,7 +6,7 @@ package com.byk.rong.common.config;
  * @Todo:    状态信息常量
  */
 
-public class BaseConstant {
+public class Constant {
 
     /**
      *  系统默认的分页信息
@@ -28,9 +28,10 @@ public class BaseConstant {
 
 
    /**
-    *  顶级菜单的父id
+    *  顶级菜单的父id和菜单名称
     */
     public static String TOP_MENU_PARIENT_ID = "0";
+    public static String TOP_MENU_NAME = "顶级菜单";
 
     /**
      *  用户自行注册的创建者信息
