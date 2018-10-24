@@ -72,7 +72,7 @@ var load = function () {
                         width : '20%',
                         field: 'url',
                         formatter: function (item, index) {           // 格式化数据
-                            return item.url == null ? '--': item.url;
+                            return  item.url == null ? '--': item.url;
                         }
                     },
                     {

@@ -14,8 +14,8 @@ spring:
   thymeleaf:
      cache: false
      mode: LEGACYHTML5   #去掉HTML标签校验
-  profiles:
-      active: dev
+#  profiles:
+#      active: dev
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
