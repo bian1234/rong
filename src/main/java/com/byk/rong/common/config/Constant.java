@@ -32,6 +32,17 @@ public class Constant {
     */
     public static String TOP_MENU_PARIENT_ID = "0";
     public static String TOP_MENU_NAME = "顶级菜单";
+    /**
+     *  顶级部门的父id和菜单名称
+     */
+    public static String TOP_DEPT_PARIENT_ID = "0";
+    public static String TOP_DEPT_NAME = "顶级部门";
+    /**
+     *  顶级城市的父id和菜单名称
+     */
+    public static String TOP_CITY_PARIENT_ID = "0";
+    public static String TOP_CITY_NAME = "中国";
+
 
     /**
      *  用户自行注册的创建者信息

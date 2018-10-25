@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Matrix Admin</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-responsive.min.css"/>
+    <link rel="stylesheet" href="/css/colorpicker.css"/>
+    <link rel="stylesheet" href="/css/datepicker.css"/>
+    <link rel="stylesheet" href="/css/uniform.css"/>
+    <link rel="stylesheet" href="/css/select2.css"/>
+    <link rel="stylesheet" href="/css/matrix-style.css"/>
+    <link rel="stylesheet" href="/css/matrix-media.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-wysihtml5.css"/>
+    <link href="/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+    <!--<link href='http://fonts.useso.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>-->
+</head>
+<body style="color: #CDCDCD">
+
+<div class="widget-box" style="height: 100%;border: 0px;">
+    <form  class="form-horizontal"  id="signupForm">
+        <input class="id" name="parentId" type="hidden" th:value="${pId}"/>
+        <div class="controls-row">
+            <label class="control-label span4 m-wrap">上级部门 :</label>
+            <div class="controls ">
+                <input type="text" class="span8 m-wrap" th:value="${pName}" readonly/>
+            </div>
+        </div>
+        <div class="controls-row">
+            <label class="control-label span4 m-wrap">部门名称 :</label>
+            <div class="controls ">
+                <input type="text" class="span8 m-wrap" name="deptName" />
+            </div>
+        </div>
+        <div class="controls-row">
+            <label class="control-label span4 m-wrap">备注信息 :</label>
+            <div class="controls ">
+                <input type="text" class="span8 m-wrap" name="remaks"/>
+            </div>
+        </div>
+
+        <div class="controls-row">
+            <label class="control-label span4 m-wrap">排序 :</label>
+            <div class="controls ">
+                <input type="text" class="span8 m-wrap" name="orderNum" placeholder="数字形式：0排在1前"/>
+            </div>
+        </div>
+
+        <div class="controls-row " align="center">
+            <button type="submit" class="btn btn-success" onclick="submit01();">确认</button>
+        </div>
+    </form>
+</div>
+
+
+<!--end-Footer-part-->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.ui.custom.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap-colorpicker.js"></script>
+<script src="/js/bootstrap-datepicker.js"></script>
+<script src="/js/jquery.toggle.buttons.html"></script>
+<script src="/js/masked.js"></script>
+<script src="/js/jquery.uniform.js"></script>
+<script src="/js/select2.min.js"></script>
+<script src="/js/matrix.js"></script>
+<script src="/js/matrix.form_common.js"></script>
+<script src="/js/wysihtml5-0.3.0.js"></script>
+<script src="/js/jquery.peity.min.js"></script>
+<script src="/js/bootstrap-wysihtml5.js"></script>
+<script src="/myplugins/layer/layer.js"></script>
+<script src="/js/rong/system/dept/add.js"></script>
+
+<script>
+    $('.textarea_editor').wysihtml5();
+
+
+
+</script>
+</body>
+</html>

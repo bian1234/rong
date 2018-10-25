@@ -66,8 +66,8 @@
         <li ><a href="/main" target="myIframe"><i class="icon icon-trophy"></i>了解Rong</a></li>
       </ul>
     </li>
-    <li class="submenu" th:each="menu : ${menus}">
-      <a href="#"><i th:class="${menu.attributes.icon}"></i> <span th:text="${menu.text}"></span></span></a>
+    <li class="submenu" th:each="menu : ${menus}" onclick="switchIcon();">
+      <a href="#"><i th:class="${menu.attributes.icon}"></i> <span th:text="${menu.text}"></span><i class="icon-chevron-right"></i></a>
       <ul>
         <li th:each="cmenu : ${menu.children}">
           <a th:href="${cmenu.attributes.url}" target="myIframe"></i><span th:text="${cmenu.text}"></span></a>
@@ -188,6 +188,9 @@ function resetMenu() {
           de.webkitCancelFullScreen();
       }
   }
+
+  //切换上级菜单的按钮
+
 </script>
 </body>
 </html>
