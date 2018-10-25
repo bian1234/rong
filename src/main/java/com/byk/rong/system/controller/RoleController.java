@@ -6,6 +6,7 @@ import com.byk.rong.system.entity.Role;
 import com.byk.rong.system.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -133,12 +134,46 @@ public class RoleController  extends BaseController {
      *@Description:  查询角色列表
      *@param:
     */
-    @GetMapping("menuList")
+    @GetMapping("/list")
     @ResponseBody
-    public Map menuList(@RequestParam Map<String, Object> map){
-        List<Role> menus = roleService.list(map);
-        if (menus.isEmpty()){
-            return queryEmptyResponse();
-        }return querySuccessResponse(menus);
+    public List<Role> menuList(@RequestParam Map<String, Object> map){
+        List<Role> roles = roleService.list(map);
+       return roles;
+    }
+
+
+    /**
+     *@Author:      ykbian
+     *@date_time:   2018/10/25 14:05
+     *@Description:  跳转角色管理界面
+     *@param:
+    */
+    @GetMapping()
+    public String list(){
+        return "/system/role/role";
+    }
+
+    /**
+     *@Author:      ykbian
+     *@date_time:   2018/10/25 14:06
+     *@Description: 跳转角色增加界面
+     *@param:
+    */
+    @GetMapping("add")
+    public String  add(){
+        return "/system/role/role";
+    }
+
+    /**
+     *@Author:      ykbian
+     *@date_time:   2018/10/25 14:06
+     *@Description:  跳转角色修改界面
+     *@param:
+    */
+    @GetMapping("edit/{id}")
+    public String edit(@PathVariable("id") String id, Model model){
+        Role role = roleService.selectById(id);
+        model.addAttribute("role",role);
+        return "/system/role/edit";
     }
 }

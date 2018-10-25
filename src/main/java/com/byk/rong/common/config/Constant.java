@@ -48,4 +48,10 @@ public class Constant {
      *  用户自行注册的创建者信息
      */
     public static String REGISTER_BY_ONESELF = "00000000000000000000000000000000";
+
+    /**
+     *   演示系统的账户信息
+     */
+    public static String DEMO_ACCOUNT = "test";
+    public static String DEMO_ACCOUNT_MESSAGE="演示系统不允许修改，完整体验请部署程序";
 }
