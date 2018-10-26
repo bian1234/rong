@@ -1,54 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:include="include :: header">
+<head>
     <meta charset="UTF-8">
-    <title>系统菜单</title>
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/myplugins/bootstrap-table/bootstrap-table.min.css">
 </head>
-<body  style="height: 100%">
-<div class="wrapper wrapper-content ">
-    <div class="col-sm-12">
-        <div class="ibox">
-            <div class="ibox-body">
-                <div id="exampleToolbar" role="group" class="t-bar" style="margin : 20px">
-                    <button type="button" class="btn btn-success" title="在根节点下添加菜单" onclick="add('0')">
-                        <i class=" icon-sitemap" aria-hidden="true"></i><span><STRONG>&nbsp;&nbsp;添加</STRONG></span>
-                    </button>
-                    <button type="button" class="btn btn-danger" onclick="batchRemove()">
-                        <i class=" icon-remove" aria-hidden="true"></i><span><STRONG>&nbsp;&nbsp;删除</STRONG></span>
-                    </button>
-                </div>
-                <table id="exampleTable" data-mobile-responsive="true">
-                </table>
-            </div>
-        </div>
-    </div>
-    <!--shiro控制bootstraptable行内按钮看见性 来自prostate的创新方案 -->
-    <!--<div>-->
-        <!--<script type="text/javascript">-->
-            <!--var s_add_h = 'hidden';-->
-            <!--var s_edit_h = 'hidden';-->
-            <!--var s_remove_h = 'hidden';-->
-        <!--</script>-->
-    <!--</div>-->
-    <!--<div shiro:hasPermission="sys:menu:add">-->
-        <!--<script type="text/javascript">-->
-            <!--s_add_h = '';-->
-        <!--</script>-->
-    <!--</div>-->
-    <!--<div shiro:hasPermission="sys:user:edit">-->
-        <!--<script type="text/javascript">-->
-            <!--s_edit_h = '';-->
-        <!--</script>-->
-    <!--</div>-->
-    <!--<div shiro:hasPermission="sys:user:remove">-->
-        <!--<script type="text/javascript">-->
-            <!--var s_remove_h = '';-->
-        <!--</script>-->
-    <!--</div>-->
-</div>
+<body>
+<table id="table"></table>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/myplugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="/myplugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
+<script>
+    $('#table').bootstrapTable({
+        url: '/system/role/list',
+        method: "get",
+        dataType:'json',// 返回值数据类型,
+        contentType:'application/json',   // 参数数据类型
+        pagination:true,
+        sidePagination:	'client',
+        pageList:[10, 25, 50, 100],
+        search:true,
+        showPaginationSwitch:true,
+        idField:'id',
+        columns: [{
+            field: 'id',
+            title: '编号'
+        }, {
+            field: 'roleName',
+            title: '角色名'
+        }, {
+            field: 'roleSign',
+            title: '角色标注'
+        },{
+                field: 'remark',
+                title: '备注'
+            }]
+    });
 
-<div th:include="include::footer"></div>
-<script src="/js/rong/system/role/role.js"></script>
+</script>
 </body>
 </html>
-

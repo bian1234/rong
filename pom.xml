@@ -4,11 +4,11 @@
 <modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.byk</groupId>
-	<artifactId>rong</artifactId>
+	<artifactId>rong_system</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>rong</name>
+	<name>rong_system</name>
 	<description>Demo project for Spring Boot</description>
 
 	<parent>
