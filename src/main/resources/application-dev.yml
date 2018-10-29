@@ -1,31 +1,31 @@
-spring:
-  datasource:   #读写分离配置数据源
-    systemRead:
-      url: jdbc:mysql://localhost:3306/rong_system?characterEncoding=utf-8
-      username: root
-      password: 1234
-      driver-class-name: com.mysql.jdbc.Driver
-    systemWrite:
-      url: jdbc:mysql://localhost:3306/rong_system?characterEncoding=utf-8
-      username: root
-      password: 1234
-      driver-class-name: com.mysql.jdbc.Driver
-
-  thymeleaf:
-     cache: false
-     mode: LEGACYHTML5   #去掉HTML标签校验
-
-mybatis:
-  configuration:
-    map-underscore-to-camel-case: true
-  mapper-locations: mapping/rong/**/**/*Mapper.xml
-  typeAliasesPackage: com.byk.**.**.entity
-server:
-  port: 8888
-
-#logging.level.com.dy.springboot.server.mapper=debug
-# 这里必须先配置root日志级别，也就是系统的，然后再单独的配置mapper日志级别
-logging:
-  level:
-    root: info
-    com.byk.rong.system.mapper.*: debug
+#spring:
+#  datasource:   #读写分离配置数据源
+#    systemRead:
+#      url: jdbc:mysql://localhost:3306/rong_system?characterEncoding=utf-8
+#      username: root
+#      password: 1234
+#      driver-class-name: com.mysql.jdbc.Driver
+#    systemWrite:
+#      url: jdbc:mysql://localhost:3306/rong_system?characterEncoding=utf-8
+#      username: root
+#      password: 1234
+#      driver-class-name: com.mysql.jdbc.Driver
+#
+#  thymeleaf:
+#     cache: false
+#     mode: LEGACYHTML5   #去掉HTML标签校验
+#
+#mybatis:
+#  configuration:
+#    map-underscore-to-camel-case: true
+#  mapper-locations: mapping/rong/**/**/*Mapper.xml
+#  typeAliasesPackage: com.byk.**.**.entity
+#server:
+#  port: 8888
+#
+##logging.level.com.dy.springboot.server.mapper=debug
+## 这里必须先配置root日志级别，也就是系统的，然后再单独的配置mapper日志级别
+#logging:
+#  level:
+#    root: info
+#    com.byk.rong.system.mapper.*: debug

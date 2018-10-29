@@ -1,4 +1,13 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1028/eureka/ #这是刚才创建的eureka注册地址
+
+server:
+  port: 1030
 spring:
+  application:
+    name: system_server    #服务名称，这里写什么，注册中心就显示什么，以后调用这个服务就写这个名
   datasource:   #读写分离配置数据源
     systemRead:
       url: jdbc:mysql://123.206.78.174:3306/rong_system?characterEncoding=utf-8
@@ -21,8 +30,7 @@ mybatis:
     map-underscore-to-camel-case: true
   mapper-locations: mapping/rong/**/**/*Mapper.xml
   typeAliasesPackage: com.byk.**.**.entity
-server:
-  port: 8888
+
 
 #logging.level.com.dy.springboot.server.mapper=debug
 # 这里必须先配置root日志级别，也就是系统的，然后再单独的配置mapper日志级别
