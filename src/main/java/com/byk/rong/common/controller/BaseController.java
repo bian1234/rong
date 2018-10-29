@@ -3,7 +3,11 @@ package com.byk.rong.common.controller;
 
 import com.byk.rong.common.util.SaltUtil;
 import com.byk.rong.common.util.ShiroUtils;
+import com.byk.rong.system.entity.User;
 import com.byk.rong.system.service.UserService;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,13 +36,8 @@ public class BaseController {
      *@param:
     */
     protected String getUserId() {
-       String userName = ShiroUtils.getUserName();
-       /**
-        *   这里先设置一个假的登录对象；
-        */
-//        return userService.findByUsername(userName).getId();
-        return "1b78e5ecc3c511e8bf1d52540033f252";
 
+        return "da58e825db4e11e8bf1d52540033f252";
     }
 
     /**

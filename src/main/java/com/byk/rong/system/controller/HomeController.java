@@ -1,6 +1,7 @@
 package com.byk.rong.system.controller;
 
 import com.byk.rong.common.controller.BaseController;
+import com.byk.rong.common.util.ShiroUtils;
 import com.byk.rong.common.util.Tree;
 import com.byk.rong.system.entity.Menu;
 import com.byk.rong.system.entity.User;
@@ -59,7 +60,7 @@ public class HomeController   extends BaseController{
         User user = userService.selectById(userId);
         model.addAttribute("user",user);
         // 根据其权限获得 菜单信息
-        List<Tree<Menu>> menus = menuService.listMenuTree(getUserId());
+        List<Tree<Menu>> menus = menuService.listMenuTree(userId);
         model.addAttribute("menus",menus);
         return "index";
     }
