@@ -60,6 +60,8 @@ public class RoleController  extends BaseController {
             return  deleteFailedResponse();
         }
         role.setDelFlag(Constant.DEL_FLAG_DISUSER);
+        role.setDeleteTime(new Date());
+        role.setDeleteUser(getUserId());
         if (roleService.updateSelective(role) < 1){
             return deleteFailedResponse();
         }
@@ -85,6 +87,8 @@ public class RoleController  extends BaseController {
             try {
                 Role role = roleService.selectById(id);
                 role.setDelFlag(Constant.DEL_FLAG_DISUSER);
+                role.setDeleteTime(new Date());
+                role.setDeleteUser(getUserId());
                 roleService.updateSelective(role);
             }catch (Exception e){
                 logger.info("批量删除时，出现了空的id:"+id);
