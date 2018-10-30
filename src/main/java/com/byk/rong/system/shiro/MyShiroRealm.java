@@ -43,6 +43,8 @@ public class MyShiroRealm extends AuthorizingRealm {
         // 实际项目中，这里可以根据实际情况做缓存，如果不做，Shiro自己也是有时间间隔机制，2分钟内不会重复执行该方法
         //数据库内用户的用户名必须是唯一的
         User userInfo = userService.findByUsername(username);
+        System.out.println(">>>>>>>>>>>>>>>>>>>>user="+userInfo);
+
         // 账号不存在
         if (userInfo == null) {
             throw new UnknownAccountException("账号不正确~~~~~~~~~~");
@@ -51,11 +53,17 @@ public class MyShiroRealm extends AuthorizingRealm {
         if (userInfo.getStatus() == Constant.USER_DISABLE) {
             throw new LockedAccountException("账号已被锁定,请联系管理员");
         }
-        //将用户名做盐值
         ByteSource salt = ByteSource.Util.bytes(userInfo.getSalt());
-        // 参数分别为 用户信息，密码，盐值，真实名称
+        /**
+         *    注意：此处四个参数分别是用户实体信息，数据库查询到的密码，盐值和当前Realm的名字。
+         *    尤其要注意第一个参数，必须是用户实体信息不能是用户名。网上很多demo写的是用户名，
+         *    虽然登录功能实现，但是后面取出当前登录对象信息会报错，这里存的是用户名，取出来的就是
+         *    用户名，这里存的是用户信息，取出来的就是用户信息。
+         *
+         *    参考资料：https://blog.csdn.net/weixin_42456466/article/details/80744371
+         */
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-                username, //用户名
+                userInfo,
                 userInfo.getPassword(), //密码
                 salt,
                 getName());

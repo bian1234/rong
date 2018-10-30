@@ -36,8 +36,7 @@ public class BaseController {
      *@param:
     */
     protected String getUserId() {
-
-        return "da58e825db4e11e8bf1d52540033f252";
+        return ShiroUtils.getUserId();
     }
 
     /**

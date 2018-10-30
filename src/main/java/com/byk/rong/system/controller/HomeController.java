@@ -89,8 +89,8 @@ public class HomeController   extends BaseController{
     public Map login(String userName,String password) {
         logger.info("用户"+userName+"登录");
         //添加用户认证信息
-        Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(userName,password);
+        Subject subject = SecurityUtils.getSubject();
         //进行验证，这里可以捕获异常，然后返回对应信息
         try {
             subject.login(usernamePasswordToken);

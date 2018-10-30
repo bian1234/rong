@@ -26,22 +26,17 @@ public class ShiroUtils {
     public static Subject getSubjct() {
         return SecurityUtils.getSubject();
     }
-    public static String getUserName() {
-        String userName = (String) getSubjct().getPrincipal();
-        return userName;
+    public static User getUser() {
+        Object object = getSubjct().getPrincipal();
+        return (User)object;
     }
-//    public static String getUserId() {
-//        return getUser().getId();
-//    }
+    public static String getUserId() {
+        return getUser().getId();
+    }
     public static void logout() {
         getSubjct().logout();
     }
 
-
-
-    /**
-     * =====这是什么意思？
-     */
     public static List<Principal> getPrinciples() {
         List<Principal> principals = null;
         Collection<Session> sessions = sessionDAO.getActiveSessions();
