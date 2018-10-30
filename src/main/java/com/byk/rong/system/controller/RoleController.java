@@ -165,7 +165,7 @@ public class RoleController  extends BaseController {
     */
     @GetMapping("add")
     public String  add(){
-        return "/system/role/role";
+        return "/system/role/add";
     }
 
     /**
