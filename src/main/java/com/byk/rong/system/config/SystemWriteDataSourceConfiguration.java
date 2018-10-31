@@ -19,7 +19,7 @@ import javax.sql.DataSource;
  * 写操作 数据源
  */
 @Configuration
-@MapperScan(basePackages = "com.byk.rong.system.mapper.write", sqlSessionTemplateRef  = "systemSqlSessionTemplate")
+@MapperScan(basePackages = "com.byk.rong.system.mapper.write", sqlSessionTemplateRef  = "systemWriteSqlSessionTemplate")
 public class SystemWriteDataSourceConfiguration {
 
     @Value("${spring.datasource.systemWrite.driver-class-name}")
@@ -34,7 +34,7 @@ public class SystemWriteDataSourceConfiguration {
     @Value("${spring.datasource.systemWrite.password}")
     private String password;
 
-    @Bean(name = "systemDataSource")
+    @Bean(name = "systemWriteDataSource")
     @Primary
     public DataSource dataSource() {
         DruidDataSource dataSource = new DruidDataSource();
@@ -45,24 +45,24 @@ public class SystemWriteDataSourceConfiguration {
         return dataSource;
     }
 
-    @Bean(name = "systemSqlSessionFactory")
+    @Bean(name = "systemWriteSqlSessionFactory")
     @Primary
-    public SqlSessionFactory sqlSessionFactory(@Qualifier("systemDataSource") DataSource dataSource) throws Exception {
+    public SqlSessionFactory sqlSessionFactory(@Qualifier("systemWriteDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:mapping/rong/system/**/*.xml"));
+        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:mapping/rong/system/write/*.xml"));
         return bean.getObject();
     }
 
-    @Bean(name = "systemTransactionManager")
+    @Bean(name = "systemWriteTransactionManager")
     @Primary
-    public DataSourceTransactionManager transactionManager(@Qualifier("systemDataSource") DataSource dataSource) {
+    public DataSourceTransactionManager transactionManager(@Qualifier("systemWriteDataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
 
-    @Bean(name = "systemSqlSessionTemplate")
+    @Bean(name = "systemWriteSqlSessionTemplate")
     @Primary
-    public SqlSessionTemplate sqlSessionTemplate(@Qualifier("systemSqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
+    public SqlSessionTemplate sqlSessionTemplate(@Qualifier("systemWriteSqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 

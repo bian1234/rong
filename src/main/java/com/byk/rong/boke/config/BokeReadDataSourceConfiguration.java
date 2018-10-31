@@ -1,4 +1,4 @@
-package com.byk.rong.system.config;
+package com.byk.rong.boke.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -18,23 +18,23 @@ import javax.sql.DataSource;
  * 读操作数据源
  */
 @Configuration
-@MapperScan(basePackages = "com.byk.rong.system.mapper.read", sqlSessionTemplateRef  = "systemReadSqlSessionTemplate")
-public class SystemReadDataSourceConfiguration {
+@MapperScan(basePackages = "com.byk.rong.boke.mapper.read", sqlSessionTemplateRef  = "bokeReadSqlSessionTemplate")
+public class BokeReadDataSourceConfiguration {
 
-    @Value("${spring.datasource.systemRead.driver-class-name}")
+    @Value("${spring.datasource.bokeRead.driver-class-name}")
     private String driverClassName;
 
-    @Value("${spring.datasource.systemRead.url}")
+    @Value("${spring.datasource.bokeRead.url}")
     private String url;
 
-    @Value("${spring.datasource.systemRead.username}")
+    @Value("${spring.datasource.bokeRead.username}")
     private String username;
 
-    @Value("${spring.datasource.systemRead.password}")
+    @Value("${spring.datasource.bokeRead.password}")
     private String password;
 
 
-    @Bean(name = "systemReadDataSource")
+    @Bean(name = "bokeReadDataSource")
     public DataSource dataSource() {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setDriverClassName(this.driverClassName);
@@ -44,21 +44,21 @@ public class SystemReadDataSourceConfiguration {
         return dataSource;
     }
 
-    @Bean(name = "systemReadSqlSessionFactory")
-    public SqlSessionFactory sqlSessionFactory(@Qualifier("systemReadDataSource") DataSource dataSource) throws Exception {
+    @Bean(name = "bokeReadSqlSessionFactory")
+    public SqlSessionFactory sqlSessionFactory(@Qualifier("bokeReadDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:mapping/rong/system/read/*.xml"));
+        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:mapping/rong/boke/read/*.xml"));
         return bean.getObject();
     }
 
-    @Bean(name = "systemReadTransactionManager")
-    public DataSourceTransactionManager transactionManager(@Qualifier("systemReadDataSource") DataSource dataSource) {
+    @Bean(name = "bokeReadTransactionManager")
+    public DataSourceTransactionManager transactionManager(@Qualifier("bokeReadDataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
 
-    @Bean(name = "systemReadSqlSessionTemplate")
-    public SqlSessionTemplate sqlSessionTemplate(@Qualifier("systemReadSqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
+    @Bean(name = "bokeReadSqlSessionTemplate")
+    public SqlSessionTemplate sqlSessionTemplate(@Qualifier("bokeReadSqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 

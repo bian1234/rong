@@ -1,104 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Matrix Admin</title>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="/css/bootstrap-responsive.min.css"/>
-    <link rel="stylesheet" href="/css/colorpicker.css"/>
-    <link rel="stylesheet" href="/css/datepicker.css"/>
-    <link rel="stylesheet" href="/css/uniform.css"/>
-    <link rel="stylesheet" href="/css/select2.css"/>
-    <link rel="stylesheet" href="/css/matrix-style.css"/>
-    <link rel="stylesheet" href="/css/matrix-media.css"/>
-    <link rel="stylesheet" href="/css/bootstrap-wysihtml5.css"/>
-    <link href="/font-awesome/css/font-awesome.css" rel="stylesheet"/>
-    <!--<link href='http://fonts.useso.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>-->
+<html>
+<meta charset="utf-8">
+<head th:include="include::header">
+
 </head>
-<body style="color: #CDCDCD">
+<!-- bootstrap-treeview 导包-->
+<link rel="stylesheet" type="text/css" href="<%=server_path %>/bootstrap-3.3.7-dist/css/bootstrap.css" >
+<link rel="stylesheet" type="text/css" href="<%=server_path %>/bootstrap-3.3.7-dist/treeview/bootstrap-treeview.css">
+<script type="text/javascript" src="<%=server_path %>/bootstrap-3.3.7-dist/treeview/jquery.js"></script>
+<script type="text/javascript" src="<%=server_path %>/bootstrap-3.3.7-dist/treeview/bootstrap-treeview.js"></script>
 
-<div class="widget-box" style="height: 100%;border: 0px;">
-    <form  class="form-horizontal"  id="signupForm">
-        <input class="id" name="parentId" type="hidden" th:value="${pId}"/>
-        <div class="controls-row">
-            <label class="control-label span4 m-wrap">上级菜单 :</label>
-            <div class="controls ">
-                <input type="text" class="span8 m-wrap" th:value="${pName}" readonly/>
-            </div>
-        </div>
-        <div class="controls-row">
-            <label class="control-label span4 m-wrap">菜单名称 :</label>
-            <div class="controls ">
-                <input type="text" class="span8 m-wrap" name="name" placeholder="菜单名称"/>
-            </div>
-        </div>
-        <div class="controls-row">
-            <label class="control-label span4 m-wrap">链接 :</label>
-            <div class="controls ">
-                <input type="text" class="span8 m-wrap" name="url" placeholder="ex: /system/menu/add"/>
-            </div>
-        </div>
-        <div class="controls-row">
-            <label class="control-label span4 m-wrap">权限信息 :</label>
-            <div class="controls ">
-                <input type="text" class="span8 m-wrap" name="perms" placeholder="ex: system:menu:add"/>
-            </div>
-        </div>
+<script type="text/javascript">
+    //选中/取消父节点时选中/取消所有子节点
+    function getChildNodeIdArr(node) {
+        var ts = [];
+        if (node.nodes) {
+            for (x in node.nodes) {
+                ts.push(node.nodes[x].nodeId);
+                if (node.nodes[x].nodes) {
+                    var getNodeDieDai = getChildNodeIdArr(node.nodes[x]);
+                    for (j in getNodeDieDai) {
+                        ts.push(getNodeDieDai[j]);
+                    }
+                }
+            }
+        } else {
+            ts.push(node.nodeId);
+        }
+        return ts;
+    }
+    //选中所有子节点时选中父节点
+    function setParentNodeCheck(node) {
+        var parentNode = $("#tree").treeview("getNode", node.parentId);
+        if (parentNode.nodes) {
+            var checkedCount = 0;
+            for (x in parentNode.nodes) {
+                if (parentNode.nodes[x].state.checked) {
+                    checkedCount ++;
+                } else {
+                    break;
+                }
+            }
+            if (checkedCount === parentNode.nodes.length) {
+                $("#tree").treeview("checkNode", parentNode.nodeId);
+                setParentNodeCheck(parentNode);
+            }
+        }
+    }
 
-        <div class="controls-row">
-            <label class="control-label span4 m-wrap">类型 :</label>
-            <div class="controls">
-                <label><input type="radio" name="type" value="0" checked/>目录</label>
-                <label><input type="radio" name="type" value="1"/> 菜单</label>
-                <label><input type="radio" name="type" value="2"/> 按钮</label>
-            </div>
-        </div>
-        <div class="controls-row">
-            <label class="control-label span4 m-wrap">排序 :</label>
-            <div class="controls ">
-                <input type="text" class="span8 m-wrap" name="orderNum" placeholder="数字形式：0排在1前"/>
-            </div>
-        </div>
-        <div class="controls-row">
-            <label class="control-label span4 m-wrap">图标 :</label>
-            <div class="controls form-inline">
-                <input type="text" class="span7 m-wrap" id="myIcon" name="icon" placeholder="图标"/>
-                <button type="button" id="myIconbtn" class="btn btn-info" onclick="choseIcon();">选择</button>
-            </div>
-        </div>
-        <div class="controls-row">
-        </div>
-        <div class="controls-row " align="center">
-            <button type="submit" class="btn btn-success" onclick="submit01();">确认</button>
-        </div>
-    </form>
-</div>
+    $(function () {
+        $.ajax({
+            type: "GET",
+            url: '/system/menu/tree',
+            dataType: "json",
+            success: function (result) {
+                $('#tree').treeview({
+                    data: result.list,         // 数据源
+                    showCheckbox: true,   //是否显示复选框
+                    highlightSelected: true,    //是否高亮选中
+                    multiSelect: true,    //多选
+                    levels : 2,
+                    enableLinks : true,//必须在节点属性给出href属性
+                    color: "#010A0E",
+                    onNodeChecked : function (event,node) {
+                        var selectNodes = getChildNodeIdArr(node); //获取所有子节点
+                        if (selectNodes) { //子节点不为空，则选中所有子节点
+                            $('#tree').treeview('checkNode', [selectNodes, { silent: true }]);
+                        }
+                    },
+                    onNodeUnchecked : function(event, node) { //取消选中节点
+                        var selectNodes = getChildNodeIdArr(node); //获取所有子节点
+                        if (selectNodes) { //子节点不为空，则取消选中所有子节点
+                            $('#tree').treeview('uncheckNode', [selectNodes, { silent: true }]);
+                        }
+                    },
 
+                    onNodeExpanded : function(event, data) {
 
-<!--end-Footer-part-->
-<script src="/js/jquery.min.js"></script>
-<script src="/js/jquery.ui.custom.js"></script>
-<script src="/js/bootstrap.min.js"></script>
-<script src="/js/bootstrap-colorpicker.js"></script>
-<script src="/js/bootstrap-datepicker.js"></script>
-<script src="/js/jquery.toggle.buttons.html"></script>
-<script src="/js/masked.js"></script>
-<script src="/js/jquery.uniform.js"></script>
-<script src="/js/select2.min.js"></script>
-<script src="/js/matrix.js"></script>
-<script src="/js/matrix.form_common.js"></script>
-<script src="/js/wysihtml5-0.3.0.js"></script>
-<script src="/js/jquery.peity.min.js"></script>
-<script src="/js/bootstrap-wysihtml5.js"></script>
-<script src="/myplugins/layer/layer.js"></script>
-<script src="/js/rong/system/menu/add.js"></script>
+                    },
 
-<script>
-    $('.textarea_editor').wysihtml5();
+                    onNodeSelected: function (event, data) {
+                        //alert(data.nodeId);
+                    }
 
-
-
+                });
+            },
+            error: function () {
+                alert("菜单加载失败！")
+            }
+        });
+    })
 </script>
+<body class="gray-bg">
+<div id="tree" class="col-sm-2"></div>
 </body>
+
 </html>
