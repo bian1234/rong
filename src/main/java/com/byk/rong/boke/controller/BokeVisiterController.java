@@ -120,4 +120,16 @@ public class BokeVisiterController  extends BaseController {
         map.put("visiter",visiter);
         return map;
     }
+
+
+    /**
+     *@Author:      ykbian
+     *@date_time:   2018/11/2 17:01
+     *@Description: 跳转到项目经验列表界面
+     *@param:
+    */
+    @GetMapping("list")
+    public String list(){
+        return "/boke/project/project";
+    }
 }

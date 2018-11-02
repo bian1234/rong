@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:include="include :: header">
+    <meta charset="UTF-8">
+    <title>系统菜单</title>
+</head>
+<body  style="height: 100%">
+<div class="wrapper wrapper-content ">
+    <div class="col-sm-12">
+        <div class="ibox">
+            <div class="ibox-body">
+                <div id="exampleToolbar" role="group" class="t-bar" style="margin : 20px">
+                    <button type="button" class="btn btn-success" title="" onclick="add('0')">
+                        <i class=" icon-sitemap" aria-hidden="true"></i><span><STRONG>&nbsp;&nbsp;添加</STRONG></span>
+                    </button>
+                    <button type="button" class="btn btn-danger" onclick="batchRemove()">
+                        <i class=" icon-remove" aria-hidden="true"></i><span><STRONG>&nbsp;&nbsp;删除</STRONG></span>
+                    </button>
+                </div>
+                <table id="exampleTable" data-mobile-responsive="true">
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--shiro控制bootstraptable行内按钮看见性 来自prostate的创新方案 -->
+    <!--<div>-->
+    <!--<script type="text/javascript">-->
+    <!--var s_add_h = 'hidden';-->
+    <!--var s_edit_h = 'hidden';-->
+    <!--var s_remove_h = 'hidden';-->
+    <!--</script>-->
+    <!--</div>-->
+    <!--<div shiro:hasPermission="sys:menu:add">-->
+    <!--<script type="text/javascript">-->
+    <!--s_add_h = '';-->
+    <!--</script>-->
+    <!--</div>-->
+    <!--<div shiro:hasPermission="sys:user:edit">-->
+    <!--<script type="text/javascript">-->
+    <!--s_edit_h = '';-->
+    <!--</script>-->
+    <!--</div>-->
+    <!--<div shiro:hasPermission="sys:user:remove">-->
+    <!--<script type="text/javascript">-->
+    <!--var s_remove_h = '';-->
+    <!--</script>-->
+    <!--</div>-->
+</div>
+
+<div th:include="include::footer"></div>
+<script src="/js/rong/system/role/role.js"></script>
+</body>
+</html>
+
