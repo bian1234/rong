@@ -1,9 +1,13 @@
 package com.byk.rong.boke.entity;
 
+import com.byk.rong.common.entity.BaseEntity;
+
 import java.util.Date;
 
-public class BokeDisplayWorks {
+public class BokeDisplayWorks extends BaseEntity{
     private String id;
+
+    private String projectName;
 
     private String pageName;
 
@@ -35,6 +39,15 @@ public class BokeDisplayWorks {
 
     public void setId(String id) {
         this.id = id == null ? null : id.trim();
+    }
+
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 
     public String getPageName() {

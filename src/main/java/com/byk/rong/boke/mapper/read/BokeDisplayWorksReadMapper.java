@@ -1,19 +1,20 @@
 package com.byk.rong.boke.mapper.read;
 
 import com.byk.rong.boke.entity.BokeDisplayWorks;
+import com.byk.rong.common.mapper.read.BaseReadMapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Map;
+
 @Repository
-public interface BokeDisplayWorksReadMapper {
-    int deleteByPrimaryKey(String id);
+public interface BokeDisplayWorksReadMapper   extends BaseReadMapper<BokeDisplayWorks>{
+    @Override
+    BokeDisplayWorks selectById(String id);
 
-    int insert(BokeDisplayWorks record);
+    @Override
+    List<BokeDisplayWorks> selectByParams(BokeDisplayWorks bokeDisplayWorks);
 
-    int insertSelective(BokeDisplayWorks record);
-
-    BokeDisplayWorks selectByPrimaryKey(String id);
-
-    int updateByPrimaryKeySelective(BokeDisplayWorks record);
-
-    int updateByPrimaryKey(BokeDisplayWorks record);
+    @Override
+    List<BokeDisplayWorks> list(Map<String, Object> params);
 }

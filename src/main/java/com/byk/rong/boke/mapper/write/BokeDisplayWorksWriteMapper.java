@@ -1,19 +1,17 @@
 package com.byk.rong.boke.mapper.write;
 
 import com.byk.rong.boke.entity.BokeDisplayWorks;
+import com.byk.rong.common.mapper.write.BaseWriteMapper;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface BokeDisplayWorksWriteMapper {
-    int deleteByPrimaryKey(String id);
+public interface BokeDisplayWorksWriteMapper  extends BaseWriteMapper<BokeDisplayWorks> {
+    @Override
+    int insertSelective(BokeDisplayWorks bokeDisplayWorks);
 
-    int insert(BokeDisplayWorks record);
+    @Override
+    int updateSelective(BokeDisplayWorks bokeDisplayWorks);
 
-    int insertSelective(BokeDisplayWorks record);
-
-    BokeDisplayWorks selectByPrimaryKey(String id);
-
-    int updateByPrimaryKeySelective(BokeDisplayWorks record);
-
-    int updateByPrimaryKey(BokeDisplayWorks record);
+    @Override
+    int deleteById(String id);
 }

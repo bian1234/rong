@@ -1,98 +1,106 @@
 <!DOCTYPE html>
-<html>
-<meta charset="utf-8">
-<head th:include="include::header">
+<html lang="en">
+<head>
+    <title>Matrix Admin</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-responsive.min.css"/>
+    <link rel="stylesheet" href="/css/colorpicker.css"/>
+    <link rel="stylesheet" href="/css/datepicker.css"/>
+    <link rel="stylesheet" href="/css/uniform.css"/>
+    <link rel="stylesheet" href="/css/select2.css"/>
+    <link rel="stylesheet" href="/css/matrix-style.css"/>
+    <link rel="stylesheet" href="/css/matrix-media.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-wysihtml5.css"/>
+    <link href="/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+    <link href="/myplugins/bootstrap-fileinput/css/bootstrap.min.css" rel="stylesheet"/>
 
+    <!--<link href='http://fonts.useso.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>-->
 </head>
-<!-- bootstrap-treeview 导包-->
-<link rel="stylesheet" type="text/css" href="<%=server_path %>/bootstrap-3.3.7-dist/css/bootstrap.css" >
-<link rel="stylesheet" type="text/css" href="<%=server_path %>/bootstrap-3.3.7-dist/treeview/bootstrap-treeview.css">
-<script type="text/javascript" src="<%=server_path %>/bootstrap-3.3.7-dist/treeview/jquery.js"></script>
-<script type="text/javascript" src="<%=server_path %>/bootstrap-3.3.7-dist/treeview/bootstrap-treeview.js"></script>
+<body style="color: #CDCDCD">
 
-<script type="text/javascript">
-    //选中/取消父节点时选中/取消所有子节点
-    function getChildNodeIdArr(node) {
-        var ts = [];
-        if (node.nodes) {
-            for (x in node.nodes) {
-                ts.push(node.nodes[x].nodeId);
-                if (node.nodes[x].nodes) {
-                    var getNodeDieDai = getChildNodeIdArr(node.nodes[x]);
-                    for (j in getNodeDieDai) {
-                        ts.push(getNodeDieDai[j]);
-                    }
-                }
-            }
-        } else {
-            ts.push(node.nodeId);
-        }
-        return ts;
-    }
-    //选中所有子节点时选中父节点
-    function setParentNodeCheck(node) {
-        var parentNode = $("#tree").treeview("getNode", node.parentId);
-        if (parentNode.nodes) {
-            var checkedCount = 0;
-            for (x in parentNode.nodes) {
-                if (parentNode.nodes[x].state.checked) {
-                    checkedCount ++;
-                } else {
-                    break;
-                }
-            }
-            if (checkedCount === parentNode.nodes.length) {
-                $("#tree").treeview("checkNode", parentNode.nodeId);
-                setParentNodeCheck(parentNode);
-            }
-        }
-    }
+<div class="widget-box" style="height: 100%;border: 0px;">
+    <form  class="form-horizontal"  id="signupForm">
+        <div class="controls-row">
+            <label class="control-label span4 m-wrap">项目名称 :</label>
+            <div class="controls ">
+                <input type="text" class="span8 m-wrap" name="projectName"/>
+            </div>
+        </div>
+        <div class="controls-row">
+            <label class="control-label span4 m-wrap">项目链接 :</label>
+            <div class="controls ">
+                <input type="text" class="span8 m-wrap" name="pageLink" placeholder="菜单名称"/>
+            </div>
+        </div>
+        <div class="controls-row">
+            <label class="control-label span4 m-wrap">项目展示图片 :</label>
+            <div class="controls "  style="height: 500px">
+                <input type="file" id="file-3" class="span8 m-wrap" name="pageLink" />
+            </div>
+        </div>
+        <div class="controls-row">
+            <label class="control-label span4 m-wrap">项目分类 :</label>
+            <div class="controls">
+                <label><input type="radio" name="pageClass" value="_parent" checked/>后端</label>
+                <label><input type="radio" name="pageClass" value="_top"/> 前端</label>
+                <label><input type="radio" name="pageClass" value="_blank"/>WEB </label>
+                <label><input type="radio" name="pageClass" value="_blank"/>APP </label>
+            </div>
+        </div>
+        <div class="controls-row">
+            <label class="control-label span4 m-wrap">打开方式 :</label>
+            <div class="controls">
+                <label><input type="radio" name="targetLink" value="_parent" checked/>本窗口</label>
+                <label><input type="radio" name="targetLink" value="_top"/> 新浏览器</label>
+                <label><input type="radio" name="targetLink" value="_blank"/>新窗口 </label>
+            </div>
+        </div>
 
-    $(function () {
-        $.ajax({
-            type: "GET",
-            url: '/system/menu/tree',
-            dataType: "json",
-            success: function (result) {
-                $('#tree').treeview({
-                    data: result.list,         // 数据源
-                    showCheckbox: true,   //是否显示复选框
-                    highlightSelected: true,    //是否高亮选中
-                    multiSelect: true,    //多选
-                    levels : 2,
-                    enableLinks : true,//必须在节点属性给出href属性
-                    color: "#010A0E",
-                    onNodeChecked : function (event,node) {
-                        var selectNodes = getChildNodeIdArr(node); //获取所有子节点
-                        if (selectNodes) { //子节点不为空，则选中所有子节点
-                            $('#tree').treeview('checkNode', [selectNodes, { silent: true }]);
-                        }
-                    },
-                    onNodeUnchecked : function(event, node) { //取消选中节点
-                        var selectNodes = getChildNodeIdArr(node); //获取所有子节点
-                        if (selectNodes) { //子节点不为空，则取消选中所有子节点
-                            $('#tree').treeview('uncheckNode', [selectNodes, { silent: true }]);
-                        }
-                    },
+        <div class="controls-row">
+        </div>
+        <div class="controls-row " align="center">
+            <button type="submit" class="btn btn-success" onclick="submit01();">确认</button>
+        </div>
+    </form>
+</div>
 
-                    onNodeExpanded : function(event, data) {
 
-                    },
+<!--end-Footer-part-->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.ui.custom.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap-colorpicker.js"></script>
+<script src="/js/bootstrap-datepicker.js"></script>
+<script src="/js/jquery.toggle.buttons.html"></script>
+<script src="/js/masked.js"></script>
+<script src="/js/jquery.uniform.js"></script>
+<script src="/js/select2.min.js"></script>
+<script src="/js/matrix.js"></script>
+<script src="/js/matrix.form_common.js"></script>
+<script src="/js/wysihtml5-0.3.0.js"></script>
+<script src="/js/jquery.peity.min.js"></script>
+<script src="/js/bootstrap-wysihtml5.js"></script>
+<script src="/myplugins/layer/layer.js"></script>
+<script src="/js/rong/system/menu/add.js"></script>
 
-                    onNodeSelected: function (event, data) {
-                        //alert(data.nodeId);
-                    }
+<!--文件上传-->
+<script src="/myplugins/bootstrap-fileinput/js/bootstrap.min.js"></script>
+<script src="/myplugins/bootstrap-fileinput/js/fileinput_locale_zh.js"></script>
 
-                });
-            },
-            error: function () {
-                alert("菜单加载失败！")
-            }
-        });
-    })
+<script>
+    $('.textarea_editor').wysihtml5();
+
+
+    $("#file-3").fileinput({
+        showUpload: false,
+        showCaption: false,
+        browseClass: "btn btn-primary btn-lg",
+        fileType: "any",
+        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>"
+    });
+
 </script>
-<body class="gray-bg">
-<div id="tree" class="col-sm-2"></div>
 </body>
-
 </html>

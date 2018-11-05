@@ -1,4 +1,4 @@
-var prefix = "/system/role";
+var prefix = "/boke/project";
 $(function() {
     load();
 });
@@ -31,22 +31,52 @@ function load() {
                         checkbox : true
                         // 列表中显示复选框
                     },
+                    // {
+                    //     title : '缩略图',
+                    //     field : 'id',
+                    //     align : 'center',
+                    //     formatter : function(value, row, index) {
+                    //         var e = '<image src="\''+row.pageAddress+row.pageName+'\'"/>';
+                    //         return e;
+                    //     }
+                    // },
                     {
-                        field : 'id', // 列字段名
-                        title : 'ID', // 列标题
+                        field : 'projectName',
+                        title : '项目名称'
+                    },
 
+                    {
+                        field : 'pageName',
+                        title : '图片名称'
                     },
                     {
-                        field : 'roleName',
-                        title : '角色名'
+                        field : 'pageAddress',
+                        title : '图片地址'
                     },
                     {
-                        field : 'roleSign',
-                        title : '角色标记'
+                        field : 'pageLink',
+                        title : '项目链接地址'
                     },
                     {
-                        field : 'remark',
-                        title : '备注'
+                        field : 'pageClass',
+                        title : '项目分类'
+                    },
+                    {
+                        field : 'targetLink',
+                        title : '打开方式',
+                        align: 'center',
+                        valign: 'center',
+                        formatter: function (item, index) {
+                            if (item == "_blank") {
+                                return '<p>新窗口</p>';
+                            }
+                            if (item == '_top') {
+                                return '<p>打开新的浏览器</p>';
+                            }
+                            if (item == "_parent") {
+                                return '<p>本页面打开</p>';
+                            }
+                        }
                     },
 
                     {
@@ -74,7 +104,7 @@ function add() {
     // iframe层
     layer.open({
         type : 2,
-        title : '添加角色',
+        title : '添加项目经验',
         maxmin : true,
         shadeClose : false, // 点击遮罩关闭层
         area : [ '800px', '520px' ],
