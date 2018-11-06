@@ -54,6 +54,11 @@ public class DeptController  extends BaseController {
     @PostMapping("insert")
     @ResponseBody
     public Map insert(Dept dept){
+        // 演示账户是不能新增的
+        if (Constant.DEMO_ACCOUNT_ID.equals(getUserId())) {
+            logger.info("演示账户是不能新增信息的");
+            return demoAccount();
+        }
         if (deptService.insertSelective(dept) > 0){
             return insertSuccseeResponse();
         }

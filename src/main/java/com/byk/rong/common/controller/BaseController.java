@@ -1,6 +1,7 @@
 package com.byk.rong.common.controller;
 
 
+import com.byk.rong.common.config.Constant;
 import com.byk.rong.common.util.SaltUtil;
 import com.byk.rong.common.util.ShiroUtils;
 import com.byk.rong.system.entity.User;
@@ -190,6 +191,14 @@ public class BaseController {
         resultMap = new LinkedHashMap<>();
         resultMap.put("code",2000);
         resultMap.put("msg","DELETE_SUCCESS");
+        resultMap.put("result",null);
+        return resultMap;
+    }
+
+    public Map demoAccount(){
+        resultMap = new LinkedHashMap<>();
+        resultMap.put("code",6666);
+        resultMap.put("msg", Constant.DEMO_ACCOUNT_MESSAGE);
         resultMap.put("result",null);
         return resultMap;
     }

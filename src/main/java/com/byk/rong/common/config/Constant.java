@@ -52,6 +52,6 @@ public class Constant {
     /**
      *   演示系统的账户信息
      */
-    public static String DEMO_ACCOUNT = "test";
+    public static String DEMO_ACCOUNT_ID = "da58e825db4e11e8bf1d52540033f252";
     public static String DEMO_ACCOUNT_MESSAGE="演示系统不允许修改，完整体验请部署程序";
 }

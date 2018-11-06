@@ -33,12 +33,12 @@ public class DisplayWorksServiceImpl   implements DisplayWorksService {
 
     @Override
     public int updateSelective(BokeDisplayWorks bokeDisplayWorks) {
-        return 0;
+        return bokeDisplayWorksWriteMapper.updateSelective(bokeDisplayWorks);
     }
 
     @Override
     public BokeDisplayWorks selectById(String id) {
-        return null;
+        return bokeDisplayWorksReadMapper.selectById(id);
     }
 
     @Override

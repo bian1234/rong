@@ -15,13 +15,13 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="delete_user" jdbcType="VARCHAR" property="deleteUser" />
     <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
-    <result column="del_flag" jdbcType="INTEGER" property="delFlag" />
+    <result column="del_flag" jdbcType="VARCHAR" property="delFlag" />
   </resultMap>
   <sql id="Base_Column_List">
     id, project_name,page_name, page_address, page_link, page_class, target_link, create_user, create_time,
     update_user, update_time, delete_user, delete_time, del_flag
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectById" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
     from display_works

@@ -31,7 +31,7 @@ public class BokeDisplayWorks extends BaseEntity{
 
     private Date deleteTime;
 
-    private Integer delFlag;
+    private String delFlag;
 
     public String getId() {
         return id;
@@ -138,11 +138,31 @@ public class BokeDisplayWorks extends BaseEntity{
         this.deleteTime = deleteTime;
     }
 
-    public Integer getDelFlag() {
+    public String getDelFlag() {
         return delFlag;
     }
 
-    public void setDelFlag(Integer delFlag) {
+    public void setDelFlag(String delFlag) {
         this.delFlag = delFlag;
+    }
+
+    @Override
+    public String toString() {
+        return "BokeDisplayWorks{" +
+                "id='" + id + '\'' +
+                ", projectName='" + projectName + '\'' +
+                ", pageName='" + pageName + '\'' +
+                ", pageAddress='" + pageAddress + '\'' +
+                ", pageLink='" + pageLink + '\'' +
+                ", pageClass='" + pageClass + '\'' +
+                ", targetLink='" + targetLink + '\'' +
+                ", createUser='" + createUser + '\'' +
+                ", createTime=" + createTime +
+                ", updateUser='" + updateUser + '\'' +
+                ", updateTime=" + updateTime +
+                ", deleteUser='" + deleteUser + '\'' +
+                ", deleteTime=" + deleteTime +
+                ", delFlag='" + delFlag + '\'' +
+                '}';
     }
 }

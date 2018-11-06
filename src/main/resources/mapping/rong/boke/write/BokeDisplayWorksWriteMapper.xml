@@ -14,36 +14,18 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="delete_user" jdbcType="VARCHAR" property="deleteUser" />
     <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
-    <result column="del_flag" jdbcType="INTEGER" property="delFlag" />
+    <result column="del_flag" jdbcType="VARCHAR" property="delFlag" />
   </resultMap>
   <sql id="Base_Column_List">
     id, page_name, page_address, page_link, page_class, target_link, create_user, create_time,
     update_user, update_time, delete_user, delete_time, del_flag
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List" />
-    from boke_display_works
-    where id = #{id,jdbcType=VARCHAR}
-  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from boke_display_works
+    delete from display_works
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.byk.rong.boke.entity.BokeDisplayWorks">
-    insert into boke_display_works (id, page_name, page_address,
-      page_link, page_class, target_link,
-      create_user, create_time, update_user,
-      update_time, delete_user, delete_time,
-      del_flag)
-    values (#{id,jdbcType=VARCHAR}, #{pageName,jdbcType=VARCHAR}, #{pageAddress,jdbcType=VARCHAR},
-      #{pageLink,jdbcType=VARCHAR}, #{pageClass,jdbcType=VARCHAR}, #{targetLink,jdbcType=VARCHAR},
-      #{createUser,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=VARCHAR},
-      #{updateTime,jdbcType=TIMESTAMP}, #{deleteUser,jdbcType=VARCHAR}, #{deleteTime,jdbcType=TIMESTAMP},
-      #{delFlag,jdbcType=INTEGER})
-  </insert>
   <insert id="insertSelective" parameterType="com.byk.rong.boke.entity.BokeDisplayWorks">
-    insert into boke_display_works
+    insert into display_works
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -123,12 +105,12 @@
         #{deleteTime,jdbcType=TIMESTAMP},
       </if>
       <if test="delFlag != null">
-        #{delFlag,jdbcType=INTEGER},
+        #{delFlag,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.byk.rong.boke.entity.BokeDisplayWorks">
-    update boke_display_works
+  <update id="updateSelective" parameterType="com.byk.rong.boke.entity.BokeDisplayWorks">
+    update display_works
     <set>
       <if test="pageName != null">
         page_name = #{pageName,jdbcType=VARCHAR},
@@ -164,13 +146,13 @@
         delete_time = #{deleteTime,jdbcType=TIMESTAMP},
       </if>
       <if test="delFlag != null">
-        del_flag = #{delFlag,jdbcType=INTEGER},
+        del_flag = #{delFlag,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.byk.rong.boke.entity.BokeDisplayWorks">
-    update boke_display_works
+    update display_works
     set page_name = #{pageName,jdbcType=VARCHAR},
       page_address = #{pageAddress,jdbcType=VARCHAR},
       page_link = #{pageLink,jdbcType=VARCHAR},
@@ -182,7 +164,7 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       delete_user = #{deleteUser,jdbcType=VARCHAR},
       delete_time = #{deleteTime,jdbcType=TIMESTAMP},
-      del_flag = #{delFlag,jdbcType=INTEGER}
+      del_flag = #{delFlag,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>
