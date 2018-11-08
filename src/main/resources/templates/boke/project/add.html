@@ -14,47 +14,52 @@
     <link rel="stylesheet" href="/css/matrix-media.css"/>
     <link rel="stylesheet" href="/css/bootstrap-wysihtml5.css"/>
     <link href="/font-awesome/css/font-awesome.css" rel="stylesheet"/>
-    <link href="/myplugins/bootstrap-fileinput/css/bootstrap.min.css" rel="stylesheet"/>
+    <!--<link href="/myplugins/bootstrap-fileinput/css/bootstrap.min.css" rel="stylesheet"/>-->
 
     <!--<link href='http://fonts.useso.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>-->
 </head>
 <body style="color: #CDCDCD">
 
 <div class="widget-box" style="height: 100%;border: 0px;">
-    <form  class="form-horizontal"  id="signupForm">
+    <form  class="form-horizontal"  id="signupForm" enctype="multipart/form-data">
         <div class="controls-row">
             <label class="control-label span4 m-wrap">项目名称 :</label>
             <div class="controls ">
-                <input type="text" class="span8 m-wrap" name="projectName"/>
+                <input type="text" class="span9 m-wrap" id="projectName" name="projectName"/>
             </div>
         </div>
         <div class="controls-row">
             <label class="control-label span4 m-wrap">项目链接 :</label>
             <div class="controls ">
-                <input type="text" class="span8 m-wrap" name="pageLink" placeholder="菜单名称"/>
+                <input type="text" class="span9 m-wrap" id="pageLink" name="pageLink" />
             </div>
         </div>
         <div class="controls-row">
             <label class="control-label span4 m-wrap">项目展示图片 :</label>
-            <div class="controls "  style="height: 500px">
-                <input type="file" id="file-3" class="span8 m-wrap" name="pageLink" />
+            <div class="controls "  style="height: 200px">
+                <input type="file" id="file_img" class="span9 m-wrap"/>
             </div>
         </div>
+
         <div class="controls-row">
             <label class="control-label span4 m-wrap">项目分类 :</label>
             <div class="controls">
-                <label><input type="radio" name="pageClass" value="_parent" checked/>后端</label>
-                <label><input type="radio" name="pageClass" value="_top"/> 前端</label>
-                <label><input type="radio" name="pageClass" value="_blank"/>WEB </label>
-                <label><input type="radio" name="pageClass" value="_blank"/>APP </label>
+                <select id="pageClass">
+                    <option name="pageClass" value="hou" checked>后端</option>
+                    <option name="pageClass" value="qian">前端</option>
+                    <option name="pageClass" value="web">WEB</option>
+                    <option name="pageClass" value="app">APP</option>
+                    <option name="pageClass" value="boke">博客</option>
+                </select>
             </div>
         </div>
         <div class="controls-row">
-            <label class="control-label span4 m-wrap">打开方式 :</label>
+            <label class="control-label">打开方式 :</label>
             <div class="controls">
-                <label><input type="radio" name="targetLink" value="_parent" checked/>本窗口</label>
-                <label><input type="radio" name="targetLink" value="_top"/> 新浏览器</label>
-                <label><input type="radio" name="targetLink" value="_blank"/>新窗口 </label>
+                <select id="targetLink">
+                    <option name="targetLink" value="_blank" checked>打开新窗口（推荐）</option>
+                    <option name="targetLink" value="_parent">刷线本页面</option>
+                </select>
             </div>
         </div>
 
@@ -83,23 +88,13 @@
 <script src="/js/jquery.peity.min.js"></script>
 <script src="/js/bootstrap-wysihtml5.js"></script>
 <script src="/myplugins/layer/layer.js"></script>
-<script src="/js/rong/system/menu/add.js"></script>
+<script src="/js/rong/boke/project/add.js"></script>
 
 <!--文件上传-->
-<script src="/myplugins/bootstrap-fileinput/js/bootstrap.min.js"></script>
-<script src="/myplugins/bootstrap-fileinput/js/fileinput_locale_zh.js"></script>
+<!--<script src="/myplugins/bootstrap-fileinput/js/bootstrap.min.js"></script>-->
+<!--<script src="/myplugins/bootstrap-fileinput/js/fileinput_locale_zh.js"></script>-->
 
 <script>
-    $('.textarea_editor').wysihtml5();
-
-
-    $("#file-3").fileinput({
-        showUpload: false,
-        showCaption: false,
-        browseClass: "btn btn-primary btn-lg",
-        fileType: "any",
-        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>"
-    });
 
 </script>
 </body>

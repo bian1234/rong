@@ -3,6 +3,7 @@
 <mapper namespace="com.byk.rong.boke.mapper.write.BokeDisplayWorksWriteMapper">
   <resultMap id="BaseResultMap" type="com.byk.rong.boke.entity.BokeDisplayWorks">
     <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="project_name" jdbcType="VARCHAR" property="projectName" />
     <result column="page_name" jdbcType="VARCHAR" property="pageName" />
     <result column="page_address" jdbcType="VARCHAR" property="pageAddress" />
     <result column="page_link" jdbcType="VARCHAR" property="pageLink" />
@@ -17,7 +18,7 @@
     <result column="del_flag" jdbcType="VARCHAR" property="delFlag" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, page_name, page_address, page_link, page_class, target_link, create_user, create_time,
+    id, project_name,page_name, page_address, page_link, page_class, target_link, create_user, create_time,
     update_user, update_time, delete_user, delete_time, del_flag
   </sql>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
@@ -25,10 +26,16 @@
     where id = #{id,jdbcType=VARCHAR}
   </delete>
   <insert id="insertSelective" parameterType="com.byk.rong.boke.entity.BokeDisplayWorks">
+    <selectKey keyProperty="id" resultType="string" order="BEFORE">
+      select replace(uuid(), '-', '') as id from dual
+    </selectKey>
     insert into display_works
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
+      </if>
+      <if test="projectName != null">
+        project_name,
       </if>
       <if test="pageName != null">
         page_name,
@@ -71,6 +78,9 @@
       <if test="id != null">
         #{id,jdbcType=VARCHAR},
       </if>
+      <if test="projectName != null">
+        #{projectName,jdbcType=VARCHAR},
+      </if>
       <if test="pageName != null">
         #{pageName,jdbcType=VARCHAR},
       </if>
@@ -112,6 +122,9 @@
   <update id="updateSelective" parameterType="com.byk.rong.boke.entity.BokeDisplayWorks">
     update display_works
     <set>
+      <if test="projectName != null">
+        project_name = #{projectName,jdbcType=VARCHAR},
+      </if>
       <if test="pageName != null">
         page_name = #{pageName,jdbcType=VARCHAR},
       </if>
@@ -153,7 +166,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.byk.rong.boke.entity.BokeDisplayWorks">
     update display_works
-    set page_name = #{pageName,jdbcType=VARCHAR},
+    set project_name = #{projectName,jdbcType=VARCHAR},
+    page_name = #{pageName,jdbcType=VARCHAR},
       page_address = #{pageAddress,jdbcType=VARCHAR},
       page_link = #{pageLink,jdbcType=VARCHAR},
       page_class = #{pageClass,jdbcType=VARCHAR},

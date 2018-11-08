@@ -43,8 +43,6 @@ public class MyShiroRealm extends AuthorizingRealm {
         // 实际项目中，这里可以根据实际情况做缓存，如果不做，Shiro自己也是有时间间隔机制，2分钟内不会重复执行该方法
         //数据库内用户的用户名必须是唯一的
         User userInfo = userService.findByUsername(username);
-        System.out.println(">>>>>>>>>>>>>>>>>>>>user="+userInfo);
-
         // 账号不存在
         if (userInfo == null) {
             throw new UnknownAccountException("账号不正确~~~~~~~~~~");

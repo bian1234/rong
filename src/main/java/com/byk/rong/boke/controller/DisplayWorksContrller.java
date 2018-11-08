@@ -8,7 +8,9 @@ import com.byk.rong.system.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.text.Format;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -32,8 +34,40 @@ public class DisplayWorksContrller  extends BaseController {
      *@Description:  新增
      *@param:
     */
+    @PostMapping("insert")
+    @ResponseBody
+    public Map insert(BokeDisplayWorks bokeDisplayWorks, MultipartFile fileObj){
+        if (fileObj.getSize() > 1048576){
+            logger.info("上传的文件大小是："+fileObj.getSize());
+            return insertFailedResponse();
+        }
+        //编写图片上传的业务逻辑方法
+        //获取图片名称
+        String filename = fileObj.getOriginalFilename();
+        //获取图片扩展名
+        String ext = filename.substring(filename.lastIndexOf(".")+1);
 
+       bokeDisplayWorks.setDelFlag(Constant.DEL_FLAG_USER);
+       bokeDisplayWorks.setCreateTime(new Date());
+       bokeDisplayWorks.setCreateUser(getUserId());
+       if (displayWorksService.insertSelective(bokeDisplayWorks) > 0){
+           return insertSuccseeResponse();
+       }
+       return insertFailedResponse();
+    }
 
+    /**
+     *@Author:      ykbian
+     *@date_time:   2018/11/6 16:00
+     *@Description: 图片上传
+     *@param:
+    */
+    @PostMapping("fileInput")
+    @ResponseBody
+    public Map fileInput(){
+        logger.info("上传图片了");
+        return null;
+    }
     /**
      *@Author:      ykbian
      *@date_time:   2018/11/5 9:13
@@ -89,6 +123,17 @@ public class DisplayWorksContrller  extends BaseController {
      *@Description:
      *@param:
     */
+    @PostMapping("update")
+    @ResponseBody
+    public Map update(BokeDisplayWorks bokeDisplayWorks){
+      bokeDisplayWorks.setUpdateTime(new Date());
+      bokeDisplayWorks.setUpdateUser(getUserId());
+      if (displayWorksService.updateSelective(bokeDisplayWorks) > 0){
+          return updateSuccseeResponse();
+      }return updateFailedResponse();
+    }
+
+
 
     /**
      *@Author:      ykbian

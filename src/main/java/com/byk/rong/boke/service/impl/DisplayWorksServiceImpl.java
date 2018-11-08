@@ -28,7 +28,7 @@ public class DisplayWorksServiceImpl   implements DisplayWorksService {
 
     @Override
     public int insertSelective(BokeDisplayWorks bokeDisplayWorks) {
-        return 0;
+        return bokeDisplayWorksWriteMapper.insertSelective(bokeDisplayWorks);
     }
 
     @Override
