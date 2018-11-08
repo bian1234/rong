@@ -49,3 +49,7 @@ logging:
     root: info
     com.byk.rong.system.mapper: debug
     com.byk.rong.boke.mapper: debug
+
+
+byk:
+  pagePath: /usr/local/image/boke/
