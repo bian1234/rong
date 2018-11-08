@@ -7,6 +7,7 @@ import com.byk.rong.common.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -98,7 +99,7 @@ public class DisplayWorksContrller extends BaseController {
             bokeDisplayWorks.setDelFlag(Constant.DEL_FLAG_DISUSER);
             bokeDisplayWorks.setDeleteUser(getUserId());
             if (displayWorksService.updateSelective(bokeDisplayWorks) > 0) {
-                logger.info("用户" + getUserId() + "删除了名称为" + bokeDisplayWorks.getProjectName() + "的作品数据");
+                logger.info("用户" + getUserId() + "删除了名称为 《 " + bokeDisplayWorks.getProjectName() + " 》 的作品数据");
                 return deleteSuccessResponse();
             } else {
                 return deleteFailedResponse();
@@ -193,4 +194,11 @@ public class DisplayWorksContrller extends BaseController {
      *@Description: 跳转编辑界面
      *@param:
      */
+    @GetMapping("edit/{id}")
+    public String edit(Model model, @PathVariable("id")String id) {
+        BokeDisplayWorks bokeDisplayWorks = displayWorksService.selectById(id);
+        bokeDisplayWorks.setPageAddress(bokeDisplayWorks.getPageAddress()+"/"+bokeDisplayWorks.getPageName());
+        model.addAttribute("bokeDisplayWorks",bokeDisplayWorks);
+        return "/boke/project/edit";
+    }
 }

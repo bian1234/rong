@@ -31,15 +31,6 @@ function load() {
                         checkbox : true
                         // 列表中显示复选框
                     },
-                    // {
-                    //     title : '缩略图',
-                    //     field : 'id',
-                    //     align : 'center',
-                    //     formatter : function(value, row, index) {
-                    //         var e = '<image src="\''+row.pageAddress+row.pageName+'\'"/>';
-                    //         return e;
-                    //     }
-                    // },
                     {
                         field : 'projectName',
                         title : '项目名称'
@@ -98,7 +89,7 @@ function load() {
             });
 }
 function reLoad() {
-    $('#exampleTable').bootstrapTable('refresh');
+    load();
 }
 function add() {
     // iframe层
@@ -116,17 +107,17 @@ function remove(id) {
         btn : [ '确定', '取消' ]
     }, function() {
         $.ajax({
-            url : prefix + "/delete",
-            type : "post",
-            data : {
-                'id' : id
+            url: prefix + "/delete",
+            type: "post",
+            data: {
+                'id': id
             },
-            success : function(r) {
-                if (r.code == 2000) {
+            success: function (data) {
+                if (data.code == 2000) {
                     layer.msg("删除成功");
                     reLoad();
                 } else {
-                    layer.msg("删除失败");
+                    layer.msg(data.msg);
                 }
             }
         });

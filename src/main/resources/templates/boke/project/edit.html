@@ -20,56 +20,52 @@
 
 <div class="widget-box" style="height: 100%;border: 0px;">
     <form class="form-horizontal"  id="signupForm">
-        <input class="id" name="id" type="hidden" th:value="${menu.id}"/>
-        <input class="parentId" name="parentId" type="hidden" th:value="${pId}"/>
+        <input class="id" name="id" type="hidden" th:value="${bokeDisplayWorks.id}"/>
         <div class="controls-row">
-            <label class="control-label span4 m-wrap">上级菜单 :</label>
+            <label class="control-label span4 m-wrap">项目名称 :</label>
             <div class="controls ">
-                <input type="text" class="span8 m-wrap" th:value="${pName}" readonly/>
+                <input type="text" class="span9 m-wrap" th:value="${bokeDisplayWorks.projectName}" id="projectName" name="projectName"/>
             </div>
         </div>
         <div class="controls-row">
-            <label class="control-label span4 m-wrap">菜单名称 :</label>
+            <label class="control-label span4 m-wrap">项目链接 :</label>
             <div class="controls ">
-                <input type="text" class="span8 m-wrap" name="name" th:value="${menu.name}" placeholder="菜单名称"/>
+                <input type="text" class="span9 m-wrap" th:value="${bokeDisplayWorks.pageLink}" id="pageLink" name="pageLink" />
             </div>
         </div>
         <div class="controls-row">
-            <label class="control-label span4 m-wrap">链接 :</label>
-            <div class="controls ">
-                <input type="text" class="span8 m-wrap" name="url" th:value="${menu.url}" placeholder="比如：/system/menu/add"/>
+            <label class="control-label span4 m-wrap">项目展示图片 :</label>
+            <div class="controls "  >
+                <input type="file" id="file_img" class="span9 m-wrap" />
+
             </div>
-        </div>
-        <div class="controls-row">
-            <label class="control-label span4 m-wrap">权限信息 :</label>
-            <div class="controls ">
-                <input type="text" class="span8 m-wrap" name="perms" th:value="${menu.perms}" placeholder="比如：system:menu:add"/>
+            <div class="controls " >
+                <img th:src="${bokeDisplayWorks.pageAddress}"  style="width: 200px"/>
             </div>
         </div>
 
         <div class="controls-row">
-            <label class="control-label span4 m-wrap">类型 :</label>
+            <label class="control-label span4 m-wrap">项目分类 :</label>
             <div class="controls">
-                <label><input type="radio" name="type" value="0" th:field="*{menu.type}" checked/>目录</label>
-                <label><input type="radio" name="type" value="1" th:field="*{menu.type}"/> 菜单</label>
-                <label><input type="radio" name="type" value="2" th:field="*{menu.type}"/> 按钮</label>
+                <select id="pageClass" th:value="${bokeDisplayWorks.pageClass}">
+                    <option name="pageClass" value="hou" checked>后端</option>
+                    <option name="pageClass" value="qian">前端</option>
+                    <option name="pageClass" value="web">WEB</option>
+                    <option name="pageClass" value="app">APP</option>
+                    <option name="pageClass" value="boke">博客</option>
+                </select>
             </div>
         </div>
         <div class="controls-row">
-            <label class="control-label span4 m-wrap">排序 :</label>
-            <div class="controls ">
-                <input type="text" class="span8 m-wrap" name="orderNum" th:value="${menu.orderNum}"  placeholder="数字形式：0排在1前"/>
+            <label class="control-label">打开方式 :</label>
+            <div class="controls">
+                <select id="targetLink" th:value="${bokeDisplayWorks.targetLink}">
+                    <option name="targetLink" value="_blank" checked>打开新窗口（推荐）</option>
+                    <option name="targetLink" value="_parent">刷线本页面</option>
+                </select>
             </div>
         </div>
-        <div class="controls-row">
-            <label class="control-label span4 m-wrap">图标 :</label>
-            <div class="controls form-inline">
-                <input type="text" class="span7 m-wrap" id="myIcon" name="icon"  th:value="${menu.icon}"  placeholder="图标"/>
-                <button type="button" id="ico-btn" class="btn btn-info" onclick="choseIcon();">选择</button>
-            </div>
-        </div>
-        <div class="controls-row">
-        </div>
+
         <div class="controls-row " align="center">
             <button type="" class="btn btn-success" onclick="update();">确认</button>
         </div>
