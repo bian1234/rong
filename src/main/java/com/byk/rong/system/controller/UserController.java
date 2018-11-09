@@ -6,6 +6,7 @@ import com.byk.rong.common.controller.BaseController;
 import com.byk.rong.common.util.SaltUtil;
 import com.byk.rong.system.entity.User;
 import com.byk.rong.system.service.UserService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -170,4 +171,14 @@ public class UserController extends BaseController {
         return querySuccessResponse(user);
     }
 
+    /**
+     *@Author:      ykbian
+     *@date_time:   2018/11/9 17:40
+     *@Description: 跳转用户管理界面
+     *@param:
+    */
+    @GetMapping()
+    public String list(){
+        return "/system/user/user";
+    }
 }
