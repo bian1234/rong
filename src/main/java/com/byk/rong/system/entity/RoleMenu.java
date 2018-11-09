@@ -30,4 +30,13 @@ public class RoleMenu {
     public void setMenuId(String menuId) {
         this.menuId = menuId == null ? null : menuId.trim();
     }
+
+    @Override
+    public String toString() {
+        return "RoleMenu{" +
+                "id='" + id + '\'' +
+                ", roleId='" + roleId + '\'' +
+                ", menuId='" + menuId + '\'' +
+                '}';
+    }
 }

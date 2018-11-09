@@ -4,6 +4,7 @@ import com.byk.rong.boke.entity.BokeDisplayWorks;
 import com.byk.rong.boke.service.DisplayWorksService;
 import com.byk.rong.common.config.Constant;
 import com.byk.rong.common.controller.BaseController;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -38,6 +39,7 @@ public class DisplayWorksContrller extends BaseController {
      * @Description: 新增
      * @param:
      */
+    @RequiresPermissions("boke:project:add")
     @PostMapping("insert")
     @ResponseBody
     public Map insert(BokeDisplayWorks bokeDisplayWorks, MultipartFile fileObj) {

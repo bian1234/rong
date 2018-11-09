@@ -40,7 +40,7 @@ public class UserRoleServiceImpl  implements UserRoleService {
 
     @Override
     public List<UserRole> selectByParams(UserRole userRole) {
-        return null;
+        return userRoleReadMapper.selectByParams(userRole);
     }
 
     @Override

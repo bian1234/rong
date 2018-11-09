@@ -42,7 +42,7 @@ public class RoleMenuServiceImpl  implements RoleMenuService {
 
     @Override
     public List<RoleMenu> selectByParams(RoleMenu roleMenu) {
-        return null;
+        return roleMenuReadMapper.selectByParams(roleMenu);
     }
 
     @Override

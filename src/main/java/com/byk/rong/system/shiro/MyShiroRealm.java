@@ -12,7 +12,9 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @Author: bianyakun
@@ -74,39 +76,54 @@ public class MyShiroRealm extends AuthorizingRealm {
      * @Date: 2018/5/31 15:38
      * @todo:    根据用户信息获取角色及权限
      * @param:   当前登录的用户信息
+     *
+     * 整体思路 ：
+     *      1 、根据当前登录对象的id,在UserRole表中查询其角色信息，并将角色信息赋值给登陆对象；
+     *      2 、遍历角色信息列表，根据RoleId在MenuRole表中查询菜单列表；
+     *      3 、遍历菜单列表，将菜单中的权限信息存进Set集合；
+     *      4 、 将含有权限信息的Set集合赋给当前登录对象并返回
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        // 从shiro中获取用户信息
+       //创建返回对象
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
+        // SimpleAuthorizationInfo返回的是一个set集合
+        Set<String> strings = new HashSet<>();
+        // 从shiro中获取用户信息
         User user  = (User)principals.getPrimaryPrincipal();
-        // 根据用户信息获取角色信息
+       // 创建查询条件，根据用户信息获取角色信息
         UserRole userRole = new UserRole();
-                // 角色和用户关系表
+        userRole.setUserId(user.getId());
         List<UserRole> userRoles = userRoleService.selectByParams(userRole);
+        //如果用户角色关系不为空
         if (!userRoles.isEmpty()){
-            //遍历出角色信息
+            // 根据角色信息获取菜单权限
             for (UserRole userRole1:userRoles) {
-                Role role = roleService.selectById(userRole1.getRoleId());
-                // 将角色信息赋给shrio=========赋的是角色名不是id
-                authorizationInfo.addRole(role.getRoleName());
-                // 根据角色id查询权限信息
+                // 为登录用户赋角色信息
+                authorizationInfo.addRole(roleService.selectById(userRole1.getRoleId()).getRoleName());
+                //创建角色和菜单关系的查询条件
                 RoleMenu roleMenu = new RoleMenu();
-                roleMenu.setRoleId(role.getId());
+                roleMenu.setRoleId(userRole1.getRoleId());
                 List<RoleMenu> roleMenus = roleMenuService.selectByParams(roleMenu);
+                // 如果角色和菜单关系不为空
                 if (!roleMenus.isEmpty()){
+                    //遍历其中的菜单信息，将菜单中的权限信息组装成Set集合
                     for (RoleMenu roleMenu1:roleMenus) {
-                       Menu menu =  menuService.selectById(roleMenu1.getMenuId());
-                       // 将权限名称赋给当前用户
-                        authorizationInfo.addStringPermission(menu.getPerms());
+                        String perms = menuService.selectById(roleMenu1.getMenuId()).getPerms();
+                        //只有当权限信息不为空并且不是空字符串时才有效
+                        if (perms != null && !perms.equals("")){
+                         strings.add(perms);
+                        }
                     }
+                }else {
+                    return null;
                 }
             }
+        }else {
+            return null;
         }
+        //将获取到的菜单权限Set集合赋给当前登录对象
+        authorizationInfo.setStringPermissions(strings);
         return authorizationInfo;
     }
-
-
-
-
 }

@@ -4,6 +4,7 @@ import com.byk.rong.common.config.Constant;
 import com.byk.rong.common.controller.BaseController;
 import com.byk.rong.system.entity.Role;
 import com.byk.rong.system.service.RoleService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -140,6 +141,7 @@ public class RoleController  extends BaseController {
     */
     @GetMapping("/list")
     @ResponseBody
+    @RequiresPermissions("system:role:role")
     public List<Role> menuList(@RequestParam Map<String, Object> map){
         List<Role> roles = roleService.list(map);
        return roles;
@@ -153,6 +155,7 @@ public class RoleController  extends BaseController {
      *@param:
     */
     @GetMapping()
+    @RequiresPermissions("system:role:role")
     public String list(){
         return "/system/role/role";
     }

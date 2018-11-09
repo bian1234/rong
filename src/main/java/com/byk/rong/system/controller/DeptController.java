@@ -8,6 +8,7 @@ import com.byk.rong.system.entity.Menu;
 import com.byk.rong.system.service.DeptService;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.ibatis.annotations.Param;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,6 +38,7 @@ public class DeptController  extends BaseController {
     */
     @GetMapping("list")
     @ResponseBody
+    @RequiresPermissions("system:dept:dept")
     public List<Dept> list(@RequestParam Map<String, Object> map){
         List<Dept> depts = deptService.list(map);
         if (depts.isEmpty()){
@@ -110,7 +112,8 @@ public class DeptController  extends BaseController {
      *@Description:  跳转部门列表界面
      *@param:
     */
-    @GetMapping("")
+    @GetMapping()
+    @RequiresPermissions("system:dept:dept")
     public String dept(){
         return "/system/dept/dept";
     }

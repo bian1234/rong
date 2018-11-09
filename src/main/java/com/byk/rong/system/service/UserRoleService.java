@@ -2,36 +2,34 @@ package com.byk.rong.system.service;
 
 import com.byk.rong.common.service.BaseService;
 import com.byk.rong.system.entity.UserRole;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
+/**
+ * @Author: ykbian
+ * @Date: 2018/11/9 9:40
+ * @Todo:
+ *
+ */
 
-@Service
 public interface UserRoleService  extends BaseService<UserRole> {
 
     @Override
-    default int insertSelective(UserRole userRole) {
-        return 0;
-    }
+    int insertSelective(UserRole userRoleService);
 
     @Override
-    default int updateSelective(UserRole userRole) {
-        return 0;
-    }
+    int updateSelective(UserRole userRoleService);
 
     @Override
-    default UserRole selectById(String id) {
-        return null;
-    }
+    UserRole selectById(String id);
 
     @Override
-    default List<UserRole> selectByParams(UserRole userRole) {
-        return null;
-    }
+    List<UserRole> selectByParams(UserRole userRoleService);
 
     @Override
-    default int deleteById(String id) {
-        return 0;
-    }
+    int deleteById(String id);
+
+    @Override
+    List<UserRole> list(Map<String, Object> params);
 }

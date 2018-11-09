@@ -1,5 +1,6 @@
 package com.byk.rong.system.controller;
 
+import com.byk.rong.common.annotation.Log;
 import com.byk.rong.common.controller.BaseController;
 import com.byk.rong.common.util.ShiroUtils;
 import com.byk.rong.common.util.Tree;
@@ -12,6 +13,7 @@ import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
+import org.hibernate.event.spi.SaveOrUpdateEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -112,15 +114,26 @@ public class HomeController   extends BaseController{
      *@Description: 用户退出
      *@param:
      */
+    @Log("用户退出")
     @GetMapping("logout")
     public String logout(){
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
-        System.out.println("用户退出");
         return "redirect:/login";
     }
 
 
+    /**
+     *@Author:      ykbian
+     *@date_time:   2018/11/9 13:50
+     *@Description:  用户无权限时跳转403界面
+     *@param:
+    */
+    @GetMapping("/403")
+    public String withOutaPermissions(){
+        logger.info("用户无权限时跳转403界面");
+        return "/403";
+    }
     /**
      *  第一次写 ，没经验
      *  这个接口属于系统用户的

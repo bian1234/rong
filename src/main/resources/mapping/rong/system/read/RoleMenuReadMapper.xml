@@ -15,5 +15,12 @@
     from role_menu
     where id = #{id,jdbcType=VARCHAR}
   </select>
-
+<select id="selectByParams" resultMap="BaseResultMap" parameterType="com.byk.rong.system.entity.RoleMenu">
+  SELECT <include refid="Base_Column_List"/> FROM role_menu
+  <where>
+    <if test="id != null and id != '' "> AND id = #{id,jdbcType = VARCHAR}</if>
+    <if test="roleId != null and roleId != '' "> AND role_id = #{roleId,jdbcType = VARCHAR}</if>
+    <if test="menuId != null and menuId != '' "> AND menu_id = #{menuId,jdbcType = VARCHAR}</if>
+  </where>
+</select>
 </mapper>

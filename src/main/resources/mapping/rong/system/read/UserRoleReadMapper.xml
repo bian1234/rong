@@ -16,4 +16,13 @@
     where id = #{id,jdbcType=VARCHAR}
   </select>
 
+  <select id="selectByParams" parameterType="com.byk.rong.system.entity.UserRole" resultMap="BaseResultMap">
+    SELECT  <include refid="Base_Column_List"></include>
+    from user_role
+    <where>
+      <if test="id != null and id != '' ">and id = #{id,jdbcType=VARCHAR}</if>
+      <if test="userId != null and userId != '' ">and user_id = #{userId,jdbcType=VARCHAR}</if>
+      <if test="roleId != null and roleId != '' ">and role_id = #{roleId,jdbcType=VARCHAR}</if>
+    </where>
+  </select>
 </mapper>
