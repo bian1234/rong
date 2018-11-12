@@ -60,6 +60,11 @@ public class RoleController  extends BaseController {
         if (role == null){
             return  deleteFailedResponse();
         }
+        // 如果是超级管理员的角色信息，不能删除
+        if (Constant.ROOT_ROLE_ID.equals(id)){
+            logger.info("有人企图删除超级管理员的角色，但是被我给拒绝了！");
+            return deleteFailedResponse();
+        }
         role.setDelFlag(Constant.DEL_FLAG_DISUSER);
         role.setDeleteTime(new Date());
         role.setDeleteUser(getUserId());
@@ -87,6 +92,11 @@ public class RoleController  extends BaseController {
             // 这里可能会引发空指针异常
             try {
                 Role role = roleService.selectById(id);
+                // 如果是超级管理员的角色信息，不能删除
+                if (Constant.ROOT_ROLE_ID.equals(id)){
+                    logger.info("有人企图删除超级管理员的角色，但是被我给拒绝了！");
+                    continue;
+                }
                 role.setDelFlag(Constant.DEL_FLAG_DISUSER);
                 role.setDeleteTime(new Date());
                 role.setDeleteUser(getUserId());

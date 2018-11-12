@@ -1,42 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:include="include :: header">
+<head >
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="/myplugins/zTree/css/bootstrapStyle/bootstrapStyle.css" type="text/css">
-    <script type="text/javascript" src="/myplugins/zTree/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/myplugins/zTree/js/jquery.ztree.core.js"></script>
-    <script type="text/javascript" src="/myplugins/zTree/js/jquery.ztree.excheck.js"></script>
-    <script type="text/javascript" src="/myplugins/zTree/js/jquery.ztree.exedit.js"></script>
+
 </head>
 <body  style="height: 100%">
 <div class="wrapper wrapper-content ">
-    <div class="row">
-        <div class="col-sm-3">
-            <ul id="treeDemo" class="ztree"></ul>
-        </div>
-        <div class="col-sm-9">
-            <div class="ibox">
-                <div class="ibox-body">
-                    <div id="exampleToolbar" role="group" class="t-bar" style="margin : 20px">
-                        <button type="button" class="btn btn-success" title="在根节点下添加菜单" onclick="add('0')">
-                            <i class=" icon-sitemap" aria-hidden="true"></i><span><STRONG>&nbsp;&nbsp;添加</STRONG></span>
-                        </button>
-                        <button type="button" class="btn btn-danger" onclick="batchRemove()">
-                            <i class=" icon-remove" aria-hidden="true"></i><span><STRONG>&nbsp;&nbsp;删除</STRONG></span>
-                        </button>
-                    </div>
-                    <table id="exampleTable" data-mobile-responsive="true">
-                    </table>
-                </div>
-            </div>
-        </div>
 
+    <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+    <div class="row">
+        <div class="col-xs-12 col-md-8">.col-xs-12 .col-md-8</div>
+        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+    </div>
+
+    <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+    <div class="row">
+        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+        <div class="col-xs-6 col-md-4">.col-xs-6 .col-md-4</div>
+    </div>
+
+    <!-- Columns are always 50% wide, on mobile and desktop -->
+    <div class="row">
+        <div class="col-xs-6">.col-xs-6</div>
+        <div class="col-xs-6">.col-xs-6</div>
     </div>
 
 </div>
 
-<div th:include="include::footer"></div>
+<!--<div th:include="include::footer"></div>-->
 <!--<script src="/js/rong/system/role/role.js"></script>-->
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/myplugins/zTree/js/jquery.min.js"></script>
+<script type="text/javascript" src="/myplugins/zTree/js/jquery.ztree.core.js"></script>
+<script type="text/javascript" src="/myplugins/zTree/js/jquery.ztree.excheck.js"></script>
+<script type="text/javascript" src="/myplugins/zTree/js/jquery.ztree.exedit.js"></script>
 <script>
     var setting = {
         view: {

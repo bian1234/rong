@@ -54,4 +54,9 @@ public class Constant {
      */
     public static String DEMO_ACCOUNT_ID = "da58e825db4e11e8bf1d52540033f252";
     public static String DEMO_ACCOUNT_MESSAGE="演示系统不允许修改，完整体验请部署程序";
+    /**
+     * 超级管理员的角色id
+     */
+    public static String ROOT_ROLE_ID = "bb082140c3ca11e8bf1d52540033f252";
+
 }

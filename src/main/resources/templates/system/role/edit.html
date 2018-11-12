@@ -20,58 +20,30 @@
 
 <div class="widget-box" style="height: 100%;border: 0px;">
     <form class="form-horizontal"  id="signupForm">
-        <input class="id" name="id" type="hidden" th:value="${menu.id}"/>
-        <input class="parentId" name="parentId" type="hidden" th:value="${pId}"/>
+        <input class="id" name="id" type="hidden" th:value="${role.id}"/>
         <div class="controls-row">
-            <label class="control-label span4 m-wrap">上级菜单 :</label>
+            <label class="control-label span4 m-wrap">角色名称 :</label>
             <div class="controls ">
-                <input type="text" class="span8 m-wrap" th:value="${pName}" readonly/>
+                <input type="text" class="span8 m-wrap" name="roleName" th:value="${role.roleName}"/>
             </div>
         </div>
         <div class="controls-row">
-            <label class="control-label span4 m-wrap">菜单名称 :</label>
+            <label class="control-label span4 m-wrap">角色标识 :</label>
             <div class="controls ">
-                <input type="text" class="span8 m-wrap" name="name" th:value="${menu.name}" placeholder="菜单名称"/>
+                <input type="text" class="span8 m-wrap" name="roleSign" th:value="${role.roleSign}" />
             </div>
         </div>
         <div class="controls-row">
-            <label class="control-label span4 m-wrap">链接 :</label>
+            <label class="control-label span4 m-wrap">备注 :</label>
             <div class="controls ">
-                <input type="text" class="span8 m-wrap" name="url" th:value="${menu.url}" placeholder="比如：/system/menu/add"/>
+                <input type="text" class="span8 m-wrap" name="remark" th:value="${role.remark}" placeholder="简答的描述一下角色信息"/>
             </div>
-        </div>
-        <div class="controls-row">
-            <label class="control-label span4 m-wrap">权限信息 :</label>
-            <div class="controls ">
-                <input type="text" class="span8 m-wrap" name="perms" th:value="${menu.perms}" placeholder="比如：system:menu:add"/>
-            </div>
-        </div>
-
-        <div class="controls-row">
-            <label class="control-label span4 m-wrap">类型 :</label>
-            <div class="controls">
-                <label><input type="radio" name="type" value="0" th:field="*{menu.type}" checked/>目录</label>
-                <label><input type="radio" name="type" value="1" th:field="*{menu.type}"/> 菜单</label>
-                <label><input type="radio" name="type" value="2" th:field="*{menu.type}"/> 按钮</label>
-            </div>
-        </div>
-        <div class="controls-row">
-            <label class="control-label span4 m-wrap">排序 :</label>
-            <div class="controls ">
-                <input type="text" class="span8 m-wrap" name="orderNum" th:value="${menu.orderNum}"  placeholder="数字形式：0排在1前"/>
-            </div>
-        </div>
-        <div class="controls-row">
-            <label class="control-label span4 m-wrap">图标 :</label>
-            <div class="controls form-inline">
-                <input type="text" class="span7 m-wrap" id="myIcon" name="icon"  th:value="${menu.icon}"  placeholder="图标"/>
-                <button type="button" id="ico-btn" class="btn btn-info" onclick="choseIcon();">选择</button>
-            </div>
-        </div>
-        <div class="controls-row">
         </div>
         <div class="controls-row " align="center">
-            <button type="" class="btn btn-success" onclick="update();">确认</button>
+            <div class="controls ">
+                <button type="" class="btn btn-success" onclick="update();">确认</button>
+            </div>
+
         </div>
     </form>
 </div>
@@ -93,7 +65,7 @@
 <script src="/js/jquery.peity.min.js"></script>
 <script src="/js/bootstrap-wysihtml5.js"></script>
 <script src="/myplugins/layer/layer.js"></script>
-<script src="/js/rong/system/menu/edit.js"></script>
+<script src="/js/rong/system/role/edit.js"></script>
 
 <script>
     $('.textarea_editor').wysihtml5();

@@ -32,10 +32,14 @@ function load() {
                         // 列表中显示复选框
                     },
                     {
+                        field : 'id', // 列字段名
+                        title : 'ID', // 列标题
+
+                    },
+                    {
                         field : 'projectName',
                         title : '项目名称'
                     },
-
                     {
                         field : 'pageName',
                         title : '图片名称'
@@ -45,31 +49,17 @@ function load() {
                         title : '图片地址'
                     },
                     {
+                        field : 'targetLink',
+                        title : '打开方式'
+                    },
+                    {
                         field : 'pageLink',
-                        title : '项目链接地址'
+                        title : '项目链接'
                     },
                     {
                         field : 'pageClass',
                         title : '项目分类'
                     },
-                    {
-                        field : 'targetLink',
-                        title : '打开方式',
-                        align: 'center',
-                        valign: 'center',
-                        formatter: function (item, index) {
-                            if (item == "_blank") {
-                                return '<p>新窗口</p>';
-                            }
-                            if (item == '_top') {
-                                return '<p>打开新的浏览器</p>';
-                            }
-                            if (item == "_parent") {
-                                return '<p>本页面打开</p>';
-                            }
-                        }
-                    },
-
                     {
                         title : '操作',
                         field : 'id',
@@ -89,13 +79,13 @@ function load() {
             });
 }
 function reLoad() {
-    load();
+    $('#exampleTable').bootstrapTable('refresh');
 }
 function add() {
     // iframe层
     layer.open({
         type : 2,
-        title : '添加项目经验',
+        title : '添加项目',
         maxmin : true,
         shadeClose : false, // 点击遮罩关闭层
         area : [ '800px', '520px' ],
@@ -107,17 +97,17 @@ function remove(id) {
         btn : [ '确定', '取消' ]
     }, function() {
         $.ajax({
-            url: prefix + "/delete",
-            type: "post",
-            data: {
-                'id': id
+            url : prefix + "/delete",
+            type : "post",
+            data : {
+                'id' : id
             },
-            success: function (data) {
-                if (data.code == 2000) {
+            success : function(r) {
+                if (r.code == 2000) {
                     layer.msg("删除成功");
                     reLoad();
                 } else {
-                    layer.msg(data.msg);
+                    layer.msg("删除失败");
                 }
             }
         });

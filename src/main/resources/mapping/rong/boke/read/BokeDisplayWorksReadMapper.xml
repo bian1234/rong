@@ -21,7 +21,7 @@
   <!--readOnly(只读)属性可以被设置为 true 或 false。只读的缓存会给所有调用者返回缓 存对象的相同实例。-->
     <!--因此这些对象不能被修改。这提供了很重要的性能优势。可读写的缓存 会返回缓存对象的拷贝(通过序列化) 。-->
     <!--这会慢一些,但是安全,因此默认是 false。-->
-  <cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/>
+  <!--<cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/>-->
 
   <resultMap id="BaseResultMap" type="com.byk.rong.boke.entity.BokeDisplayWorks">
     <id column="id" jdbcType="VARCHAR" property="id" />
