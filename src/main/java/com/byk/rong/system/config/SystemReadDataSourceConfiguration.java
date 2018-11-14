@@ -1,5 +1,6 @@
 package com.byk.rong.system.config;
 
+import com.alibaba.druid.filter.logging.Log4jFilter;
 import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -63,5 +64,6 @@ public class SystemReadDataSourceConfiguration {
     public SqlSessionTemplate sqlSessionTemplate(@Qualifier("systemReadSqlSessionFactory") SqlSessionFactory sqlSessionFactory) throws Exception {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
+
 
 }

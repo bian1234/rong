@@ -131,6 +131,17 @@
 			<version>3.6</version>
 		</dependency>
 
+		<!--redis 缓存-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-redis</artifactId>
+			<version>1.0.1.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.4.2</version>
+		</dependency>
 
 		<dependency>
 			<groupId>commons-configuration</groupId>
@@ -163,6 +174,13 @@
 			<artifactId>spring-cloud-starter-eureka</artifactId>
 		</dependency>
 
+		<!--热部署-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+			<scope>true</scope>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
@@ -183,6 +201,10 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<!--热部署-->
+				<configuration>
+					<fork>true</fork>
+				</configuration>
 			</plugin>
 			<!-- mybatis generator 自动生成代码插件 -->
 			<plugin>
